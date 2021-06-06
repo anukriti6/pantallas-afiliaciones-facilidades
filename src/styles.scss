@@ -1,4 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import url(https://fonts.googleapis.com/icon?family=Roboto);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+@font-face {
+  font-family: Prelo-book;
+  src: url(assets/font/Prelo-Book.otf) format('opentype');
+}
+@font-face {
+  font-family: Prelo-bold;
+  src: url(assets/font/Prelo-Bold.otf) format('opentype');
+}
+@font-face {
+  font-family: Prelo-exbd;
+  src: url(assets/font/Prelo-Exbd.otf) format('opentype');
+}
+@font-face {
+  font-family: Prelo-Extra-light;
+  src: url(assets/font/Prelo-ExtraLight.otf) format('opentype');
+}
+@font-face {
+  font-family: Prelo-Light;
+  src: url(assets/font/Prelo-Light.otf) format('opentype');
+}
+@font-face {
+  font-family: Prelo-Medium;
+  src: url(assets/font/Prelo-Medium.otf) format('opentype');
+}
+@font-face {
+  font-family: Prelo-Semi-bold;
+  src: url(assets/font/Prelo-SemiBold.otf) format('opentype');
+}
+@font-face {
+  font-family: Preloslab-bold;
+  src: url(assets/font/PreloSlab-Bold.otf) format('opentype');
+}
+@font-face {
+  font-family: Preloslab-book;
+  src: url(assets/font/PreloSlab-Book.otf) format('opentype');
+}
+@font-face {
+  font-family: Preloslab-exbd;
+  src: url(assets/font/PreloSlab-ExBd.otf) format('opentype');
+}
+@font-face {
+  font-family: Preloslab-Light;
+  src: url(assets/font/PreloSlab-Light.otf) format('opentype');
+}
+@font-face {
+  font-family: Preloslab-Semi-bold;
+  src: url(assets/font/PreloSlab-SemiBold.otf) format('opentype');
+}

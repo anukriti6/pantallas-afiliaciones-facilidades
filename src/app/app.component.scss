@@ -1,0 +1,158 @@
+.elevation {
+  z-index: 99999;
+
+}
+
+.salir {
+  text-align: center;
+}
+
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.my-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.toolbar {
+  background-color: #ffff;
+}
+
+.is-mobile .toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+.sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+
+.is-mobile .sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+
+.mat-nav-list {
+  font-family:  'Prelo-bold', serif;
+  font-size: 17px ;
+  color: #0f265c;
+}
+
+.fabbtn {
+  background-color: #929292;
+  color: #ffff;
+  font-size: 15px;
+  justify-content: center;
+}
+.mat-list-item, .mat-expansion-panel-header {
+  justify-content: center;
+}
+
+.fabbtn:visited {
+  text-decoration: none;
+}
+
+.userbtn:hover, .salir:hover {
+  text-decoration: none;
+}
+
+.userbtn:visited, .salir:visited {
+  text-decoration: none;
+}
+
+.topbars {
+  font-family: 'Prelo-Semi-bold', serif;
+  font-size: 14px;
+  color: #0f265c;
+  opacity: 1;
+}
+
+.mat-list-item:active {
+  background-color: #ffdc00;
+}
+.mat-list-item{
+  text-align: center;
+}
+
+
+.active_link, .active_link:hover {
+  background-color: #ffdc00;
+}
+.active_btn{
+  background-color: #ffdc00;
+  padding-left: 10%;
+}
+
+.mat-list-item {
+  font-family:  'Prelo-Medium', serif;
+  padding-left: 10%;
+  //font-family: 'Prelo-Medium', serif;
+  color: #0f265c;
+  font-size: 17px;
+  letter-spacing: 0;
+  opacity: 1;
+}
+.mat-list-item:active,.mat-list-item:visited, .active_link{
+  font-family:  'Prelo-bold', serif;
+}
+
+.mat-nav-list {
+  justify-content: center;
+}
+.mat-expansion-panel .mat-list-item{
+  padding: 0%;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+.mat-expansion-panel-body{
+  width: 100%;
+}
+.mat-expansion-panel-header{
+  font-family:  'Prelo-Medium', serif;
+  color: #0f265c;
+  font-size: 17px;
+  letter-spacing: 0;
+  opacity: 1;
+  border: 0;
+}
+div.mat-expansion-panel-body{
+  padding: 0%;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+@media (min-width: 781px) {
+  mat-sidenav {
+    width: 25%;
+  }
+}
+@media (max-width: 500px) {
+  mat-sidenav {
+    width: 100%;
+  }
+}
+@media (min-width: 501px) and (max-width: 780px){
+  mat-sidenav {
+    width: 35%;
+  }
+}
