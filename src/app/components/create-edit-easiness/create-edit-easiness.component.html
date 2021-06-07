@@ -1,1 +1,49 @@
-<p>create-edit-easiness works!</p>
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th rowspan="2">Nombre Facilidad</th>
+      <th colspan="4">Cupo Corto Plazo</th>
+      <th rowspan="2" colspan="2">Estado</th>
+    </tr>
+    <tr>
+      <th>Cupo Aprobado</th>
+      <th>Cupo disponible</th>
+      <th>Cupo Bloquedado</th>
+      <th>Cupo Utilizado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of easiness.easiness; let i = index;" >
+      <td *ngIf="!easiness.related || easiness.related && item.related">{{item.name}}</td>
+      <td *ngIf="!easiness.related || easiness.related && item.related">{{item.quotes.approved}}</td>
+      <td *ngIf="!easiness.related || easiness.related && item.related">{{item.quotes.available}}</td>
+      <td *ngIf="!easiness.related || easiness.related && item.related">{{item.quotes.blocked}}</td>
+      <td *ngIf="!easiness.related || easiness.related && item.related" >{{item.quotes.used}}</td>
+      <td *ngIf="!easiness.related || easiness.related && item.related">
+        <span *ngIf="!isEditingArray[i]">{{item.status}}</span>
+        <div *ngIf="isEditingArray[i]">
+          <mat-form-field  appearance="outline"   >
+            <mat-select  ngDefaultControl name="selectStatus" [(ngModel)]="item.status" >
+              <mat-option value="Activo">Activo</mat-option>
+              <mat-option value="Bloqueado">Bloqueado</mat-option>
+              <mat-option value="Inactivo">Inactivo</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </td>
+      <td *ngIf="!easiness.related || easiness.related && item.related">
+        <div *ngIf="!easiness.related" ngModel>
+          <mat-checkbox [(ngModel)]="isRelatedArray[i]"></mat-checkbox>
+        </div>
+        <div class="btn" *ngIf="easiness.related" (click)="editStatus(i)">
+          <mat-icon mat-button aria-hidden="false" aria-label="Example edit icon" >edit</mat-icon>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="row text-center text-sm-right mx-auto mx-sm-0 ml-sm-auto">
+  <div class="col-0 col-sm-8"></div>
+  <button class="col-6 col-sm-2 mx-auto mx-sm-0 mr-2" mat-button (click)="save()">Guardar</button>
+  <button class="col-6 col-sm-2 mx-auto mx-sm-0" mat-button (click)="clean()">Limpiar</button>
+</div>

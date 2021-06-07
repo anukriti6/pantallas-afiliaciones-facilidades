@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { RelateEasinessesComponent } from './pages/relate-easinesses/relate-easinesses.component';
@@ -24,6 +25,10 @@ import { AffiliateProviderComponent } from './pages/affiliate-provider/affiliate
 import { RelateAnchorCompanyComponent } from './components/relate-anchor-company/relate-anchor-company.component';
 import { CreateEditEasinessComponent } from './components/create-edit-easiness/create-edit-easiness.component';
 import { ProviderDataComponent } from './components/provider-data/provider-data.component';
+import { EasinessService } from './services/easiness/easiness.service';
+import { ProviderService } from './services/provider/provider.service';
+import { AnchorCompanyService } from './services/anchor-company/anchor-company.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,6 +44,8 @@ import { ProviderDataComponent } from './components/provider-data/provider-data.
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    MatCheckboxModule,
     MatToolbarModule,
     MatTabsModule,
     MatButtonModule,
@@ -59,6 +66,8 @@ import { ProviderDataComponent } from './components/provider-data/provider-data.
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    MatCheckboxModule,
     MatToolbarModule,
     MatTabsModule,
     MatButtonModule,
@@ -75,7 +84,7 @@ import { ProviderDataComponent } from './components/provider-data/provider-data.
     FormsModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [EasinessService, ProviderService, AnchorCompanyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

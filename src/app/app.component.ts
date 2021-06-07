@@ -9,35 +9,7 @@ export class AppComponent implements OnDestroy{
   title = 'workflow';
   /*Dummy Data for view testing. Replace with real data from DB in backend development*/
   /*Dummy Data for view "relacionar facilidades"*/
-  easinesId: any[] = [{
-    id: 1,
-    idNumber: 1709876543212,
-    easiness: [{
-      id: 1,
-      name: 'CD PROVEEDOR AGRIPAC',
-      quotes: {
-      approved: 50000,
-      available: 35000,
-      blocked: 10000,
-      used: 5000
-      },
-      status: 'Activo',
-      related: false,
-      anchored: false
-    }, {
-      id: 2,
-      name: 'CD PROVEEDOR AGRIPAC',
-      quotes: {
-      approved: 75000,
-      available: 20000,
-      blocked: 35000,
-      used: 40000
-      },
-      status: 'Activo',
-      related: false,
-      anchored: false
-    }]
-  }];
+
   /*Dummy Data for providers*/
   providers: any[] = [{
     id: 1,
@@ -91,8 +63,8 @@ export class AppComponent implements OnDestroy{
     regionalName: 'Nombre de regional',
     interest: 10.22,
     resource: false,
-    status: 'Activo'
-
+    status: 'Activo',
+    anchored: true
   }];
   mobileQuery: MediaQueryList;
   private readonly _mobileQueryListener: () => void;

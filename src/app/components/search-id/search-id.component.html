@@ -17,9 +17,9 @@
     </div>
     <div class="row">
       <mat-form-field class="example-full-width" appearance="outline" floatLabel="always"class="col-12 col-sm-4 mx-auto">
-        <input matInput *ngIf="typeId == typeIds[0]" type="number" placeholder="1712345678901" maxLength="13" name="id"
+        <input matInput *ngIf="typeId == typeIds[0]" type="number" placeholder="1711111111111" maxLength="13" name="id"
           minLength="13" [(ngModel)]="id" (ngModelChange)="validateId(13)" [ngModelOptions]="{standalone: true}">
-        <input matInput *ngIf="typeId == typeIds[1]" type="number" placeholder="1712345678" maxLength="10" name="id"
+        <input matInput *ngIf="typeId == typeIds[1]" type="number" placeholder="1711111111" maxLength="10" name="id"
           minLength="10" [(ngModel)]="id" (ngModelChange)="validateId(10)" [ngModelOptions]="{standalone: true}" >
       </mat-form-field>
     </div>
@@ -29,9 +29,9 @@
     <div class="row">
       <button class="col-12 col-sm-2 mx-auto" mat-button [disabled]="!(errorId == null && id != null)" (click)="search()">Buscar</button>
     </div>
-    <div class="row">
-      <div class="alert alert-danger col-12 col-sm-4 mx-auto text-center" role="alert">
-        Usuario no encontrado. Realice la b&uacute;squeda nuevamente
+    <div class="row" *ngIf="searchError != null">
+      <div class="alert my-3 alert-danger col-12 col-sm-4 mx-auto text-center" role="alert">
+        {{searchError}}
       </div>
     </div>
   </form>

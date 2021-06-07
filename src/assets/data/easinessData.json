@@ -1,0 +1,71 @@
+[{
+  "id": 1,
+  "idNumber": 1712345678901,
+  "related": false,
+  "easiness": [{
+    "id": 1,
+    "name": "CD PROVEEDOR AGRIPAC",
+    "quotes": {
+    "approved": 50000,
+    "available": 35000,
+    "blocked": 10000,
+    "used": 5000
+    },
+    "status": "Activo",
+    "related": false
+  }, {
+    "id": 2,
+    "name": "CD PROVEEDOR B",
+    "quotes": {
+    "approved": 75000,
+    "available": 20000,
+    "blocked": 35000,
+    "used": 40000
+    },
+    "status": "Activo",
+    "related": false
+  }]
+}, {
+  "id": 2,
+  "idNumber": 1700000000,
+  "related": false,
+  "easiness": [{
+    "id": 1,
+    "name": "CD PROVEEDOR C",
+    "quotes": {
+    "approved": 30000,
+    "available": 10000,
+    "blocked": 10000,
+    "used": 10000
+    },
+    "status": "Activo",
+    "related": false
+  }]
+}, {
+  "id": 3,
+  "idNumber": 1709876543212,
+  "related": false,
+  "easiness": [{
+    "id": 1,
+    "name": "CD PROVEEDOR D",
+    "quotes": {
+    "approved": 100000,
+    "available": 20000,
+    "blocked": 40000,
+    "used": 40000
+    },
+    "status": "Activo",
+    "related": false
+  }, {
+    "id": 2,
+    "name": "CD PROVEEDOR E",
+    "quotes": {
+    "approved": 120000,
+    "available": 50000,
+    "blocked": 30000,
+    "used": 40000
+    },
+    "status": "Activo",
+    "related": false
+  }]
+}]
