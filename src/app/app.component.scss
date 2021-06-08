@@ -64,8 +64,9 @@ input:invalid {
   border-color: red;
 }
 .titulo{
-  font-family: 'Preloslab-bold', serif;
+  font-family:  'Prelo-bold', serif;
   font-size: 28px;
+  font: normal normal normal;
   color: #0f265c;
 }
 .sidenav-container {
@@ -82,7 +83,7 @@ input:invalid {
 
 .mat-nav-list {
   font-family:  'Prelo-bold', serif;
-  font-size: 17px ;
+  font-size: 16px ;
   color: #0f265c;
 }
 .content {
@@ -136,7 +137,7 @@ h3, h4{
   padding-left: 10%;
   //font-family: 'Prelo-Medium', serif;
   color: #0f265c;
-  font-size: 17px;
+  font-size: 16px;
   letter-spacing: 0;
   text-align: center;
   opacity: 1;
@@ -159,7 +160,7 @@ h3, h4{
 .mat-expansion-panel-header{
   font-family:  'Prelo-Medium', serif;
   color: #0f265c;
-  font-size: 17px;
+  font-size: 16px;
   letter-spacing: 0;
   opacity: 1;
   border: 0;
