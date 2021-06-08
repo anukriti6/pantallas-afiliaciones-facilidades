@@ -2,16 +2,6 @@
   z-index: 99999;
 
 }
-
-.salir {
-  text-align: center;
-}
-
-
-.spacer {
-  flex: 1 1 auto;
-}
-
 .my-container {
   display: flex;
   flex-direction: column;
@@ -31,7 +21,51 @@
   /* Make sure the toolbar will stay on top of the content as it scrolls past. */
   z-index: 2;
 }
-
+.labels{
+  font-family: 'Prelo-bold', serif;
+  font-size: 16px;
+  text-align: left;
+  letter-spacing: 0;
+  color: #0f265c;
+  opacity: 1;
+}
+.input{
+  border-color: black;
+}
+.primaryBtn {
+  font-family: 'Prelo-Medium', serif;
+  font-size: 16px;
+  background-color:  #ffdc00;
+  color: #0f265c;
+  min-width: 168px;
+  border-radius: 4px;
+}
+.primaryBtn:disabled {
+  color: #4365b3;
+}
+.secondaryBtn {
+  font-family: 'Prelo-Medium', serif;
+  font-size: 16px;
+  min-width: 168px;
+  background-color:  #e9ecf3;
+  color: #0f265c;
+}
+.errors {
+  font-family: 'Prelo-Medium', serif;
+  font-size: 16px;
+  color: red;
+}
+.input {
+  color: #0000;
+}
+input:invalid {
+  border-color: red;
+}
+.titulo{
+  font-family: 'Preloslab-bold', serif;
+  font-size: 28px;
+  color: #0f265c;
+}
 .sidenav-container {
   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
@@ -49,21 +83,16 @@
   font-size: 17px ;
   color: #0f265c;
 }
-
-.fabbtn {
-  background-color: #929292;
-  color: #ffff;
-  font-size: 15px;
-  justify-content: center;
-}
 .mat-list-item, .mat-expansion-panel-header {
   justify-content: center;
 }
-
-.fabbtn:visited {
-  text-decoration: none;
+h3, h4{
+  color: #0000;
+  font-family: 'Preloslab-book', serif;
+  font-size: 25px;
+  margin-top: 10%;
+  text-align: center;
 }
-
 .userbtn:hover, .salir:hover {
   text-decoration: none;
 }
@@ -102,6 +131,7 @@
   color: #0f265c;
   font-size: 17px;
   letter-spacing: 0;
+  text-align: center;
   opacity: 1;
 }
 .mat-list-item:active,.mat-list-item:visited, .active_link{
@@ -136,7 +166,6 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;

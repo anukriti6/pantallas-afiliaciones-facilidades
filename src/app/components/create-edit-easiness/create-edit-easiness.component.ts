@@ -4,12 +4,13 @@ import { IEasinessData } from 'src/app/services/easiness/easinessDataInterface';
 @Component({
   selector: 'app-create-edit-easiness',
   templateUrl: './create-edit-easiness.component.html',
-  styleUrls: ['./create-edit-easiness.component.scss']
+  styleUrls: ['./create-edit-easiness.component.scss', '../../app.component.scss']
 })
 export class CreateEditEasinessComponent implements OnInit {
   @Input() easiness: IEasinessData = {
     id: 0,
     idNumber: 1111111111,
+    companyName: "Empresa",
     related: false,
     easiness: [{
       id: 0,
@@ -26,6 +27,7 @@ export class CreateEditEasinessComponent implements OnInit {
   };
   isEditingArray: boolean[] =[];
   isRelatedArray: boolean[] = [];
+  statuses: string[] = [];
   @Output() easinessData = new EventEmitter<IEasinessData>();
   @Output() Clean = new EventEmitter<boolean>();
   constructor() { }
@@ -34,6 +36,7 @@ export class CreateEditEasinessComponent implements OnInit {
     for (let i = 0; i < this.easiness.easiness.length; i++) {
       this.isEditingArray.push(false);
       this.isRelatedArray.push(this.easiness.easiness[i].related);
+      this.statuses.push(this.easiness.easiness[i].status);
     }
   }
   editStatus(index: number) {
@@ -43,6 +46,7 @@ export class CreateEditEasinessComponent implements OnInit {
     let globalRelated = false;
     for (let i = 0; i < this.easiness.easiness.length; i++) {
       this.easiness.easiness[i].related = this.isRelatedArray[i];
+      this.easiness.easiness[i].status = this.statuses[i];
       if (this.easiness.easiness[i].related) {
         globalRelated = this.easiness.easiness[i].related;
       }

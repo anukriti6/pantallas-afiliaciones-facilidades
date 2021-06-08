@@ -1,1 +1,24 @@
-<p>provider-data works!</p>
+<div class="container">
+  <div class="row">
+    <div class="btn col-3 text-left" (click)="clean()">
+      <mat-icon aria-hidden="false" aria-label="Example edit icon" >arrow_back</mat-icon>
+    </div>
+    <div class="col-9"></div>
+  </div>
+  <div class="row" *ngIf="providerData.type == 'legal'">
+    <div class="row">
+      <div class="col-12 col-sm-4 mx-auto">
+
+      </div>
+      <div class="col-12 col-sm-4 mx-auto">
+
+      </div>
+      <div class="col-12 col-sm-4 mx-auto">
+
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="providerData.type == 'natural'">
+
+  </div>
+</div>

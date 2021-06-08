@@ -1,49 +1,58 @@
-<table class="table table-responsive">
-  <thead>
-    <tr>
-      <th rowspan="2">Nombre Facilidad</th>
-      <th colspan="4">Cupo Corto Plazo</th>
-      <th rowspan="2" colspan="2">Estado</th>
-    </tr>
-    <tr>
-      <th>Cupo Aprobado</th>
-      <th>Cupo disponible</th>
-      <th>Cupo Bloquedado</th>
-      <th>Cupo Utilizado</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of easiness.easiness; let i = index;" >
-      <td *ngIf="!easiness.related || easiness.related && item.related">{{item.name}}</td>
-      <td *ngIf="!easiness.related || easiness.related && item.related">{{item.quotes.approved}}</td>
-      <td *ngIf="!easiness.related || easiness.related && item.related">{{item.quotes.available}}</td>
-      <td *ngIf="!easiness.related || easiness.related && item.related">{{item.quotes.blocked}}</td>
-      <td *ngIf="!easiness.related || easiness.related && item.related" >{{item.quotes.used}}</td>
-      <td *ngIf="!easiness.related || easiness.related && item.related">
-        <span *ngIf="!isEditingArray[i]">{{item.status}}</span>
-        <div *ngIf="isEditingArray[i]">
-          <mat-form-field  appearance="outline"   >
-            <mat-select  ngDefaultControl name="selectStatus" [(ngModel)]="item.status" >
-              <mat-option value="Activo">Activo</mat-option>
-              <mat-option value="Bloqueado">Bloqueado</mat-option>
-              <mat-option value="Inactivo">Inactivo</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </td>
-      <td *ngIf="!easiness.related || easiness.related && item.related">
-        <div *ngIf="!easiness.related" ngModel>
-          <mat-checkbox [(ngModel)]="isRelatedArray[i]"></mat-checkbox>
-        </div>
-        <div class="btn" *ngIf="easiness.related" (click)="editStatus(i)">
-          <mat-icon mat-button aria-hidden="false" aria-label="Example edit icon" >edit</mat-icon>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<div class="row text-center text-sm-right mx-auto mx-sm-0 ml-sm-auto">
-  <div class="col-0 col-sm-8"></div>
-  <button class="col-6 col-sm-2 mx-auto mx-sm-0 mr-2" mat-button (click)="save()">Guardar</button>
-  <button class="col-6 col-sm-2 mx-auto mx-sm-0" mat-button (click)="clean()">Limpiar</button>
-</div>
+<ng-container >
+  <div class="row mb-3">
+    <div class="col-12 col-sm-6 text-center text-sm-left">
+      <h3 class="titulosInter">{{easiness.companyName}}</h3>
+    </div>
+  </div>
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th rowspan="2">Nombre Facilidad</th>
+        <th colspan="4">Cupo Corto Plazo</th>
+        <th rowspan="2" colspan="2">Estado</th>
+      </tr>
+      <tr>
+        <th>Cupo Aprobado</th>
+        <th>Cupo disponible</th>
+        <th>Cupo Bloquedado</th>
+        <th>Cupo Utilizado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of easiness.easiness; let i = index;" >
+        <td *ngIf="!easiness.related || easiness.related && item.related">{{item.name}}</td>
+        <td *ngIf="!easiness.related || easiness.related && item.related">{{item.quotes.approved}}</td>
+        <td *ngIf="!easiness.related || easiness.related && item.related">{{item.quotes.available}}</td>
+        <td *ngIf="!easiness.related || easiness.related && item.related">{{item.quotes.blocked}}</td>
+        <td *ngIf="!easiness.related || easiness.related && item.related" >{{item.quotes.used}}</td>
+        <td *ngIf="!easiness.related || easiness.related && item.related" class="statusItems">
+          <span *ngIf="!isEditingArray[i]">{{item.status}}</span>
+          <div *ngIf="isEditingArray[i]">
+            <select class="form-select tableSelect"  ngDefaultControl name="selectStatus" [(ngModel)]="statuses[i]" >
+              <option value="Activo">Activo</option>
+              <option value="Bloqueado">Bloqueado</option>
+              <option value="Inactivo">Inactivo</option>
+            </select>
+          </div>
+        </td>
+        <td *ngIf="!easiness.related || easiness.related && item.related" class="statusItems">
+          <div *ngIf="!easiness.related" >
+            <mat-checkbox [(ngModel)]="isRelatedArray[i]"></mat-checkbox>
+          </div>
+          <div class="btn mx-auto" *ngIf="easiness.related" (click)="editStatus(i)">
+            <mat-icon >edit</mat-icon>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row justify-content-right justify-content-sm-end ">
+    <div class="col-0 col-sm-6"></div>
+    <div class=" col-6 col-sm-3 mr-1">
+      <button class="btn  primaryBtn"  (click)="save()">Guardar</button>
+    </div>
+    <div class=" col-6 col-sm-3 ml-1">
+      <button class="btn ml-2 secondaryBtn"  (click)="clean()">Limpiar</button>
+    </div>
+  </div>
+</ng-container>

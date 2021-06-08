@@ -1,0 +1,28 @@
+[{
+  "id": 1,
+  "idNumber": 1712345678901,
+  "name": "Empresa X",
+  "regionalName": "Nombre de regional",
+  "interest": 10.22,
+  "resource": false,
+  "status": "Activo",
+  "anchored": false
+}, {
+  "id": 2,
+  "idNumber": 1700000000,
+  "name": "Empresa Y",
+  "regionalName": "Nombre de regional 2",
+  "interest": 9.07,
+  "resource": true,
+  "status": "Activo",
+  "anchored": false
+}, {
+  "id": 3,
+  "idNumber": 1709876543212,
+  "name": "Empresa Z",
+  "regionalName": "Nombre de regional 3",
+  "interest": 8.75,
+  "resource": false,
+  "status": "Activo",
+  "anchored": false
+}]

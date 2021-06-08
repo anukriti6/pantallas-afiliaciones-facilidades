@@ -1,0 +1,38 @@
+th, td {
+
+  vertical-align: middle;
+  text-align: center;
+  font-size: 12px;
+  border: 1px solid #707070;
+  color: #2E2D2D;
+}
+th {
+  font-family:  'Prelo-bold', serif;
+}
+.titulosInter {
+  font-family: 'Preloslab-bold', serif;
+  font-size: 28px;
+  color: #0f265c;
+}
+td{
+  font-family: 'Prelo-book', serif;
+}
+.tableSelect, .form-select,.form-select:active{
+  max-width: 110px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 12px;
+  border-color: transparent;
+  background-color: #EAEAEA;
+}
+.statusItems{
+  background-color: #EAEAEA;
+}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+  opacity: 0.03 !important;
+  background-color: #0f265c!important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #0f265c;
+}

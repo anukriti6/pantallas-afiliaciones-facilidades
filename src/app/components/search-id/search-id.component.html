@@ -1,38 +1,38 @@
-<div >
-  <form class="example-form">
+<div class="container">
+  <form action="">
     <div class="row">
-      <label for="typeId" class="labels col-12 col-sm-4 mx-auto">Tipo Id</label>
+      <label for="typeId" class="labels col-12 col-sm-4 mx-auto text-left my-3" >Tipo ID</label>
     </div>
     <div class="row">
-      <mat-form-field  appearance="outline" floatLabel="always" class="col-12 col-sm-4 mx-auto">
-        <mat-select name="typeId"  [(ngModel)]="typeId" [ngModelOptions]="{standalone: true}" (ngModelChange)="changedSelection()">
-          <mat-option *ngFor="let type of typeIds" [value]="type">
+      <div class="col-12 col-sm-4 mx-auto">
+        <select class="dropDown form-select" name="typeId"  [(ngModel)]="typeId" [ngModelOptions]="{standalone: true}" (ngModelChange)="changedSelection()">
+          <option *ngFor="let type of typeIds" [value]="type">
             {{type}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="row">
-      <label for="id" class="labels col-12 col-sm-4 mx-auto">N&uacute;mero ID</label>
-    </div>
-    <div class="row">
-      <mat-form-field class="example-full-width" appearance="outline" floatLabel="always"class="col-12 col-sm-4 mx-auto">
-        <input matInput *ngIf="typeId == typeIds[0]" type="number" placeholder="1711111111111" maxLength="13" name="id"
-          minLength="13" [(ngModel)]="id" (ngModelChange)="validateId(13)" [ngModelOptions]="{standalone: true}">
-        <input matInput *ngIf="typeId == typeIds[1]" type="number" placeholder="1711111111" maxLength="10" name="id"
-          minLength="10" [(ngModel)]="id" (ngModelChange)="validateId(10)" [ngModelOptions]="{standalone: true}" >
-      </mat-form-field>
-    </div>
-    <div class="row">
-      <div class="errors col-12 col-sm-4 mx-auto">{{errorId}}</div>
-    </div>
-    <div class="row">
-      <button class="col-12 col-sm-2 mx-auto" mat-button [disabled]="!(errorId == null && id != null)" (click)="search()">Buscar</button>
-    </div>
-    <div class="row" *ngIf="searchError != null">
-      <div class="alert my-3 alert-danger col-12 col-sm-4 mx-auto text-center" role="alert">
-        {{searchError}}
+          </option>
+        </select>
       </div>
     </div>
+    <div class="row">
+      <label for="id" class="labels col-12 col-sm-4 mx-auto text-left my-3" >N&uacute;mero ID</label>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-4 mx-auto">
+        <input class="form-control " *ngIf="typeId == typeIds[0]" type="number" placeholder="1711111111111" name="id"  id="idRuc" minLength="10" maxLength="10"
+        [(ngModel)]="id" (ngModelChange)="validateId(13)" >
+        <input class="form-control " *ngIf="typeId == typeIds[1]" type="number" placeholder="1711111111" maxLength="10" name="id" id="idId"
+        minLength="10" [(ngModel)]="id" (ngModelChange)="validateId(10)" [ngModelOptions]="{standalone: true}" >
+      </div>
+    </div>
+    <div class="row">
+      <div class="errors col-12 col-sm-4 mx-auto text-center my-2" >
+        {{errorId}}
+      </div>
+    </div>
+    <div class="row">
+      <button class="primaryBtn col-6 col-sm-2 my-3 mx-auto text-center" mat-button [disabled]="!(errorId == null && id != null)" (click)="search()">Buscar</button>
+    </div>
   </form>
+  <div class="row" *ngIf="searchError != null">
+    <div  class="alert my-3 alert-danger col-12 col-sm-4 mx-auto text-center" role="alert">{{searchError}}</div>
+  </div>
 </div>

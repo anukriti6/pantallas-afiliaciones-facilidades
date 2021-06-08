@@ -1,6 +1,7 @@
 [{
   "id": 1,
   "idNumber": 1712345678901,
+  "companyName": "Nombre de la empresa",
   "related": false,
   "easiness": [{
     "id": 1,
@@ -28,6 +29,7 @@
 }, {
   "id": 2,
   "idNumber": 1700000000,
+  "companyName": "Nombre de la empresa",
   "related": false,
   "easiness": [{
     "id": 1,
@@ -44,6 +46,7 @@
 }, {
   "id": 3,
   "idNumber": 1709876543212,
+  "companyName": "Nombre de la empresa",
   "related": false,
   "easiness": [{
     "id": 1,

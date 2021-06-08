@@ -1,1 +1,9 @@
-<p>affiliate-provider works!</p>
+<div class="container my-5">
+  <div *ngIf="curProviderData == null">
+    <app-search-id (idSend) ="searchId($event)" [searchError]="searchError" [clean]="doClean"></app-search-id>
+  </div>
+  <div *ngIf="curProviderData != null">
+    <app-provider-data [providerData]="curProviderData" (Clean)="clean($event)"></app-provider-data>
+  </div>
+</div>
+
