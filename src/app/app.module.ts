@@ -30,6 +30,7 @@ import { ProviderService } from './services/provider/provider.service';
 import { AnchorCompanyService } from './services/anchor-company/anchor-company.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatListModule,
     FormsModule,
     MatTableModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatChipsModule
   ],
   exports: [
     BrowserModule,
@@ -85,7 +87,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatListModule,
     FormsModule,
     MatTableModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatChipsModule
   ],
   providers: [EasinessService, ProviderService, AnchorCompanyService],
   bootstrap: [AppComponent]

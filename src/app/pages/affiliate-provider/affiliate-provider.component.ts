@@ -12,7 +12,7 @@ export class AffiliateProviderComponent implements OnInit {
   doClean: boolean = false;
   searchError: string | null = null;
   providersData: any[] = [];
-  curProviderData: ILegalProvider | INaturalProvider | null = null;
+  curProviderData: INaturalProvider | null = null;
   matched: boolean = false;
   constructor(private providerDataService: ProviderService) { }
 

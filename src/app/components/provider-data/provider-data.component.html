@@ -10,7 +10,7 @@
       <h3 class="titulosInternal">Datos Cliente Proveedor</h3>
     </div>
   </div>
-  <div class="row mt-3" *ngIf="providerData.type == 'natural'">
+  <div class="row mt-3" *ngIf="naturalProviderData.type == 'natural'">
     <div class="row mx-auto">
       <div class="col-12 col-sm-4 mx-auto">
         <div class="row mx-auto">
@@ -23,7 +23,7 @@
           <label class="labels text-center my-2">N&uacute;mero Identificaci&oacute;n</label>
         </div>
         <div class="row mx-auto">
-          <label class="content text-center my-2">{{providerData.idNumber}}</label>
+          <label class="content text-center my-2">{{naturalProviderData.idNumber}}</label>
         </div>
         <div class="row mx-auto">
           <label class="labels text-center my-2">Tipo de Cliente</label>
@@ -37,19 +37,19 @@
           <label class="labels text-center my-2">Nombres Completos</label>
         </div>
         <div class="row mx-auto">
-          <label class="content text-center my-2">{{providerData.name}}</label>
+          <label class="content text-center my-2">{{naturalProviderData.name}}</label>
         </div>
         <div class="row mx-auto">
           <label class="labels text-center my-2">Nacionalidad</label>
         </div>
         <div class="row mx-auto">
-          <label class="content text-center my-2">nc</label>
+          <label class="content text-center my-2">{{naturalProviderData.nationality}}</label>
         </div>
         <div class="row mx-auto">
           <label class="labels text-center my-2">Actividad</label>
         </div>
         <div class="row mx-auto">
-          <label class="content text-center my-2">{{providerData.activity}}</label>
+          <label class="content text-center my-2">{{naturalProviderData.activity}}</label>
         </div>
       </div>
       <div class="col-12 col-sm-4 mx-auto">
@@ -57,24 +57,85 @@
           <label class="labels text-center my-2">Direcci&oacute;n</label>
         </div>
         <div class="row mx-auto">
-          <label class="content text-center my-2">{{providerData.address}}</label>
+          <label class="content text-center my-2">{{naturalProviderData.address}}</label>
         </div>
         <div class="row mx-auto">
           <label class="labels text-center my-2">Tel&eacute;fono</label>
         </div>
         <div class="row mx-auto">
-          <label class="content text-center my-2">{{providerData.phone}}</label>
+          <label class="content text-center my-2">{{naturalProviderData.phone}}</label>
         </div>
         <div class="row mx-auto">
           <label class="labels text-center my-2">N&uacute;mero Celular</label>
         </div>
         <div class="row mx-auto">
-          <label class="content text-center my-2">mp</label>
+          <label class="content text-center my-2">{{naturalProviderData.mobilePhone}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-6 mx-auto">
+        <div class="row mx-auto">
+          <label class="labels text-left my-2">Estado Civil</label>
+        </div>
+        <div class="row mx-auto">
+          <select class="dropDown form-select" name="naturalCivilStatus"  [(ngModel)]="naturalCivilStatus" [ngModelOptions]="{standalone: true}">
+            <option value="Soltero">Soltero</option>
+            <option value="Casado">Casado</option>
+            <option value="Divorciado">Casado</option>
+            <option value="Union Libre">Uni&oacute;n Libre</option>
+          </select>
+        </div>
+        <div class="row mx-auto">
+          <label class="labels text-left my-2">Email</label>
+        </div>
+        <div class="row mx-auto">
+          <input class="form-control" type="email" placeholder="user@domain.com" name="naturalEmails"  id="naturalEmails" [(ngModel)]="naturalEmail"
+            (ngModelChange)="emailEntry('natural')" data-toggle="tooltip" data-placement="top" title="Puedes ingresar hasta 10 direcciones de correo electrónico">
+          <span> <mat-icon mat-button *ngIf="naturalEmail != null ? validateEmail(naturalEmail): this.errorEmail == null" (click)="addEmail('natural')">add</mat-icon>
+          </span>
+          <div class="row errors text-center mx-auto my-3" *ngIf="errorEmail != null">
+            {{errorEmail}}
+          </div>
+          <mat-chip-list #chipList  class="my-3">
+            <div class="row mx-auto" *ngFor="let email of naturalEmails; let i = index;">
+              <mat-chip  class="col-12 mx-auto"
+              removable="true"
+              (removed)="naturalEmails.splice(i, 1);">
+                {{email}}
+                <mat-icon matChipRemove >cancel</mat-icon>
+              </mat-chip>
+            </div>
+          </mat-chip-list>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 mx-auto">
+        <div class="row mx-auto">
+          <label class="labels text-left my-2">Cuenta de Pago</label>
+        </div>
+        <div class="row mx-auto">
+          <select class="dropDown form-select" name="naturalPaymentAccount" id="naturalPaymentAccount" [(ngModel)]="naturalPaymentAccount" [ngModelOptions]="{standalone: true}" (ngModelChange)="changedPaymentAccount()">
+            <option *ngFor="let account of naturalProviderData.paymentAccounts; let i = index;" [value]="{type: account.type, account: account.account}">
+              {{account.type}} {{account.account}}
+            </option>
+          </select>
+        </div>
+        <div class="row mx-auto" *ngIf="naturalCivilStatus == 'Casado' || naturalCivilStatus == 'Union Libre'">
+          <label class="labels text-left my-2">C&eacute;dula identidad c&oacute;nyuge</label>
+        </div>
+        <div class="row mx-auto" *ngIf="naturalCivilStatus == 'Casado' || naturalCivilStatus == 'Union Libre'">
+          <input class="form-control" type="number" placeholder="1789098765" name="spouseId"  id="spouseId" [(ngModel)]="naturalSpouseId" >
+        </div>
+        <div class="row mx-auto" *ngIf="naturalCivilStatus == 'Casado' || naturalCivilStatus == 'Union Libre'">
+          <label class="labels text-left my-2">Nombres Completos del C&oacute;nyuge</label>
+        </div>
+        <div class="row mx-auto" *ngIf="naturalCivilStatus == 'Casado' || naturalCivilStatus == 'Union Libre'">
+          <input class="form-control" type="text" placeholder="María Elena Samaniego" name="spouseId"  id="spouseId" [(ngModel)]="naturalSpouseName" >
         </div>
       </div>
     </div>
   </div>
-  <div class="row" *ngIf="providerData.type == 'legal'">
+  <div class="row" *ngIf="naturalProviderData.type == ''">
 
   </div>
 </div>

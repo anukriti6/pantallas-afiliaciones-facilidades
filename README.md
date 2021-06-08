@@ -1,4 +1,6 @@
 # PantallasAfiliacionesFacilidades
+Se han creado data de prueba para verificar la validez de las vistas.
+La data de prueba se encuentra en la carpeta src/assetc
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
 
