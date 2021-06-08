@@ -31,6 +31,7 @@ export class ProviderDataComponent implements OnInit {
   naturalSpouseId: number  | null = null;
   naturalSpouseName: string  | null = null;
   errorEmail: string | null = null;
+  errorEmails: string | null = null;
   emailListener: any = null;
   @Output() Clean = new EventEmitter<boolean>();
   constructor() { }
@@ -65,6 +66,7 @@ export class ProviderDataComponent implements OnInit {
   });
   */
   emailEntry(type: string) {
+    this.errorEmails = null;
     if (type == 'natural') {
       if (this.naturalEmail != null) {
         if (this.validateEmail(this.naturalEmail)) {
@@ -72,6 +74,11 @@ export class ProviderDataComponent implements OnInit {
         } else {
           this.errorEmail = "Formato de correo Electrónico incorrecto";
         }
+      } else {
+        this.errorEmail = null;
+      }
+      if (this.naturalEmail == '') {
+        this.errorEmail = null;
       }
     }
   }
@@ -99,8 +106,21 @@ export class ProviderDataComponent implements OnInit {
     if (type == 'natural') {
       if (this.naturalEmails.length < 10) {
         if (this.naturalEmail != null) {
-          this.naturalEmails.push(this.naturalEmail);
+          let emailExists = false;
+          for (let i = 0; i < this.naturalEmails.length; i ++) {
+            if (this.naturalEmails[i] == this.naturalEmail) {
+              emailExists = true;
+              this.errorEmails = 'El correo ingresado ya está registrado en este proveedor';
+            }
+          }
+          if (!emailExists) {
+            this.naturalEmails.push(this.naturalEmail);
+            this.naturalEmail = null;
+            this.errorEmails = null;
+          }
         }
+      } else {
+        this.errorEmails = 'No se pueden registrar más correos para este proveedor';
       }
     }
   }

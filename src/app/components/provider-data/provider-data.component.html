@@ -90,10 +90,13 @@
           <label class="labels text-left my-2">Email</label>
         </div>
         <div class="row mx-auto">
-          <input class="form-control" type="email" placeholder="user@domain.com" name="naturalEmails"  id="naturalEmails" [(ngModel)]="naturalEmail"
-            (ngModelChange)="emailEntry('natural')" data-toggle="tooltip" data-placement="top" title="Puedes ingresar hasta 10 direcciones de correo electrónico">
-          <span> <mat-icon mat-button *ngIf="naturalEmail != null ? validateEmail(naturalEmail): this.errorEmail == null" (click)="addEmail('natural')">add</mat-icon>
-          </span>
+          <div class="input-group col-12">
+            <input class="form-control" type="email" placeholder="user@domain.com" name="naturalEmails"  id="naturalEmails" [(ngModel)]="naturalEmail"
+            (ngModelChange)="emailEntry('natural')" data-toggle="tooltip" title="Puedes ingresar hasta 10 direcciones de correo electrónico">
+            <div class="input-group-append" *ngIf="naturalEmail != null ? validateEmail(naturalEmail): false">
+              <button class="btn labels plusIcon" type="button" (click)="addEmail('natural')">&#x2B;</button>
+            </div>
+          </div>
           <div class="row errors text-center mx-auto my-3" *ngIf="errorEmail != null">
             {{errorEmail}}
           </div>
@@ -107,6 +110,7 @@
               </mat-chip>
             </div>
           </mat-chip-list>
+          <div class="row errors text-center mx-auto my-3" *ngIf="errorEmails != null">{{errorEmails}}</div>
         </div>
       </div>
       <div class="col-12 col-sm-6 mx-auto">
