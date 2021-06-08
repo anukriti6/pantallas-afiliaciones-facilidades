@@ -92,7 +92,7 @@
         <div class="row mx-auto">
           <div class="input-group col-12">
             <input class="form-control" type="email" placeholder="user@domain.com" name="naturalEmails"  id="naturalEmails" [(ngModel)]="naturalEmail"
-            (ngModelChange)="emailEntry('natural')" data-toggle="tooltip" title="Puedes ingresar hasta 10 direcciones de correo electrónico">
+            (ngModelChange)="emailEntry('natural')" matTooltip="Puedes ingresar hasta 10 correos electrónicos válidos" matTooltipPosition="above">
             <div class="input-group-append" *ngIf="naturalEmail != null ? validateEmail(naturalEmail): false">
               <button class="btn labels plusIcon" type="button" (click)="addEmail('natural')">&#x2B;</button>
             </div>

@@ -3,6 +3,11 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-tooltip{
+  font-family: 'Preloslab-bold', serif !important;
+  font-size: 17px !important;
+}
+
 
 @import url(https://fonts.googleapis.com/icon?family=Roboto);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
