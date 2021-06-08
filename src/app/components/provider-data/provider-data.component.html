@@ -1,24 +1,80 @@
 <div class="container">
   <div class="row">
-    <div class="btn col-3 text-left" (click)="clean()">
-      <mat-icon aria-hidden="false" aria-label="Example edit icon" >arrow_back</mat-icon>
+    <div class="btn col-2 text-left" (click)="clean()">
+      <mat-icon class="arrowIcon">arrow_back</mat-icon>
     </div>
     <div class="col-9"></div>
   </div>
-  <div class="row" *ngIf="providerData.type == 'legal'">
-    <div class="row">
+  <div class="row">
+    <div class="col-12 col-sm-6 text-center text-sm-left">
+      <h3 class="titulosInternal">Datos Cliente Proveedor</h3>
+    </div>
+  </div>
+  <div class="row mt-3" *ngIf="providerData.type == 'natural'">
+    <div class="row mx-auto">
       <div class="col-12 col-sm-4 mx-auto">
-
+        <div class="row mx-auto">
+          <label class="labels text-center my-2">Tipo Identificaci&oacute;n</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="content text-center my-2">C&eacute;dula de identidad</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="labels text-center my-2">N&uacute;mero Identificaci&oacute;n</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="content text-center my-2">{{providerData.idNumber}}</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="labels text-center my-2">Tipo de Cliente</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="content text-center my-2">Persona Natural</label>
+        </div>
       </div>
       <div class="col-12 col-sm-4 mx-auto">
-
+        <div class="row mx-auto">
+          <label class="labels text-center my-2">Nombres Completos</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="content text-center my-2">{{providerData.name}}</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="labels text-center my-2">Nacionalidad</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="content text-center my-2">nc</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="labels text-center my-2">Actividad</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="content text-center my-2">{{providerData.activity}}</label>
+        </div>
       </div>
       <div class="col-12 col-sm-4 mx-auto">
-
+        <div class="row mx-auto">
+          <label class="labels text-center my-2">Direcci&oacute;n</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="content text-center my-2">{{providerData.address}}</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="labels text-center my-2">Tel&eacute;fono</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="content text-center my-2">{{providerData.phone}}</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="labels text-center my-2">N&uacute;mero Celular</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="content text-center my-2">mp</label>
+        </div>
       </div>
     </div>
   </div>
-  <div class="row" *ngIf="providerData.type == 'natural'">
+  <div class="row" *ngIf="providerData.type == 'legal'">
 
   </div>
 </div>
