@@ -1,16 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+@import './variables.scss';
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; }
 .mat-tooltip{
-  font-family: 'Preloslab-bold', serif !important;
-  font-size: 17px !important;
+  font-family: $preloSemiBold !important;
+  font-size: 18px !important;
 }
 
-
-@import url(https://fonts.googleapis.com/icon?family=Roboto);
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 @font-face {
   font-family: Prelo-book;

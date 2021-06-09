@@ -1,7 +1,7 @@
 <ng-container >
   <div class="row mb-3">
     <div class="col-12 col-sm-6 text-center text-sm-left">
-      <h3 class="titulosInter">{{easiness.companyName}}</h3>
+      <h3 class="title">{{easiness.companyName}}</h3>
     </div>
   </div>
   <table class="table table-responsive">
@@ -37,7 +37,8 @@
         </td>
         <td *ngIf="!easiness.related || easiness.related && item.related" class="statusItems">
           <div *ngIf="!easiness.related" >
-            <mat-checkbox [(ngModel)]="isRelatedArray[i]"></mat-checkbox>
+            <input class="form-check-input" type="checkbox" value="isRelatedArray[i]" [(ngModel)]="isRelatedArray[i]" >
+            <!--<mat-checkbox [(ngModel)]="isRelatedArray[i]"></mat-checkbox>-->
           </div>
           <div class="btn mx-auto" *ngIf="easiness.related" (click)="editStatus(i)">
             <mat-icon >edit</mat-icon>
@@ -46,13 +47,13 @@
       </tr>
     </tbody>
   </table>
-  <div class="row justify-content-right justify-content-sm-end ">
+  <div class="row justify-content-left justify-content-sm-end  mx-auto">
     <div class="col-0 col-sm-6"></div>
-    <div class=" col-6 col-sm-3 mr-1">
-      <button class="btn  primaryBtn"  (click)="save()">Guardar</button>
+    <div class=" col-12  my-3 col-sm-3 mr-sm-1">
+      <button class="btn  primaryBtn" id="saveRelation" (click)="save()">Guardar</button>
     </div>
-    <div class=" col-6 col-sm-3 ml-1">
-      <button class="btn ml-2 secondaryBtn"  (click)="clean()">Limpiar</button>
+    <div class=" col-12 my-3 col-sm-3 ml-sm-1">
+      <button class="btn  secondaryBtn" id="CleanRelation" (click)="clean()">Limpiar</button>
     </div>
   </div>
 </ng-container>

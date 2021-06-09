@@ -1,7 +1,32 @@
+@import '../variables.scss';
+
+
+th, td {
+
+  vertical-align: middle;
+  text-align: center;
+  font-size: $extraSmall;
+  border: 1px solid $grey;
+  color: $lighterBlack;
+}
+th {
+  font-family:  $preloBold
+}
+td{
+  font-family: $preloBook;
+}
+.statusItems{
+  background-color: $lighterGrey;
+}
 .elevation {
   z-index: 99999;
 
 }
+.plusIcon{
+  background-color: $yellow;
+  font-size: $big !important;
+}
+
 .my-container {
   display: flex;
   flex-direction: column;
@@ -12,10 +37,10 @@
   right: 0;
 }
 .arrowIcon{
-  color: #0f265c;
+  color: $blue;
 }
 .toolbar {
-  background-color: #ffff;
+  background-color: $generalBackground;
 }
 
 .is-mobile .toolbar {
@@ -24,57 +49,56 @@
   z-index: 2;
 }
 .labels{
-  font-family: 'Prelo-Semi-bold', serif;
-  font-size: 16px;
+  font-family: $preloSemiBold;
+  font-size: $medium;
   font-weight: lighter;
   text-align: left;
   letter-spacing: 0;
-  color: #0f265c;
+  color: $blue;
   opacity: 1;
 }
 .input{
-  border-color: black;
+  border-color: $black;
 }
 .primaryBtn {
-  font-family: 'Prelo-Medium', serif;
-  font-size: 16px;
-  background-color:  #ffdc00;
-  color: #0f265c;
-  min-width: 168px;
+  font-family: $preloMedium;
+  font-size: $medium;
+  background-color:  $yellow;
+  color: $blue;
+  min-width: $buttonsWith;
   border-radius: 4px;
 }
 .primaryBtn:disabled {
-  color: #4365b3;
+  color: $lighterBlue;
 }
 .secondaryBtn {
-  font-family: 'Prelo-Medium', serif;
-  font-size: 16px;
-  min-width: 168px;
-  background-color:  #e9ecf3;
-  color: #0f265c;
+  font-family: $preloMedium;
+  font-size: $medium;
+  min-width: $buttonsWith;
+  background-color:  $secondaryBackground;
+  color: $blue;
 }
 .errors {
-  font-family: 'Prelo-Medium', serif;
-  font-size: 16px;
-  color: red;
+  font-family: $preloMedium;
+  font-size: $medium;
+  color: $red;
 }
 .input {
-  color: #0000;
+  color: $black;
 }
 input:invalid {
-  border-color: red;
-}
-.titulo{
-  font-family: 'Preloslab-book', serif;
-  font-size: 28px;
-  color: #0f265c;
+  border-color: $red;
 }
 .sidenav-container {
   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
   flex: 1;
 }
-
+.title{
+  font-family: $preloSlabBook;
+  font-size: $titles;
+  color: $blue;
+}
 .is-mobile .sidenav-container {
   /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
      `<body>` to be our scrolling element for mobile layouts. */
@@ -82,14 +106,14 @@ input:invalid {
 }
 
 .mat-nav-list {
-  font-family:  'Prelo-bold', serif;
+  font-family:  $preloBold;
   font-size: 16px ;
-  color: #0f265c;
+  color: $blue;
 }
 .content {
-  font-family: 'Prelo-book', serif;
-  font-size: 16px;
-  color: #2E2D2D;
+  font-family: $preloBook;
+  font-size: $medium;
+  color: $lighterBlack;
 }
 .mat-list-item, .mat-expansion-panel-header {
   justify-content: center;
@@ -103,14 +127,14 @@ input:invalid {
 }
 
 .topbars {
-  font-family: 'Prelo-Semi-bold', serif;
-  font-size: 14px;
-  color: #0f265c;
+  font-family: $preloSemiBold;
+  font-size: $small;
+  color: $blue;
   opacity: 1;
 }
 
 .mat-list-item:active {
-  background-color: #ffdc00;
+  background-color: $yellow;
 }
 .mat-list-item{
   text-align: center;
@@ -118,25 +142,25 @@ input:invalid {
 
 
 .active_link, .active_link:hover {
-  background-color: #ffdc00;
+  background-color: $yellow;
 }
 .active_btn{
-  background-color: #ffdc00;
+  background-color: $yellow;
   padding-left: 10%;
 }
 
 .mat-list-item {
-  font-family:  'Prelo-Medium', serif;
+  font-family:  $preloMedium;
   padding-left: 10%;
-  //font-family: 'Prelo-Medium', serif;
-  color: #0f265c;
-  font-size: 16px;
+  //font-family: $preloMedium;
+  color: $blue;
+  font-size: $medium;
   letter-spacing: 0;
   text-align: center;
   opacity: 1;
 }
 .mat-list-item:active,.mat-list-item:visited, .active_link{
-  font-family:  'Prelo-bold', serif;
+  font-family:  $preloBold;
 }
 
 .mat-nav-list {
@@ -151,9 +175,9 @@ input:invalid {
   width: 100%;
 }
 .mat-expansion-panel-header{
-  font-family:  'Prelo-Medium', serif;
-  color: #0f265c;
-  font-size: 16px;
+  font-family:  $preloMedium;
+  color: $blue;
+  font-size: $medium;
   letter-spacing: 0;
   opacity: 1;
   border: 0;

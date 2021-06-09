@@ -4,7 +4,7 @@ import { Component, OnInit, Output, EventEmitter, Input, SimpleChanges } from '@
 @Component({
   selector: 'app-search-id',
   templateUrl: './search-id.component.html',
-  styleUrls: ['./search-id.component.scss','../../app.component.scss']
+  styleUrls: ['../../app.component.scss']
 })
 export class SearchIdComponent implements OnInit {
   doClean: boolean = false;

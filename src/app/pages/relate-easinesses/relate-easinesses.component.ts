@@ -5,7 +5,7 @@ import { IEasinessData } from 'src/app/services/easiness/easinessDataInterface';
 @Component({
   selector: 'app-relate-easinesses',
   templateUrl: './relate-easinesses.component.html',
-  styleUrls: ['./relate-easinesses.component.scss', '../../app.component.scss']
+  styleUrls: ['../../app.component.scss']
 })
 export class RelateEasinessesComponent implements OnInit {
   doClean: boolean = false;
