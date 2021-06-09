@@ -32,7 +32,6 @@ export class ProviderDataComponent implements OnInit {
   naturalSpouseName: string  | null = null;
   errorEmail: string | null = null;
   errorEmails: string | null = null;
-  emailListener: any = null;
   @Output() Clean = new EventEmitter<boolean>();
   constructor() { }
   ngOnInit(): void {
@@ -47,10 +46,6 @@ export class ProviderDataComponent implements OnInit {
     this.naturalPaymentAccount = this.naturalProviderData.currentPaymentAccount;
     this.naturalSpouseId = this.naturalProviderData.spouse.idNumber;
     this.naturalSpouseName = this.naturalProviderData.spouse.name;
-    this.emailListener = this.naturalProviderData.type == 'natural' ? document.getElementById('naturalEmails') : document.getElementById('legalEmails');
-    if(this.emailListener) {
-      this.emailListener.addEventListener("keydown", this.keyPressed(event, 'natural'));
-    }
   }
   clean() {
     this.Clean.emit(true);
@@ -58,27 +53,33 @@ export class ProviderDataComponent implements OnInit {
   changedPaymentAccount() {
     console.log(this.naturalPaymentAccount);
   }
-  /*
-  document.addEventListener("keyup", function(event) {
-    if (event.code === 'Enter') {
-        alert('Enter is pressed!');
-    }
-  });
-  */
   emailEntry(type: string) {
+    let element = this.naturalProviderData.type == 'natural' ? document.getElementById('naturalEmails') : document.getElementById('legalEmails');
     this.errorEmails = null;
     if (type == 'natural') {
       if (this.naturalEmail != null) {
         if (this.validateEmail(this.naturalEmail)) {
           this.errorEmail = null;
+          if (element) {
+            element.style.borderColor = '#c1c1c1';
+          }
         } else {
           this.errorEmail = "Formato de correo Electrónico incorrecto";
+          if (element) {
+            element.style.borderColor = '#FF0000';
+          }
         }
       } else {
         this.errorEmail = null;
+        if (element) {
+          element.style.borderColor = '#c1c1c1';
+        }
       }
       if (this.naturalEmail == '') {
         this.errorEmail = null;
+        if (element) {
+          element.style.borderColor = '#c1c1c1';
+        }
       }
     }
   }

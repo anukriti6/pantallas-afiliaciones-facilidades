@@ -14,67 +14,67 @@
     <div class="row mx-auto">
       <div class="col-12 col-sm-4 mx-auto">
         <div class="row mx-auto">
-          <label class="labels text-center my-2">Tipo Identificaci&oacute;n</label>
+          <label class="labels text-left my-2">Tipo Identificaci&oacute;n</label>
         </div>
         <div class="row mx-auto">
-          <label class="content text-center my-2">C&eacute;dula de identidad</label>
+          <label class="content text-left my-2">C&eacute;dula de identidad</label>
         </div>
         <div class="row mx-auto">
-          <label class="labels text-center my-2">N&uacute;mero Identificaci&oacute;n</label>
+          <label class="labels text-left my-2">N&uacute;mero Identificaci&oacute;n</label>
         </div>
         <div class="row mx-auto">
-          <label class="content text-center my-2">{{naturalProviderData.idNumber}}</label>
+          <label class="content text-left my-2">{{naturalProviderData.idNumber}}</label>
         </div>
         <div class="row mx-auto">
-          <label class="labels text-center my-2">Tipo de Cliente</label>
+          <label class="labels text-left my-2">Tipo de Cliente</label>
         </div>
         <div class="row mx-auto">
-          <label class="content text-center my-2">Persona Natural</label>
-        </div>
-      </div>
-      <div class="col-12 col-sm-4 mx-auto">
-        <div class="row mx-auto">
-          <label class="labels text-center my-2">Nombres Completos</label>
-        </div>
-        <div class="row mx-auto">
-          <label class="content text-center my-2">{{naturalProviderData.name}}</label>
-        </div>
-        <div class="row mx-auto">
-          <label class="labels text-center my-2">Nacionalidad</label>
-        </div>
-        <div class="row mx-auto">
-          <label class="content text-center my-2">{{naturalProviderData.nationality}}</label>
-        </div>
-        <div class="row mx-auto">
-          <label class="labels text-center my-2">Actividad</label>
-        </div>
-        <div class="row mx-auto">
-          <label class="content text-center my-2">{{naturalProviderData.activity}}</label>
+          <label class="content text-left my-2">Persona Natural</label>
         </div>
       </div>
       <div class="col-12 col-sm-4 mx-auto">
         <div class="row mx-auto">
-          <label class="labels text-center my-2">Direcci&oacute;n</label>
+          <label class="labels text-left my-2">Nombres Completos</label>
         </div>
         <div class="row mx-auto">
-          <label class="content text-center my-2">{{naturalProviderData.address}}</label>
+          <label class="content text-left my-2">{{naturalProviderData.name}}</label>
         </div>
         <div class="row mx-auto">
-          <label class="labels text-center my-2">Tel&eacute;fono</label>
+          <label class="labels text-left my-2">Nacionalidad</label>
         </div>
         <div class="row mx-auto">
-          <label class="content text-center my-2">{{naturalProviderData.phone}}</label>
+          <label class="content text-left my-2">{{naturalProviderData.nationality}}</label>
         </div>
         <div class="row mx-auto">
-          <label class="labels text-center my-2">N&uacute;mero Celular</label>
+          <label class="labels text-left my-2">Actividad</label>
         </div>
         <div class="row mx-auto">
-          <label class="content text-center my-2">{{naturalProviderData.mobilePhone}}</label>
+          <label class="content text-left my-2">{{naturalProviderData.activity}}</label>
+        </div>
+      </div>
+      <div class="col-12 col-sm-4 mx-auto">
+        <div class="row mx-auto">
+          <label class="labels text-left my-2">Direcci&oacute;n</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="content text-left my-2">{{naturalProviderData.address}}</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="labels text-left my-2">Tel&eacute;fono</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="content text-left my-2">{{naturalProviderData.phone}}</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="labels text-left my-2">N&uacute;mero Celular</label>
+        </div>
+        <div class="row mx-auto">
+          <label class="content text-left my-2">{{naturalProviderData.mobilePhone}}</label>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12 col-sm-6 mx-auto">
+    <div class="row my-3 mx-auto">
+      <div class="col-12 col-sm-4 mr-auto">
         <div class="row mx-auto">
           <label class="labels text-left my-2">Estado Civil</label>
         </div>
@@ -82,7 +82,7 @@
           <select class="dropDown form-select" name="naturalCivilStatus"  [(ngModel)]="naturalCivilStatus" [ngModelOptions]="{standalone: true}">
             <option value="Soltero">Soltero</option>
             <option value="Casado">Casado</option>
-            <option value="Divorciado">Casado</option>
+            <option value="Divorciado">Divorciado</option>
             <option value="Union Libre">Uni&oacute;n Libre</option>
           </select>
         </div>
@@ -113,7 +113,7 @@
           <div class="row errors text-center mx-auto my-3" *ngIf="errorEmails != null">{{errorEmails}}</div>
         </div>
       </div>
-      <div class="col-12 col-sm-6 mx-auto">
+      <div class="col-12 col-sm-4 mx-auto">
         <div class="row mx-auto">
           <label class="labels text-left my-2">Cuenta de Pago</label>
         </div>
