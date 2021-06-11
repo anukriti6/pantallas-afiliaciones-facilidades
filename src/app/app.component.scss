@@ -1,32 +1,8 @@
-@import '../variables.scss';
-
-
-th, td {
-
-  vertical-align: middle;
-  text-align: center;
-  font-size: $extraSmall;
-  border: 1px solid $grey;
-  color: $lighterBlack;
-}
-th {
-  font-family:  $preloBold
-}
-td{
-  font-family: $preloBook;
-}
-.statusItems{
-  background-color: $lighterGrey;
-}
+@import "../variables";
 .elevation {
   z-index: 99999;
 
 }
-.plusIcon{
-  background-color: $yellow;
-  font-size: $big !important;
-}
-
 .my-container {
   display: flex;
   flex-direction: column;
@@ -36,9 +12,7 @@ td{
   left: 0;
   right: 0;
 }
-.arrowIcon{
-  color: $blue;
-}
+
 .toolbar {
   background-color: $generalBackground;
 }
@@ -48,57 +22,13 @@ td{
   /* Make sure the toolbar will stay on top of the content as it scrolls past. */
   z-index: 2;
 }
-.labels{
-  font-family: $preloSemiBold;
-  font-size: $medium;
-  font-weight: lighter;
-  text-align: left;
-  letter-spacing: 0;
-  color: $blue;
-  opacity: 1;
-}
-.input{
-  border-color: $black;
-}
-.primaryBtn {
-  font-family: $preloMedium;
-  font-size: $medium;
-  background-color:  $yellow;
-  color: $blue;
-  min-width: $buttonsWith;
-  border-radius: 4px;
-}
-.primaryBtn:disabled {
-  color: $lighterBlue;
-}
-.secondaryBtn {
-  font-family: $preloMedium;
-  font-size: $medium;
-  min-width: $buttonsWith;
-  background-color:  $secondaryBackground;
-  color: $blue;
-}
-.errors {
-  font-family: $preloMedium;
-  font-size: $medium;
-  color: $red;
-}
-.input {
-  color: $black;
-}
-input:invalid {
-  border-color: $red;
-}
+
 .sidenav-container {
   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
   flex: 1;
 }
-.title{
-  font-family: $preloSlabBook;
-  font-size: $titles;
-  color: $blue;
-}
+
 .is-mobile .sidenav-container {
   /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
      `<body>` to be our scrolling element for mobile layouts. */
@@ -110,27 +40,9 @@ input:invalid {
   font-size: 16px ;
   color: $blue;
 }
-.content {
-  font-family: $preloBook;
-  font-size: $medium;
-  color: $lighterBlack;
-}
+
 .mat-list-item, .mat-expansion-panel-header {
   justify-content: center;
-}
-.userbtn:hover, .salir:hover {
-  text-decoration: none;
-}
-
-.userbtn:visited, .salir:visited {
-  text-decoration: none;
-}
-
-.topbars {
-  font-family: $preloSemiBold;
-  font-size: $small;
-  color: $blue;
-  opacity: 1;
 }
 
 .mat-list-item:active {
@@ -138,15 +50,6 @@ input:invalid {
 }
 .mat-list-item{
   text-align: center;
-}
-
-
-.active_link, .active_link:hover {
-  background-color: $yellow;
-}
-.active_btn{
-  background-color: $yellow;
-  padding-left: 10%;
 }
 
 .mat-list-item {
@@ -183,42 +86,21 @@ input:invalid {
   border: 0;
 }
 div.mat-expansion-panel-body{
-  padding: 0%;
+  padding: 0;
 }
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
+
 @media (min-width: 781px) {
   mat-sidenav {
     width: 25%;
-  }
-  .arrowIcon {
-    margin-left: 1%;
-    margin-top: 2%;
   }
 }
 @media (max-width: 500px) {
   mat-sidenav {
     width: 100%;
   }
-  .arrowIcon {
-    margin-left: 3%;
-    margin-top: 2%;
-  }
 }
 @media (min-width: 501px) and (max-width: 780px){
   mat-sidenav {
     width: 35%;
-  }
-  .arrowIcon {
-    margin-left: 5%;
-    margin-top: 2%;
   }
 }

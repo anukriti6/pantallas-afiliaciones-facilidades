@@ -5,7 +5,7 @@ import {MatTableModule} from '@angular/material/table';
 @Component({
   selector: 'app-create-edit-easiness',
   templateUrl: './create-edit-easiness.component.html',
-  styleUrls: ['./create-edit-easiness.component.scss', '../../app.component.scss']
+  styleUrls: ['./create-edit-easiness.component.scss']
 })
 export class CreateEditEasinessComponent implements OnInit {
   firstHeadersRow: string[] = ['facility-name', 'short-therm-quota', 'status'];

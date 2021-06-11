@@ -5,8 +5,7 @@ import {ProviderService} from 'src/app/services/provider/provider.service';
 
 @Component({
   selector: 'app-affiliate-provider',
-  templateUrl: './affiliate-provider.component.html',
-  styleUrls: ['../../app.component.scss']
+  templateUrl: './affiliate-provider.component.html'
 })
 export class AffiliateProviderComponent implements OnInit {
   doClean = false;

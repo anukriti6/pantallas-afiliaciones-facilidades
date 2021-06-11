@@ -8,7 +8,7 @@ import {INaturalProvider} from 'src/app/services/provider/naturalProviderInterfa
 @Component({
   selector: 'app-provider-data',
   templateUrl: './provider-data.component.html',
-  styleUrls: ['../../app.component.scss']
+  styleUrls: ['./provider-data.component.scss']
 })
 export class ProviderDataComponent implements OnInit {
   @Input() naturalProviderData: INaturalProvider = {
