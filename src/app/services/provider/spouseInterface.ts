@@ -1,4 +1,4 @@
 export interface ISpouse {
-  idNumber: number,
-  name: string
+  idNumber: number;
+  name: string;
 }

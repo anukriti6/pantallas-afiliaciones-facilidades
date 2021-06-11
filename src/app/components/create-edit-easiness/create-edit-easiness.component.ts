@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IEasinessData } from 'src/app/services/easiness/easinessDataInterface';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {IEasinessData} from 'src/app/services/easiness/easinessDataInterface';
 import {MatTableModule} from '@angular/material/table';
 
 @Component({
@@ -8,13 +8,13 @@ import {MatTableModule} from '@angular/material/table';
   styleUrls: ['./create-edit-easiness.component.scss', '../../app.component.scss']
 })
 export class CreateEditEasinessComponent implements OnInit {
-  firstHeadersRow: string[] = ['facility-name', 'short-therm-quota','status'];
+  firstHeadersRow: string[] = ['facility-name', 'short-therm-quota', 'status'];
   secondHeadersRow: string[] = ['approved-quota', 'available-quota', 'blocked-quota', 'used-quota'];
-  datarow: string[] = ['facility-name','approved-quota', 'available-quota', 'blocked-quota', 'used-quota', 'status', 'related'];
+  datarow: string[] = ['facility-name', 'approved-quota', 'available-quota', 'blocked-quota', 'used-quota', 'status', 'related'];
   @Input() easiness: IEasinessData = {
     id: 0,
     idNumber: 1111111111,
-    companyName: "Empresa",
+    companyName: 'Empresa',
     related: false,
     easiness: [{
       id: 0,
@@ -29,12 +29,14 @@ export class CreateEditEasinessComponent implements OnInit {
       related: false
     }]
   };
-  isEditingArray: boolean[] =[];
+  isEditingArray: boolean[] = [];
   isRelatedArray: boolean[] = [];
   statuses: string[] = [];
   @Output() easinessData = new EventEmitter<IEasinessData>();
   @Output() Clean = new EventEmitter<boolean>();
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     for (let i = 0; i < this.easiness.easiness.length; i++) {
@@ -43,10 +45,12 @@ export class CreateEditEasinessComponent implements OnInit {
       this.statuses.push(this.easiness.easiness[i].status);
     }
   }
-  editStatus(index: number) {
+
+  editStatus(index: number): void {
     this.isEditingArray[index] = !this.isEditingArray[index];
   }
-  save() {
+
+  save(): void {
     let globalRelated = false;
     for (let i = 0; i < this.easiness.easiness.length; i++) {
       this.easiness.easiness[i].related = this.isRelatedArray[i];
@@ -57,10 +61,12 @@ export class CreateEditEasinessComponent implements OnInit {
     }
     this.easiness.related = globalRelated;
   }
-  data() {
+
+  data(): any {
     return this.easiness.easiness.filter(x => ((x.related && this.easiness.related) || !this.easiness.related));
   }
-  clean() {
+
+  clean(): void {
     this.Clean.emit(true);
   }
 

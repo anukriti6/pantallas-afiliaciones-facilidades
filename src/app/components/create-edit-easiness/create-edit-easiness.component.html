@@ -1,42 +1,40 @@
-<ng-container >
+<ng-container>
   <div class="row mb-3">
     <div class="col-12 col-sm-6 text-center text-sm-left">
       <h3 class="title">{{easiness.companyName}}</h3>
     </div>
   </div>
   <table mat-table [dataSource]="data()">
-
-    <!--- Note that these columns can be defined in any order.
-          the actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Position Column -->
+    <!-- approved-quota Column -->
     <ng-container matColumnDef="approved-quota">
-      <th mat-header-cell *matHeaderCellDef class="mx-auto"> Cupo Aprobado</th>
+      <th mat-header-cell *matHeaderCellDef class="text-center">
+        Cupo Aprobado
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.quotes.approved}} </td>
     </ng-container>
 
-    <!-- Name Column -->
+    <!-- available-quota Column -->
     <ng-container matColumnDef="available-quota">
-      <th mat-header-cell *matHeaderCellDef class="mx-auto"> Cupo disponible </th>
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Cupo disponible</th>
       <td mat-cell *matCellDef="let element"> {{element.quotes.available}} </td>
     </ng-container>
 
-    <!-- Weight Column -->
+    <!-- blocked-quota Column -->
     <ng-container matColumnDef="blocked-quota">
-      <th mat-header-cell *matHeaderCellDef class="mx-auto"> Cupo Bloqueado </th>
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Cupo Bloqueado</th>
       <td mat-cell *matCellDef="let element"> {{element.quotes.blocked}} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- used-quota Column -->
     <ng-container matColumnDef="used-quota">
-      <th mat-header-cell *matHeaderCellDef class="mx-auto"> Cupo Usado </th>
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Cupo Usado</th>
       <td mat-cell *matCellDef="let element"> {{element.quotes.used}} </td>
     </ng-container>
 
     <!-- Header row first group -->
     <ng-container matColumnDef="facility-name">
       <th mat-header-cell *matHeaderCellDef
-          [attr.rowspan]="2" class="mx-auto">
+          [attr.rowspan]="2" class="mx-auto text-center">
         Nombre Facilidad
       </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
@@ -44,15 +42,16 @@
 
     <!-- Header row second group -->
     <ng-container matColumnDef="short-therm-quota">
-      <th mat-header-cell *matHeaderCellDef [attr.colspan]="4">Cupo Corto Plazo</th>
+      <th mat-header-cell *matHeaderCellDef [attr.colspan]="4" class="text-center">Cupo Corto Plazo</th>
     </ng-container>
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" class="mx-auto text-center" [attr.colspan]="2">Estado</th>
+      <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" class="mx-auto text-center" [attr.colspan]="2">Estado
+      </th>
       <td mat-cell *matCellDef="let element; let i = index;">
         <span *ngIf="!isEditingArray[i]">{{element.status}}</span>
         <div *ngIf="isEditingArray[i]">
-          <mat-form-field appearance="outline" class="mx-auto inTable">
-            <mat-select [(ngModel)]="statuses[i]" name="status" >
+          <mat-form-field appearance="outline" class="mx-auto text-center inTable">
+            <mat-select [(ngModel)]="statuses[i]" name="status">
               <mat-option value="Activo">Activo</mat-option>
               <mat-option value="Bloqueado">Bloqueado</mat-option>
               <mat-option value="Inactivo">Inactivo</mat-option>
@@ -63,11 +62,11 @@
     </ng-container>
     <ng-container matColumnDef="related">
       <td mat-cell *matCellDef="let element; let i = index;" class="mx-auto">
-        <div *ngIf="!easiness.related" >
+        <div *ngIf="!easiness.related">
           <mat-checkbox [(ngModel)]="isRelatedArray[i]"></mat-checkbox>
         </div>
         <div class="btn mx-auto" *ngIf="easiness.related" (click)="editStatus(i)">
-          <mat-icon >edit</mat-icon>
+          <mat-icon>edit</mat-icon>
         </div>
       </td>
     </ng-container>
@@ -75,6 +74,7 @@
     <tr mat-header-row *matHeaderRowDef="secondHeadersRow"></tr>
     <tr mat-row *matRowDef="let row; columns: datarow"></tr>
   </table>
+
 
   <div class="row justify-content-left justify-content-sm-end  mx-auto">
     <div class="col-0 col-sm-6"></div>

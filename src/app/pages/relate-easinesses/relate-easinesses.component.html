@@ -5,11 +5,9 @@
     </div>
   </div>
   <app-search-id (idSend) ="searchId($event)" [searchError]="searchError" [clean]="doClean"></app-search-id>
-  <div class="row">
-    <div class="col-0 col-sm-2"></div>
+  <div class="row justify-content-center">
     <div  *ngIf="currEasinessData != null" class="col-12 col-sm-9 pl-3 my-4">
       <app-create-edit-easiness  [easiness]="currEasinessData" (Clean)="clean($event)"></app-create-edit-easiness>
     </div>
-    <div class="col-0 col-sm-1"></div>
   </div>
 </div>

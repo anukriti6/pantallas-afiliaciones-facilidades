@@ -7,7 +7,7 @@ import { IEasinessData } from './easinessDataInterface';
   providedIn: 'root'
 })
 export class EasinessService {
-  private easinessIdsUrl: string = 'assets/data/easinessData.json';
+  private easinessIdsUrl = 'assets/data/easinessData.json';
   constructor(private http: HttpClient) { }
   getIds(): Observable<IEasinessData[]> {
     return this.http.get<IEasinessData[]>(this.easinessIdsUrl);

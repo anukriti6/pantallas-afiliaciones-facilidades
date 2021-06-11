@@ -1,4 +1,4 @@
 export interface IAccount {
-  type: string,
-  account: number
+  type: string;
+  account: number;
 }
