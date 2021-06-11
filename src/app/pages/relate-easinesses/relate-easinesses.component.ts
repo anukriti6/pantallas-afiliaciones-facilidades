@@ -16,9 +16,13 @@ export class RelateEasinessesComponent implements OnInit {
   constructor(private easinessService: EasinessService) { }
 
   ngOnInit(): void {
-    this.easinessService.getIds().subscribe(data => this.fullEasinessData = data);
+
   }
   searchId(id: number) {
+    this.easinessService.getIds().subscribe(
+        data =>
+        this.fullEasinessData = data
+      );
     if (this.fullEasinessData.length) {
       for (let i = 0; i < this.fullEasinessData.length; i ++) {
         if (this.fullEasinessData[i].idNumber == id) {

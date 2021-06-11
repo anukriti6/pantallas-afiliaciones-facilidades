@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IEasinessData } from 'src/app/services/easiness/easinessDataInterface';
+import {MatTableModule} from '@angular/material/table';
 
 @Component({
   selector: 'app-create-edit-easiness',
@@ -7,6 +8,9 @@ import { IEasinessData } from 'src/app/services/easiness/easinessDataInterface';
   styleUrls: ['./create-edit-easiness.component.scss', '../../app.component.scss']
 })
 export class CreateEditEasinessComponent implements OnInit {
+  firstHeadersRow: string[] = ['facility-name', 'short-therm-quota','status'];
+  secondHeadersRow: string[] = ['approved-quota', 'available-quota', 'blocked-quota', 'used-quota'];
+  datarow: string[] = ['facility-name','approved-quota', 'available-quota', 'blocked-quota', 'used-quota', 'status', 'related'];
   @Input() easiness: IEasinessData = {
     id: 0,
     idNumber: 1111111111,
@@ -52,6 +56,9 @@ export class CreateEditEasinessComponent implements OnInit {
       }
     }
     this.easiness.related = globalRelated;
+  }
+  data() {
+    return this.easiness.easiness.filter(x => ((x.related && this.easiness.related) || !this.easiness.related));
   }
   clean() {
     this.Clean.emit(true);

@@ -28,11 +28,14 @@ import { ProviderDataComponent } from './components/provider-data/provider-data.
 import { EasinessService } from './services/easiness/easiness.service';
 import { ProviderService } from './services/provider/provider.service';
 import { AnchorCompanyService } from './services/anchor-company/anchor-company.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
+import { CdkTableModule} from '@angular/cdk/table';
+import { InterceptorService } from './services/interceptor.service';
+import { MatSnackBarModule }  from '@angular/material/snack-bar';
+import { NotifierComponent } from './components/notifier/notifier.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +44,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     AffiliateProviderComponent,
     RelateAnchorCompanyComponent,
     CreateEditEasinessComponent,
-    ProviderDataComponent
+    ProviderDataComponent,
+    NotifierComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +70,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatTableModule,
     FlexLayoutModule,
     MatChipsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    CdkTableModule,
+    MatSnackBarModule
   ],
   exports: [
     BrowserModule,
@@ -91,9 +97,15 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatTableModule,
     FlexLayoutModule,
     MatChipsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    CdkTableModule,
+    MatSnackBarModule
   ],
-  providers: [EasinessService, ProviderService, AnchorCompanyService],
+  providers: [EasinessService, ProviderService, AnchorCompanyService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

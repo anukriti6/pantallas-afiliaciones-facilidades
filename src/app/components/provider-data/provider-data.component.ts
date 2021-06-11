@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { IAccount } from 'src/app/services/provider/accountInterface';
 import { ILegalProvider } from 'src/app/services/provider/legalProviderInterface';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { INaturalProvider } from 'src/app/services/provider/naturalProviderInterface';
 @Component({
   selector: 'app-provider-data',
@@ -32,6 +34,7 @@ export class ProviderDataComponent implements OnInit {
   naturalSpouseName: string  | null = null;
   errorEmail: string | null = null;
   errorEmails: string | null = null;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
   @Output() Clean = new EventEmitter<boolean>();
   constructor() { }
   ngOnInit(): void {
@@ -103,21 +106,26 @@ export class ProviderDataComponent implements OnInit {
     }
     return false;
   }
-  addEmail(type: string ){
+  addEmail(event: MatChipInputEvent,  type: string){
     if (type == 'natural') {
       if (this.naturalEmails.length < 10) {
-        if (this.naturalEmail != null) {
+        if (event.value != null) {
           let emailExists = false;
           for (let i = 0; i < this.naturalEmails.length; i ++) {
-            if (this.naturalEmails[i] == this.naturalEmail) {
+            if (this.naturalEmails[i] == event.value) {
               emailExists = true;
               this.errorEmails = 'El correo ingresado ya está registrado en este proveedor';
             }
           }
           if (!emailExists) {
-            this.naturalEmails.push(this.naturalEmail);
-            this.naturalEmail = null;
-            this.errorEmails = null;
+            if(this.naturalEmail != null) {
+              if (this.validateEmail(this.naturalEmail)) {
+                this.naturalEmails.push(this.naturalEmail);
+                this.naturalEmail = null;
+                this.errorEmails = null;
+                console.log("Emails: ", this.naturalEmails);
+              }
+            }
           }
         }
       } else {

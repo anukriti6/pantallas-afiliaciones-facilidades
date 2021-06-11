@@ -17,9 +17,9 @@ export class AffiliateProviderComponent implements OnInit {
   constructor(private providerDataService: ProviderService) { }
 
   ngOnInit(): void {
-    this.providerDataService.getProvidersData().subscribe(data => this.providersData = data);
   }
   searchId(id: number) {
+    this.providerDataService.getProvidersData().subscribe(data => this.providersData = data);
     if (this.providersData.length) {
       for (let i=0; i <this.providersData.length; i ++) {
         if (this.providersData[i].idNumber == id) {

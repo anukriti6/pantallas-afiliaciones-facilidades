@@ -1,27 +1,27 @@
 <div class="container">
-  <form action="">
-    <div class="row">
-      <label for="typeId" class="labels col-12 col-sm-4 mx-auto text-left my-3" >Tipo ID</label>
+  <form action="" name="idForm">
+    <div class="row mx-auto">
+      <mat-label class="col-12 col-sm-4 mx-auto labels text-left my-2">Tipo ID</mat-label>
     </div>
-    <div class="row">
-      <div class="col-12 col-sm-4 mx-auto">
-        <select class="dropDown form-select" name="typeId"  [(ngModel)]="typeId" [ngModelOptions]="{standalone: true}" (ngModelChange)="changedSelection()">
-          <option *ngFor="let type of typeIds" [value]="type">
+    <div class="row mx-auto">
+      <mat-form-field appearance="outline"  class="col-12 col-sm-4 mx-auto">
+        <mat-select [(ngModel)]="typeId" name="idType" (ngModelChange)="changedSelection()">
+          <mat-option *ngFor="let type of typeIds" [value]="type">
             {{type}}
-          </option>
-        </select>
-      </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row mx-auto">
+      <mat-label class=" col-12 col-sm-4 mx-auto labels text-left my-2">N&uacute;mero ID</mat-label>
     </div>
     <div class="row">
-      <label for="id" class="labels col-12 col-sm-4 mx-auto text-left my-3" >N&uacute;mero ID</label>
-    </div>
-    <div class="row">
-      <div class="col-12 col-sm-4 mx-auto">
-        <input class="form-control " *ngIf="typeId == typeIds[0]" type="number" placeholder="1711111111111" name="id"  id="idRuc" minLength="10" maxLength="10"
-        [(ngModel)]="id" (ngModelChange)="validateId(13)" >
-        <input class="form-control " *ngIf="typeId == typeIds[1]" type="number" placeholder="1711111111" maxLength="10" name="id" id="idId"
-        minLength="10" [(ngModel)]="id" (ngModelChange)="validateId(10)" [ngModelOptions]="{standalone: true}" >
-      </div>
+      <mat-form-field appearance="outline"  class="col-12 col-sm-4 mx-auto">
+        <input matInput *ngIf="typeId == typeIds[0]"  type="number" placeholder="1709876543213"  name="idRuc"  id="idRuc"
+          [(ngModel)]="id" (ngModelChange)="validateId(13)">
+        <input matInput *ngIf="typeId == typeIds[1]"  type="number" placeholder="1709876543"  name="id"  id="id"
+          [(ngModel)]="id" (ngModelChange)="validateId(10)">
+      </mat-form-field>
     </div>
     <div class="row">
       <div class="errors col-12 col-sm-4 mx-auto text-center my-2" >

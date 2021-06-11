@@ -4,49 +4,78 @@
       <h3 class="title">{{easiness.companyName}}</h3>
     </div>
   </div>
-  <table class="table table-responsive">
-    <thead>
-      <tr>
-        <th rowspan="2">Nombre Facilidad</th>
-        <th colspan="4">Cupo Corto Plazo</th>
-        <th rowspan="2" colspan="2">Estado</th>
-      </tr>
-      <tr>
-        <th>Cupo Aprobado</th>
-        <th>Cupo disponible</th>
-        <th>Cupo Bloquedado</th>
-        <th>Cupo Utilizado</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of easiness.easiness; let i = index;" >
-        <td *ngIf="!easiness.related || easiness.related && item.related">{{item.name}}</td>
-        <td *ngIf="!easiness.related || easiness.related && item.related">{{item.quotes.approved}}</td>
-        <td *ngIf="!easiness.related || easiness.related && item.related">{{item.quotes.available}}</td>
-        <td *ngIf="!easiness.related || easiness.related && item.related">{{item.quotes.blocked}}</td>
-        <td *ngIf="!easiness.related || easiness.related && item.related" >{{item.quotes.used}}</td>
-        <td *ngIf="!easiness.related || easiness.related && item.related" class="statusItems">
-          <span *ngIf="!isEditingArray[i]">{{item.status}}</span>
-          <div *ngIf="isEditingArray[i]">
-            <select class="form-select tableSelect"  ngDefaultControl name="selectStatus" [(ngModel)]="statuses[i]" >
-              <option value="Activo">Activo</option>
-              <option value="Bloqueado">Bloqueado</option>
-              <option value="Inactivo">Inactivo</option>
-            </select>
-          </div>
-        </td>
-        <td *ngIf="!easiness.related || easiness.related && item.related" class="statusItems">
-          <div *ngIf="!easiness.related" >
-            <input class="form-check-input" type="checkbox" value="isRelatedArray[i]" [(ngModel)]="isRelatedArray[i]" >
-            <!--<mat-checkbox [(ngModel)]="isRelatedArray[i]"></mat-checkbox>-->
-          </div>
-          <div class="btn mx-auto" *ngIf="easiness.related" (click)="editStatus(i)">
-            <mat-icon >edit</mat-icon>
-          </div>
-        </td>
-      </tr>
-    </tbody>
+  <table mat-table [dataSource]="data()">
+
+    <!--- Note that these columns can be defined in any order.
+          the actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="approved-quota">
+      <th mat-header-cell *matHeaderCellDef class="mx-auto"> Cupo Aprobado</th>
+      <td mat-cell *matCellDef="let element"> {{element.quotes.approved}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="available-quota">
+      <th mat-header-cell *matHeaderCellDef class="mx-auto"> Cupo disponible </th>
+      <td mat-cell *matCellDef="let element"> {{element.quotes.available}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="blocked-quota">
+      <th mat-header-cell *matHeaderCellDef class="mx-auto"> Cupo Bloqueado </th>
+      <td mat-cell *matCellDef="let element"> {{element.quotes.blocked}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="used-quota">
+      <th mat-header-cell *matHeaderCellDef class="mx-auto"> Cupo Usado </th>
+      <td mat-cell *matCellDef="let element"> {{element.quotes.used}} </td>
+    </ng-container>
+
+    <!-- Header row first group -->
+    <ng-container matColumnDef="facility-name">
+      <th mat-header-cell *matHeaderCellDef
+          [attr.rowspan]="2" class="mx-auto">
+        Nombre Facilidad
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Header row second group -->
+    <ng-container matColumnDef="short-therm-quota">
+      <th mat-header-cell *matHeaderCellDef [attr.colspan]="4">Cupo Corto Plazo</th>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" class="mx-auto text-center" [attr.colspan]="2">Estado</th>
+      <td mat-cell *matCellDef="let element; let i = index;">
+        <span *ngIf="!isEditingArray[i]">{{element.status}}</span>
+        <div *ngIf="isEditingArray[i]">
+          <mat-form-field appearance="outline" class="mx-auto inTable">
+            <mat-select [(ngModel)]="statuses[i]" name="status" >
+              <mat-option value="Activo">Activo</mat-option>
+              <mat-option value="Bloqueado">Bloqueado</mat-option>
+              <mat-option value="Inactivo">Inactivo</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="related">
+      <td mat-cell *matCellDef="let element; let i = index;" class="mx-auto">
+        <div *ngIf="!easiness.related" >
+          <mat-checkbox [(ngModel)]="isRelatedArray[i]"></mat-checkbox>
+        </div>
+        <div class="btn mx-auto" *ngIf="easiness.related" (click)="editStatus(i)">
+          <mat-icon >edit</mat-icon>
+        </div>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="firstHeadersRow"></tr>
+    <tr mat-header-row *matHeaderRowDef="secondHeadersRow"></tr>
+    <tr mat-row *matRowDef="let row; columns: datarow"></tr>
   </table>
+
   <div class="row justify-content-left justify-content-sm-end  mx-auto">
     <div class="col-0 col-sm-6"></div>
     <div class=" col-12  my-3 col-sm-3 mr-sm-1">
@@ -57,3 +86,4 @@
     </div>
   </div>
 </ng-container>
+
