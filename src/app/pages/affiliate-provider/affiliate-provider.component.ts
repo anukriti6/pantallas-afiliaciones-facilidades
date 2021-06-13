@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { IAnchorCompany } from 'src/app/services/provider/anchorCompanyInterface';
 import {ILegalProvider} from 'src/app/services/provider/legalProviderInterface';
 import {INaturalProvider} from 'src/app/services/provider/naturalProviderInterface';
 import {ProviderService} from 'src/app/services/provider/provider.service';
@@ -11,7 +12,9 @@ export class AffiliateProviderComponent implements OnInit {
   doClean = false;
   searchError: string | null = null;
   providersData: any[] = [];
-  curProviderData: INaturalProvider | null = null;
+  curNaturalProviderData: INaturalProvider | null = null;
+  curLegalProviderData: ILegalProvider | null = null;
+  anchorCompanies: IAnchorCompany[] = [];
   matched = false;
 
   constructor(private providerDataService: ProviderService) {
@@ -24,23 +27,32 @@ export class AffiliateProviderComponent implements OnInit {
     this.providerDataService.getProvidersData().subscribe((data) => {
       this.providersData = data;
       if (this.providersData.length) {
-        for (let i = 0; i < this.providersData.length; i++) {
+        for (let i = 0; i < this.providersData.length - 1; i++) {
           if (this.providersData[i].idNumber === id) {
             this.matched = true;
-            this.curProviderData = this.providersData[i];
+            if (this.providersData[i].type == 'legal') {
+              this.curNaturalProviderData = null;
+              this.curLegalProviderData = this.providersData[i];
+            } else {
+              this.curNaturalProviderData = this.providersData[i];
+              this.curLegalProviderData = null;
+            }
           }
         }
         if (!this.matched) {
           this.searchError = 'Usuario no encontrado. Intente nuevamente';
-          this.curProviderData = null;
+          this.curNaturalProviderData = null;
+          this.curLegalProviderData = null;
         }
       }
+      this.anchorCompanies = this.providersData[this.providersData.length - 1].anchorCompanies;
     });
   }
 
   clean(clean: boolean): void {
     this.doClean = clean;
     this.searchError = null;
-    this.curProviderData = null;
+    this.curNaturalProviderData = null;
+    this.curLegalProviderData = null;
   }
 }

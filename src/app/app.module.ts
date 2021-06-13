@@ -27,7 +27,6 @@ import { CreateEditEasinessComponent } from './components/create-edit-easiness/c
 import { ProviderDataComponent } from './components/provider-data/provider-data.component';
 import { EasinessService } from './services/easiness/easiness.service';
 import { ProviderService } from './services/provider/provider.service';
-import { AnchorCompanyService } from './services/anchor-company/anchor-company.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatChipsModule} from '@angular/material/chips';
@@ -36,6 +35,8 @@ import { CdkTableModule} from '@angular/cdk/table';
 import { InterceptorService } from './services/interceptor.service';
 import { MatSnackBarModule }  from '@angular/material/snack-bar';
 import { NotifierComponent } from './components/notifier/notifier.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +73,9 @@ import { NotifierComponent } from './components/notifier/notifier.component';
     MatChipsModule,
     MatTooltipModule,
     CdkTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatRadioModule,
+    MatAutocompleteModule
   ],
   exports: [
     BrowserModule,
@@ -99,9 +102,11 @@ import { NotifierComponent } from './components/notifier/notifier.component';
     MatChipsModule,
     MatTooltipModule,
     CdkTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatRadioModule,
+    MatAutocompleteModule
   ],
-  providers: [EasinessService, ProviderService, AnchorCompanyService, {
+  providers: [EasinessService, ProviderService, {
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptorService,
     multi: true

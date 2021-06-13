@@ -4,6 +4,7 @@ import {IAccount} from 'src/app/services/provider/accountInterface';
 import {ILegalProvider} from 'src/app/services/provider/legalProviderInterface';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {INaturalProvider} from 'src/app/services/provider/naturalProviderInterface';
+import { IAnchorCompany } from 'src/app/services/provider/anchorCompanyInterface';
 
 @Component({
   selector: 'app-provider-data',
@@ -11,30 +12,22 @@ import {INaturalProvider} from 'src/app/services/provider/naturalProviderInterfa
   styleUrls: ['./provider-data.component.scss']
 })
 export class ProviderDataComponent implements OnInit {
-  @Input() naturalProviderData: INaturalProvider = {
-    id: 0,
-    name: '',
-    type: '',
-    idNumber: 1111111111,
-    activity: '',
-    nationality: '',
-    address: '',
-    phone: '',
-    mobilePhone: '',
-    emails: [],
-    paymentAccounts: [{type: '', account: 123123123}],
-    currentPaymentAccount: {type: '', account: 123123123},
-    civilStatus: '',
-    spouse: {idNumber: 1122334321, name: ''}
-  };
+  @Input() naturalProviderData: INaturalProvider | null = null;
+  @Input() legalProviderData: ILegalProvider | null = null;
+  @Input() anchorCompanies: IAnchorCompany[] = [];
   naturalCivilStatus: string | null = null;
-  naturalEmail: string | null = null;
-  naturalEmails: string[] = [];
-  naturalPaymentAccount: IAccount | null = null;
+  emails: string[] = [];
+  paymentAccount: IAccount | null = null;
+  civilStatus: string | null = null;
   naturalSpouseId: number | null = null;
   naturalSpouseName: string | null = null;
   errorEmail: string | null = null;
   errorEmails: string | null = null;
+  email: string | null = null;
+  companyPhone: string | null = null;
+  idLegalRepresentative: number | null = null;
+  legalRepresentativeName: string | null = null;
+  legalRepresentativePosition: string | null = null;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   @Output() Clean = new EventEmitter<boolean>();
 
@@ -42,17 +35,29 @@ export class ProviderDataComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.naturalProviderData.civilStatus !== '') {
-      this.naturalCivilStatus = this.naturalProviderData.civilStatus;
-    }
-    if (this.naturalProviderData.emails.length) {
-      for (let i = 0; i < this.naturalProviderData.emails.length; i++) {
-        this.naturalEmails.push(this.naturalProviderData.emails[i]);
+    if (this.naturalProviderData !=  null  && this.legalProviderData == null){
+      if (this.naturalProviderData.emails.length) {
+        for (let i = 0; i < this.naturalProviderData.emails.length; i++) {
+          this.emails.push(this.naturalProviderData.emails[i]);
+        }
       }
+      this.civilStatus = this.naturalProviderData.civilStatus;
+      this.paymentAccount = this.naturalProviderData.currentPaymentAccount;
+      this.naturalSpouseId = this.naturalProviderData.spouse.idNumber;
+      this.naturalSpouseName = this.naturalProviderData.spouse.name;
+    } else if ( this.naturalProviderData ==  null  && this.legalProviderData != null ) {
+      if (this.legalProviderData.emails.length) {
+        for (let i = 0; i < this.legalProviderData.emails.length; i++) {
+          this.emails.push(this.legalProviderData.emails[i]);
+        }
+      }
+      this.civilStatus = this.legalProviderData.legalRepresentative.civilStatus;
+      this.idLegalRepresentative = this.legalProviderData.legalRepresentative.id;
+      this.legalRepresentativeName = this.legalProviderData.legalRepresentative.name;
+      this.legalRepresentativePosition = this.legalProviderData.legalRepresentative.position;
+      this.paymentAccount = this.legalProviderData.currentPaymentAccount;
+      this.companyPhone = this.legalProviderData.phone;
     }
-    this.naturalPaymentAccount = this.naturalProviderData.currentPaymentAccount;
-    this.naturalSpouseId = this.naturalProviderData.spouse.idNumber;
-    this.naturalSpouseName = this.naturalProviderData.spouse.name;
   }
 
   clean(): void {
@@ -60,87 +65,75 @@ export class ProviderDataComponent implements OnInit {
   }
 
   changedPaymentAccount(): void {
-    console.log(this.naturalPaymentAccount);
+    console.log(this.paymentAccount);
   }
 
-  emailEntry(type: string): void {
-    const element = this.naturalProviderData.type == 'natural' ? document.getElementById('naturalEmails') : document.getElementById('legalEmails');
+  emailEntry(): void {
+    const element = this.naturalProviderData != null ? document.getElementById('naturalEmails') : document.getElementById('legalEmails');
     this.errorEmails = null;
-    if (type === 'natural') {
-      if (this.naturalEmail != null) {
-        if (this.validateEmail(this.naturalEmail)) {
-          this.errorEmail = null;
-          if (element) {
-            element.style.borderColor = '#c1c1c1';
-          }
-        } else {
-          this.errorEmail = 'Formato de correo Electrónico incorrecto';
-          if (element) {
-            element.style.borderColor = '#FF0000';
-          }
+    if (this.email != null) {
+      if (this.validateEmail(this.email)) {
+        this.errorEmail = null;
+        if (element) {
+          element.style.borderColor = '#c1c1c1';
         }
       } else {
-        this.errorEmail = null;
+        this.errorEmail = 'Formato de correo Electrónico incorrecto';
         if (element) {
-          element.style.borderColor = '#c1c1c1';
+          element.style.borderColor = '#FF0000';
         }
       }
-      if (this.naturalEmail == '') {
-        this.errorEmail = null;
-        if (element) {
-          element.style.borderColor = '#c1c1c1';
-        }
+    } else {
+      this.errorEmail = null;
+      if (element) {
+        element.style.borderColor = '#c1c1c1';
       }
     }
-  }
-
-  keyPressed(event: any, type: string): void {
-
-    if (type === 'natural') {
-      if (event.code === 13) {
-        console.log('Tecla Enter Presionada')
-        if (this.naturalEmail != null) {
-          if (this.validateEmail(this.naturalEmail)) {
-            this.naturalEmails.push(this.naturalEmail);
-          }
-        }
+    if (this.email == '') {
+      this.errorEmail = null;
+      if (element) {
+        element.style.borderColor = '#c1c1c1';
       }
     }
   }
 
   validateEmail(email: string): boolean {
     const regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-    if (regexp.test(email)) {
-      return true;
-    }
-    return false;
+      if (regexp.test(email)) {
+        return true;
+      }
+      return false;
   }
-
-  addEmail(event: MatChipInputEvent, type: string): void {
-    if (type === 'natural') {
-      if (this.naturalEmails.length < 10) {
-        if (event.value != null) {
-          let emailExists = false;
-          for (let i = 0; i < this.naturalEmails.length; i++) {
-            if (this.naturalEmails[i] === event.value) {
-              emailExists = true;
-              this.errorEmails = 'El correo ingresado ya está registrado en este proveedor';
-            }
+  anchorId(event: number) {
+    if (this.naturalProviderData != null && this.legalProviderData == null) {
+      this.naturalProviderData.idAnchoredCompany = event;
+    } else if (this.naturalProviderData == null && this.legalProviderData != null) {
+      this.legalProviderData.idAnchoredCompany = event;
+    }
+  }
+  addEmail(event: MatChipInputEvent): void {
+    if (this.emails.length < 10) {
+      if (event.value != null) {
+        let emailExists = false;
+        for (let i = 0; i < this.emails.length; i++) {
+          if (this.emails[i] === event.value) {
+            emailExists = true;
+            this.errorEmails = 'El correo ingresado ya está registrado en este proveedor';
           }
-          if (!emailExists) {
-            if (this.naturalEmail != null) {
-              if (this.validateEmail(this.naturalEmail)) {
-                this.naturalEmails.push(this.naturalEmail);
-                this.naturalEmail = null;
-                this.errorEmails = null;
-                console.log('Emails: ', this.naturalEmails);
-              }
+        }
+        if (!emailExists) {
+          if (this.email != null) {
+            if (this.validateEmail(event.value)) {
+              this.emails.push(event.value);
+              this.email = null;
+              this.errorEmails = null;
+              console.log('Emails: ', this.emails);
             }
           }
         }
-      } else {
-        this.errorEmails = 'No se pueden registrar más correos para este proveedor';
       }
+    } else {
+      this.errorEmails = 'No se pueden registrar más correos para este proveedor';
     }
   }
 }

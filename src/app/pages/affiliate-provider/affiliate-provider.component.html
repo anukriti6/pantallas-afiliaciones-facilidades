@@ -1,10 +1,12 @@
 <div class="container my-5">
-  <div *ngIf="curProviderData == null">
+  <div *ngIf="curNaturalProviderData == null && curLegalProviderData == null">
     <app-search-id (idSend) ="searchId($event)" [searchError]="searchError" [clean]="doClean"></app-search-id>
   </div>
-  <div *ngIf="curProviderData != null">
-    <app-provider-data [naturalProviderData]="curProviderData" (Clean)="clean($event)"></app-provider-data>
-    <hr class="col-11 mx-auto my-2 mx-2">
+  <div *ngIf="curNaturalProviderData != null && curLegalProviderData == null">
+    <app-provider-data [naturalProviderData]="curNaturalProviderData" [legalProviderData]="null" [anchorCompanies]="anchorCompanies" (Clean)="clean($event)"></app-provider-data>
+  </div>
+  <div *ngIf="curNaturalProviderData == null && curLegalProviderData != null">
+    <app-provider-data [naturalProviderData]="null" [legalProviderData]="curLegalProviderData"  [anchorCompanies]="anchorCompanies" (Clean)="clean($event)"></app-provider-data>
   </div>
 </div>
 

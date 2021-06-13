@@ -16,4 +16,5 @@ export interface INaturalProvider {
   currentPaymentAccount: IAccount;
   civilStatus: string;
   spouse: ISpouse;
+  idAnchoredCompany: number | null;
 }

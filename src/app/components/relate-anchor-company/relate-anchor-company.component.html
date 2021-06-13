@@ -1,1 +1,96 @@
-<p>relate-anchor-company works!</p>
+<div class="row mt-5">
+  <div class="col-12 col-sm-6 text-center text-sm-left">
+    <h3 class="title">Relacionar a empresa ancla</h3>
+  </div>
+</div>
+<div class="row mx-auto">
+  <div class="col-12 col-sm-4 mx-auto">
+    <div class="row mx-auto">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="searchType">
+        <mat-radio-button class="col-6 mr-auto" value='id'>B&uacute;squeda por ID</mat-radio-button>
+        <mat-radio-button class="col-6 ml-auto" value='company'>B&uacute;squeda por Empresa</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="row mx-auto my-3" >
+      <mat-form-field appearance="outline" *ngIf="searchType == 'id'">
+        <input matInput  type="text" placeholder="1798764536213"  name="idSearch"  id="idSearch" [(ngModel)]="idSearch">
+      </mat-form-field>
+      <mat-form-field appearance="outline" *ngIf="searchType == 'company'">
+        <input type="text"
+               placeholder="Nombre Empresa"
+               matInput
+               [matAutocomplete]="auto"
+               [(ngModel)]="companySearch"
+               (ngModelChange)="changedCompanySearch()">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let name of filteredCompanyNames" [value]="name">
+            {{name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="row mx-auto">
+      <button class="primaryBtn col-6 my-3 mx-auto text-center" mat-button (click)="search()" [disabled]="(searchType == 'company' && (companySearch == null || companySearch == '')) || (searchType == 'id' && (idSearch == null || idSearch.toString() == ''))">Buscar</button>
+    </div>
+    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+      <mat-label class="labels text-left my-2">Nombre Empresa Ancla</mat-label>
+    </div>
+    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+      <mat-label class="content text-left my-2">{{curAnchorCompany.name}}</mat-label>
+    </div>
+    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+      <mat-label class="labels text-left my-2">Identificaci&oacute;n Empresa Ancla</mat-label>
+    </div>
+    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+      <mat-label class="content text-left my-2">{{curAnchorCompany.idNumber}}</mat-label>
+    </div>
+  </div>
+  <div class="col-12 col-sm-4 mx-auto">
+    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+      <mat-label class="labels text-left my-2">Nombre Regional</mat-label>
+    </div>
+    <div class="row mx-auto"*ngIf="matched && curAnchorCompany != null">
+      <mat-label class="content text-left my-2">{{curAnchorCompany.regionalName}}</mat-label>
+    </div>
+    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+      <mat-label class="labels text-left my-2">Tasa de inter&eacute;s anticipo de factura (%)</mat-label>
+    </div>
+    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+      <mat-form-field appearance="outline" >
+        <input matInput  type="number" placeholder="10.22"  name="interest"  id="interest" [value]="curAnchorCompany.interest" disabled>
+      </mat-form-field>
+    </div>
+    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+      <mat-label class="labels text-left my-2">Con Recurso</mat-label>
+    </div>
+    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+      <mat-form-field appearance="outline">
+        <input matInput  type="text" placeholder="SI"  name="withResource"  id="withResource" [value]="curAnchorCompany.resource ? 'SI': 'NO'" disabled>
+      </mat-form-field>
+    </div>
+    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null" >
+      <mat-label class="labels text-left my-2">Estado</mat-label>
+    </div>
+    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+      <mat-form-field appearance="outline" *ngIf="!curAnchorCompany.anchored">
+        <input matInput  type="text" placeholder="Activo"  name="anchorStatus"  id="anchorStatus" [value]="curAnchorCompany.status" disabled>
+      </mat-form-field>
+      <mat-form-field appearance="outline" *ngIf="curAnchorCompany.anchored">
+        <mat-select [(ngModel)]="status" name="anchorStatusSelect">
+          <mat-option *ngFor="let status of statuss" [value]="status">
+            {{status}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row justify-content-left justify-content-sm-end  mx-auto" *ngIf="matched && curAnchorCompany != null">
+    <div class="col-0 col-sm-6"></div>
+    <div class=" col-12  my-3 col-sm-3 mr-sm-1">
+      <button class="btn  primaryBtn" id="saveAnchor" (click)="saveAnchor()">Guardar</button>
+    </div>
+    <div class=" col-12 my-3 col-sm-3 ml-sm-1">
+      <button class="btn  secondaryBtn" id="cancelAnchor" (click)="cancel()">Cancelar</button>
+    </div>
+  </div>
+</div>
