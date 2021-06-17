@@ -53,34 +53,11 @@
       <mat-label class="content text-left my-2">{{curAnchorCompany.regionalName}}</mat-label>
     </div>
     <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
-      <mat-label class="labels text-left my-2">Tasa de inter&eacute;s anticipo de factura (%)</mat-label>
-    </div>
-    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
-      <mat-form-field appearance="outline" >
-        <input matInput  type="number" placeholder="10.22"  name="interest"  id="interest" [value]="curAnchorCompany.interest" disabled>
-      </mat-form-field>
-    </div>
-    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
       <mat-label class="labels text-left my-2">Con Recurso</mat-label>
     </div>
     <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
       <mat-form-field appearance="outline">
         <input matInput  type="text" placeholder="SI"  name="withResource"  id="withResource" [value]="curAnchorCompany.resource ? 'SI': 'NO'" disabled>
-      </mat-form-field>
-    </div>
-    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null" >
-      <mat-label class="labels text-left my-2">Estado</mat-label>
-    </div>
-    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
-      <mat-form-field appearance="outline" *ngIf="!curAnchorCompany.anchored">
-        <input matInput  type="text" placeholder="Activo"  name="anchorStatus"  id="anchorStatus" [value]="curAnchorCompany.status" disabled>
-      </mat-form-field>
-      <mat-form-field appearance="outline" *ngIf="curAnchorCompany.anchored">
-        <mat-select [(ngModel)]="status" name="anchorStatusSelect">
-          <mat-option *ngFor="let status of statuss" [value]="status">
-            {{status}}
-          </mat-option>
-        </mat-select>
       </mat-form-field>
     </div>
   </div>

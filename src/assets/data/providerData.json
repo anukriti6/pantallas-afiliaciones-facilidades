@@ -19,7 +19,9 @@
     "position": "Gerente General",
     "civilStatus": "Soltero"
   },
-  "idAnchoredCompany": null
+  "idAnchoredCompany": null,
+  "interest": 9.07,
+  "status": "Activo"
 }, {
   "id": 2,
   "name": "Juan José Pérez Pérez",
@@ -42,7 +44,9 @@
     "idNumber": 1712534678,
     "name": "Ana María Cárdenas Montero"
   },
-  "idAnchoredCompany": null
+  "idAnchoredCompany": null,
+  "interest": 10.22,
+  "status": "Activo"
 }, {
   "anchorCompanies": [{
     "id": 1,

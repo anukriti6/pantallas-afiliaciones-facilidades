@@ -13,4 +13,6 @@ export interface ILegalProvider {
   currentPaymentAccount: IAccount;
   legalRepresentative: ILegalRepresentative;
   idAnchoredCompany: number | null;
+  interest: number;
+  status: string;
 }

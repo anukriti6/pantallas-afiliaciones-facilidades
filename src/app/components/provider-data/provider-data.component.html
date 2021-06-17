@@ -140,6 +140,29 @@
             <input matInput  type="text" placeholder="María Luisa Montero Castillo"  name="naturaSpouseName"  id="naturaSpouseName" [(ngModel)]="naturalSpouseName">
           </mat-form-field>
         </div>
+        <div class="row mx-auto" >
+          <mat-label class="labels text-left my-2">Tasa de inter&eacute;s anticipo de factura (%)</mat-label>
+        </div>
+        <div class="row mx-auto" >
+          <mat-form-field appearance="outline" >
+            <input matInput  type="number" placeholder="10.22"  name="interest"  id="interest" [value]="naturalProviderData.interest" disabled>
+          </mat-form-field>
+        </div>
+        <div class="row mx-auto" >
+          <mat-label class="labels text-left my-2">Estado</mat-label>
+        </div>
+        <div class="row mx-auto" >
+          <mat-form-field appearance="outline" *ngIf="!naturalProviderData.idAnchoredCompany">
+            <input matInput  type="text" placeholder="Activo"  name="anchorStatus"  id="anchorStatus" [value]="naturalProviderData.status" disabled>
+          </mat-form-field>
+          <mat-form-field appearance="outline" *ngIf="naturalProviderData.idAnchoredCompany">
+            <mat-select [(ngModel)]="status" name="anchorStatusSelect">
+              <mat-option *ngFor="let status of statuss" [value]="status">
+                {{status}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
     </div>
   </div>
@@ -267,6 +290,29 @@
             <mat-select name="naturalPaymentAccount" id="naturalPaymentAccount" [(ngModel)]="paymentAccount" [ngModelOptions]="{standalone: true}" (ngModelChange)="changedPaymentAccount()">
               <mat-option *ngFor="let account of legalProviderData.paymentAccounts;" [value]="account">
                 {{account.type}} {{account.account}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="row mx-auto" >
+          <mat-label class="labels text-left my-2">Tasa de inter&eacute;s anticipo de factura (%)</mat-label>
+        </div>
+        <div class="row mx-auto" >
+          <mat-form-field appearance="outline" >
+            <input matInput  type="number" placeholder="10.22"  name="interest"  id="interest" [value]="legalProviderData.interest" disabled>
+          </mat-form-field>
+        </div>
+        <div class="row mx-auto" >
+          <mat-label class="labels text-left my-2">Estado</mat-label>
+        </div>
+        <div class="row mx-auto" >
+          <mat-form-field appearance="outline" *ngIf="!legalProviderData.idAnchoredCompany">
+            <input matInput  type="text" placeholder="Activo"  name="anchorStatus"  id="anchorStatus" [value]="legalProviderData.status" disabled>
+          </mat-form-field>
+          <mat-form-field appearance="outline" *ngIf="legalProviderData.idAnchoredCompany">
+            <mat-select [(ngModel)]="status" name="anchorStatusSelect">
+              <mat-option *ngFor="let status of statuss" [value]="status">
+                {{status}}
               </mat-option>
             </mat-select>
           </mat-form-field>

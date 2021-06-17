@@ -28,6 +28,8 @@ export class ProviderDataComponent implements OnInit {
   idLegalRepresentative: number | null = null;
   legalRepresentativeName: string | null = null;
   legalRepresentativePosition: string | null = null;
+  status: string | null = null;
+  statuss: string[] = ['Activo', 'Inactivo', 'Bloqueado'];
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   @Output() Clean = new EventEmitter<boolean>();
 
@@ -57,6 +59,11 @@ export class ProviderDataComponent implements OnInit {
       this.legalRepresentativePosition = this.legalProviderData.legalRepresentative.position;
       this.paymentAccount = this.legalProviderData.currentPaymentAccount;
       this.companyPhone = this.legalProviderData.phone;
+    }
+    if (this.naturalProviderData != null && this.legalProviderData == null) {
+      this.status = this.naturalProviderData.status;
+    } else if (this.naturalProviderData == null && this.legalProviderData != null) {
+      this.status = this.legalProviderData.status;
     }
   }
 

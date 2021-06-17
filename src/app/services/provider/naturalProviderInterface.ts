@@ -17,4 +17,6 @@ export interface INaturalProvider {
   civilStatus: string;
   spouse: ISpouse;
   idAnchoredCompany: number | null;
+  interest: number;
+  status: string;
 }
