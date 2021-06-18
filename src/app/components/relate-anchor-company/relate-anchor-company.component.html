@@ -33,31 +33,77 @@
       <button class="primaryBtn col-6 my-3 mx-auto text-center" mat-button (click)="search()" [disabled]="(searchType == 'company' && (companySearch == null || companySearch == '')) || (searchType == 'id' && (idSearch == null || idSearch.toString() == ''))">Buscar</button>
     </div>
     <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
-      <mat-label class="labels text-left my-2">Nombre Empresa Ancla</mat-label>
+      <mat-label class="labels text-left my-2">Nombre Empresa</mat-label>
     </div>
     <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
       <mat-label class="content text-left my-2">{{curAnchorCompany.name}}</mat-label>
     </div>
     <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
-      <mat-label class="labels text-left my-2">Identificaci&oacute;n Empresa Ancla</mat-label>
+      <mat-label class="labels text-left my-2">Identificaci&oacute;n</mat-label>
     </div>
     <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
       <mat-label class="content text-left my-2">{{curAnchorCompany.idNumber}}</mat-label>
     </div>
-  </div>
-  <div class="col-12 col-sm-4 mx-auto">
     <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
       <mat-label class="labels text-left my-2">Nombre Regional</mat-label>
     </div>
-    <div class="row mx-auto"*ngIf="matched && curAnchorCompany != null">
+    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
       <mat-label class="content text-left my-2">{{curAnchorCompany.regionalName}}</mat-label>
     </div>
-    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+  </div>
+  <div class="col-12 col-sm-4 mx-auto" *ngIf="matched && curAnchorCompany != null">
+
+    <!--<div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
       <mat-label class="labels text-left my-2">Con Recurso</mat-label>
     </div>
     <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
       <mat-form-field appearance="outline">
         <input matInput  type="text" placeholder="SI"  name="withResource"  id="withResource" [value]="curAnchorCompany.resource ? 'SI': 'NO'" disabled>
+      </mat-form-field>
+    </div>-->
+
+    <div class="row mx-auto" >
+      <mat-label class="labels text-left my-2">Tasa anticipo de proveedor (%)</mat-label>
+    </div>
+    <div class="row mx-auto" >
+      <mat-form-field appearance="outline" >
+        <input matInput  type="number" placeholder="10.22"  name="interest"  id="interest" [value]="curAnchorCompany.interest" disabled>
+      </mat-form-field>
+    </div>
+    <div class="row mx-auto">
+      <mat-label class="labels text-left my-2">Cuenta de Pago Proveedor</mat-label>
+    </div>
+    <div class="row mx-auto">
+      <mat-form-field appearance="outline" >
+        <mat-select name="naturalPaymentAccount" id="naturalPaymentAccount" [(ngModel)]="paymentAccount" [ngModelOptions]="{standalone: true}">
+          <mat-option *ngFor="let account of paymentAccounts;" [value]="account">
+            {{account.type}} {{account.account}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row mx-auto" >
+      <mat-label class="labels text-left my-2">Email proveedor</mat-label>
+    </div>
+    <div class="row mx-auto" >
+      <mat-form-field appearance="outline" >
+        <input matInput  type="email" placeholder="10.22"  name="email"  id="email" [value]="curAnchorCompany.email" disabled>
+      </mat-form-field>
+    </div>
+
+    <div class="row mx-auto" >
+      <mat-label class="labels text-left my-2">Estado</mat-label>
+    </div>
+    <div class="row mx-auto" >
+      <mat-form-field appearance="outline" *ngIf="!curAnchorCompany.anchored">
+        <input matInput  type="text" placeholder="Activo"  name="anchorStatus"  id="anchorStatus" [value]="curAnchorCompany.status" disabled>
+      </mat-form-field>
+      <mat-form-field appearance="outline" *ngIf="curAnchorCompany.anchored">
+        <mat-select [(ngModel)]="status" name="anchorStatusSelect">
+          <mat-option *ngFor="let status of statuses" [value]="status">
+            {{status}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
   </div>

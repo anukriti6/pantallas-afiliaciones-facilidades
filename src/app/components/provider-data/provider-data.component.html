@@ -79,8 +79,9 @@
           <mat-label class="labels text-left my-2">Estado Civil</mat-label>
         </div>
         <div class="row mx-auto">
-          <mat-form-field appearance="outline" >
-            <mat-select name="naturalCivilStatus" id="naturalCivilStatus" [(ngModel)]="civilStatus" [ngModelOptions]="{standalone: true}">
+          <mat-form-field appearance="outline">
+            <mat-select name="naturalCivilStatus" id="naturalCivilStatus" [(ngModel)]="naturalCivilStatus"
+                        [ngModelOptions]="{standalone: true}">
               <mat-option value="Soltero">Soltero</mat-option>
               <mat-option value="Casado">Casado</mat-option>
               <mat-option value="Divorciado">Divorciado</mat-option>
@@ -95,14 +96,16 @@
           <mat-form-field appearance="outline">
             <mat-chip-list #chipList>
               <mat-chip *ngFor="let email of naturalProviderData.emails; let i = index;" [selectable]="true"
-                  [removable]="true" (removed)="emails.splice(i, 1)">
-                    {{email}}
+                        [removable]="true" (removed)="emails.splice(i, 1)">
+                {{email}}
                 <mat-icon matChipRemove>cancel</mat-icon>
               </mat-chip>
-              <input type="email" placeholder="usuario@dominio.com" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-              [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="addEmail($event)" name="naturalEmails"
-              id="naturalEmails" [(ngModel)]="email" (ngModelChange)="emailEntry()" matTooltip="Puedes ingresar hasta 10 correos electrónicos válidos"
-              matTooltipPosition="above">
+              <input type="email" placeholder="usuario@dominio.com" [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="addEmail($event)" name="naturalEmails"
+                     id="naturalEmails" [(ngModel)]="email" (ngModelChange)="emailEntry()"
+                     matTooltip="Puedes ingresar hasta 10 correos electrónicos válidos"
+                     matTooltipPosition="above">
             </mat-chip-list>
           </mat-form-field>
           <div class="row errors text-center mx-auto my-3" *ngIf="errorEmail != null">
@@ -112,57 +115,26 @@
         </div>
       </div>
       <div class="col-12 col-sm-4 mx-auto">
-        <div class="row mx-auto">
-          <mat-label class="labels text-left my-2">Cuenta de Pago</mat-label>
+        <div class="row mx-auto" *ngIf="naturalCivilStatus == 'Casado' || naturalCivilStatus == 'Union Libre'">
+          <mat-label class="labels text-left my-2">Cédula de Identidad Cónyuge</mat-label>
         </div>
-        <div class="row mx-auto">
-          <mat-form-field appearance="outline" >
-            <mat-select name="naturalPaymentAccount" id="naturalPaymentAccount" [(ngModel)]="paymentAccount" [ngModelOptions]="{standalone: true}" (ngModelChange)="changedPaymentAccount()">
-              <mat-option *ngFor="let account of naturalProviderData.paymentAccounts;" [value]="account">
-                {{account.type}} {{account.account}}
-              </mat-option>
-            </mat-select>
+        <div class="row mx-auto" *ngIf="naturalCivilStatus == 'Casado' || naturalCivilStatus == 'Union Libre'">
+          <mat-form-field appearance="outline">
+            <input matInput type="number" placeholder="1709876543" name="naturaIdSpouse" id="naturaIdSpouse"
+                   [(ngModel)]="naturalSpouseId">
           </mat-form-field>
         </div>
         <div class="row mx-auto" *ngIf="naturalCivilStatus == 'Casado' || naturalCivilStatus == 'Union Libre'">
-          <mat-label >Cédula de Identidad Cónyuge</mat-label>
+          <mat-label class="labels text-left my-2">Nombres Completos Cónyuge</mat-label>
         </div>
         <div class="row mx-auto" *ngIf="naturalCivilStatus == 'Casado' || naturalCivilStatus == 'Union Libre'">
-          <mat-form-field appearance="outline" >
-            <input matInput  type="number" placeholder="1709876543"  name="naturaIdSpouse"  id="naturaIdSpouse" [(ngModel)]="naturalSpouseId">
+          <mat-form-field appearance="outline">
+            <input matInput type="text" placeholder="María Luisa Montero Castillo" name="naturaSpouseName"
+                   id="naturaSpouseName" [(ngModel)]="naturalSpouseName">
           </mat-form-field>
         </div>
-        <div class="row mx-auto" *ngIf="naturalCivilStatus == 'Casado' || naturalCivilStatus == 'Union Libre'">
-          <mat-label class="labels text-left my-2" >Nombres Completos Cónyuge</mat-label>
-        </div>
-        <div class="row mx-auto" *ngIf="naturalCivilStatus == 'Casado' || naturalCivilStatus == 'Union Libre'">
-          <mat-form-field appearance="outline" >
-            <input matInput  type="text" placeholder="María Luisa Montero Castillo"  name="naturaSpouseName"  id="naturaSpouseName" [(ngModel)]="naturalSpouseName">
-          </mat-form-field>
-        </div>
-        <div class="row mx-auto" >
-          <mat-label class="labels text-left my-2">Tasa de inter&eacute;s anticipo de factura (%)</mat-label>
-        </div>
-        <div class="row mx-auto" >
-          <mat-form-field appearance="outline" >
-            <input matInput  type="number" placeholder="10.22"  name="interest"  id="interest" [value]="naturalProviderData.interest" disabled>
-          </mat-form-field>
-        </div>
-        <div class="row mx-auto" >
-          <mat-label class="labels text-left my-2">Estado</mat-label>
-        </div>
-        <div class="row mx-auto" >
-          <mat-form-field appearance="outline" *ngIf="!naturalProviderData.idAnchoredCompany">
-            <input matInput  type="text" placeholder="Activo"  name="anchorStatus"  id="anchorStatus" [value]="naturalProviderData.status" disabled>
-          </mat-form-field>
-          <mat-form-field appearance="outline" *ngIf="naturalProviderData.idAnchoredCompany">
-            <mat-select [(ngModel)]="status" name="anchorStatusSelect">
-              <mat-option *ngFor="let status of statuss" [value]="status">
-                {{status}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
+
+
       </div>
     </div>
   </div>
@@ -214,50 +186,56 @@
     <div class="row my-3 mx-auto">
       <div class="col-12 col-sm-4 mr-auto">
         <div class="row mx-auto">
-          <mat-label class="labels text-left my-2" >ID Representante Legal</mat-label>
+          <mat-label class="labels text-left my-2">ID Representante Legal</mat-label>
         </div>
         <div class="row mx-auto">
-          <mat-form-field appearance="outline" >
-            <input matInput  type="tel" placeholder="1712345673"  name="legalRepresentativeID"  id="legalRepresentativeID" [(ngModel)]="idLegalRepresentative">
+          <mat-form-field appearance="outline">
+            <input matInput type="tel" placeholder="1712345673" name="legalRepresentativeID" id="legalRepresentativeID"
+                   [(ngModel)]="idLegalRepresentative">
           </mat-form-field>
         </div>
         <div class="row mx-auto">
-          <mat-label class="labels text-left my-2" >Nombre Representante Legal</mat-label>
+          <mat-label class="labels text-left my-2">Nombre Representante Legal</mat-label>
         </div>
         <div class="row mx-auto">
-          <mat-form-field appearance="outline" >
-            <input matInput  type="tel" placeholder="Ana María Cárdenas Castillo"  name="legalRepresentativeName"  id="legalRepresentativeName" [(ngModel)]="legalRepresentativeName">
+          <mat-form-field appearance="outline">
+            <input matInput type="tel" placeholder="Ana María Cárdenas Castillo" name="legalRepresentativeName"
+                   id="legalRepresentativeName" [(ngModel)]="legalRepresentativeName">
           </mat-form-field>
         </div>
         <div class="row mx-auto">
-          <mat-label class="labels text-left my-2" >Cargo del Representante Legal</mat-label>
+          <mat-label class="labels text-left my-2">Cargo del Representante Legal</mat-label>
         </div>
         <div class="row mx-auto">
-          <mat-form-field appearance="outline" >
-            <input matInput  type="tel" placeholder="Subgerente"  name="legalRepresentativePosition"  id="legalRepresentativePosition" [(ngModel)]="legalRepresentativePosition">
+          <mat-form-field appearance="outline">
+            <input matInput type="tel" placeholder="Subgerente" name="legalRepresentativePosition"
+                   id="legalRepresentativePosition" [(ngModel)]="legalRepresentativePosition">
+          </mat-form-field>
+        </div>
+
+      </div>
+      <div class="col-12 col-sm-4 mx-auto">
+        <div class="row mx-auto">
+          <mat-label class="labels text-left my-2">Tel&eacute;fono Empresa</mat-label>
+        </div>
+        <div class="row mx-auto">
+          <mat-form-field appearance="outline">
+            <input matInput type="tel" placeholder="022354671" name="legalCompanyPhone" id="legalCompanyPhone"
+                   [(ngModel)]="companyPhone">
           </mat-form-field>
         </div>
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Estado Civil</mat-label>
         </div>
         <div class="row mx-auto">
-          <mat-form-field appearance="outline" >
-            <mat-select name="naturalCivilStatus" id="legalCivilStatus" [(ngModel)]="civilStatus" [ngModelOptions]="{standalone: true}">
+          <mat-form-field appearance="outline">
+            <mat-select name="naturalCivilStatus" id="legalCivilStatus" [(ngModel)]="civilStatus"
+                        [ngModelOptions]="{standalone: true}">
               <mat-option value="Soltero">Soltero</mat-option>
               <mat-option value="Casado">Casado</mat-option>
               <mat-option value="Divorciado">Divorciado</mat-option>
               <mat-option value="Union Libre">Unión Libre</mat-option>
             </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="col-12 col-sm-4 mx-auto">
-        <div class="row mx-auto">
-          <mat-label class="labels text-left my-2" >Tel&eacute;fono Empresa</mat-label>
-        </div>
-        <div class="row mx-auto">
-          <mat-form-field appearance="outline" >
-            <input matInput  type="tel" placeholder="022354671"  name="legalCompanyPhone"  id="legalCompanyPhone" [(ngModel)]="companyPhone">
           </mat-form-field>
         </div>
         <div class="row mx-auto">
@@ -267,14 +245,16 @@
           <mat-form-field appearance="outline">
             <mat-chip-list #chipList>
               <mat-chip *ngFor="let email of legalProviderData.emails; let i = index;" [selectable]="true"
-                  [removable]="true" (removed)="emails.splice(i, 1)">
-                    {{email}}
+                        [removable]="true" (removed)="emails.splice(i, 1)">
+                {{email}}
                 <mat-icon matChipRemove>cancel</mat-icon>
               </mat-chip>
-              <input type="email" placeholder="usuario@dominio.com" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-              [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="addEmail($event)" name="legalEmails"
-              id="legalEmails" [(ngModel)]="email" (ngModelChange)="emailEntry()" matTooltip="Puedes ingresar hasta 10 correos electrónicos válidos"
-              matTooltipPosition="above">
+              <input type="email" placeholder="usuario@dominio.com" [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="addEmail($event)" name="legalEmails"
+                     id="legalEmails" [(ngModel)]="email" (ngModelChange)="emailEntry()"
+                     matTooltip="Puedes ingresar hasta 10 correos electrónicos válidos"
+                     matTooltipPosition="above">
             </mat-chip-list>
           </mat-form-field>
           <div class="row errors text-center mx-auto my-3" *ngIf="errorEmail != null">
@@ -282,50 +262,20 @@
           </div>
           <div class="row errors text-center mx-auto my-3" *ngIf="errorEmails != null">{{errorEmails}}</div>
         </div>
-        <div class="row mx-auto">
-          <mat-label class="labels text-left my-2">Cuenta de Pago</mat-label>
-        </div>
-        <div class="row mx-auto">
-          <mat-form-field appearance="outline" >
-            <mat-select name="naturalPaymentAccount" id="naturalPaymentAccount" [(ngModel)]="paymentAccount" [ngModelOptions]="{standalone: true}" (ngModelChange)="changedPaymentAccount()">
-              <mat-option *ngFor="let account of legalProviderData.paymentAccounts;" [value]="account">
-                {{account.type}} {{account.account}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="row mx-auto" >
-          <mat-label class="labels text-left my-2">Tasa de inter&eacute;s anticipo de factura (%)</mat-label>
-        </div>
-        <div class="row mx-auto" >
-          <mat-form-field appearance="outline" >
-            <input matInput  type="number" placeholder="10.22"  name="interest"  id="interest" [value]="legalProviderData.interest" disabled>
-          </mat-form-field>
-        </div>
-        <div class="row mx-auto" >
-          <mat-label class="labels text-left my-2">Estado</mat-label>
-        </div>
-        <div class="row mx-auto" >
-          <mat-form-field appearance="outline" *ngIf="!legalProviderData.idAnchoredCompany">
-            <input matInput  type="text" placeholder="Activo"  name="anchorStatus"  id="anchorStatus" [value]="legalProviderData.status" disabled>
-          </mat-form-field>
-          <mat-form-field appearance="outline" *ngIf="legalProviderData.idAnchoredCompany">
-            <mat-select [(ngModel)]="status" name="anchorStatusSelect">
-              <mat-option *ngFor="let status of statuss" [value]="status">
-                {{status}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
+
+
       </div>
     </div>
   </div>
   <hr class="col-11 mx-auto my-2 mx-2">
   <div class="row" *ngIf="legalProviderData == null && naturalProviderData != null">
-    <app-relate-anchor-company [anchorCompanies]="anchorCompanies" [anchorId]="naturalProviderData.idAnchoredCompany"></app-relate-anchor-company>
+    <app-relate-anchor-company [anchorCompanies]="anchorCompanies" [paymentAccounts]="naturalProviderData.paymentAccounts"
+                               [anchorId]="naturalProviderData.idAnchoredCompany"></app-relate-anchor-company>
   </div>
   <div class="row" *ngIf="legalProviderData != null && naturalProviderData == null">
-    <app-relate-anchor-company [anchorCompanies]="anchorCompanies" [anchorId]="legalProviderData.idAnchoredCompany" (idAnchorSend)="anchorId($event)"></app-relate-anchor-company>
+    <app-relate-anchor-company [anchorCompanies]="anchorCompanies" [anchorId]="legalProviderData.idAnchoredCompany"
+                               (idAnchorSend)="anchorId($event)"
+                               [paymentAccounts]="legalProviderData.paymentAccounts"></app-relate-anchor-company>
   </div>
 </div>
 

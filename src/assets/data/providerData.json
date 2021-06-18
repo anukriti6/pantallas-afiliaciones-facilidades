@@ -56,7 +56,8 @@
     "interest": 10.22,
     "resource": false,
     "status": "Activo",
-    "anchored": false
+    "anchored": false,
+    "email": "abc@empresax.com"
   }, {
     "id": 2,
     "idNumber": 1700000000,
@@ -65,7 +66,8 @@
     "interest": 9.07,
     "resource": true,
     "status": "Activo",
-    "anchored": false
+    "anchored": false,
+    "email": "abc@empresay.com"
   }, {
     "id": 3,
     "idNumber": 1709876543212,
@@ -74,6 +76,7 @@
     "interest": 8.75,
     "resource": false,
     "status": "Activo",
-    "anchored": false
+    "anchored": false,
+    "email": "abc@empresaz.com"
   }]
 }]
