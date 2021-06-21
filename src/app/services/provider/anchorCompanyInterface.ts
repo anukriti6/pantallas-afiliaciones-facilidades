@@ -1,3 +1,5 @@
+import {IAccount} from './accountInterface';
+
 export interface IAnchorCompany {
   id: number;
   idNumber: number;
@@ -8,4 +10,5 @@ export interface IAnchorCompany {
   status: string;
   anchored: boolean;
   email: string;
+  currentPaymentAccount: IAccount;
 }

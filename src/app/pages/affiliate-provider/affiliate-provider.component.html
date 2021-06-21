@@ -1,12 +1,8 @@
 <div class="container my-5">
-  <div *ngIf="curNaturalProviderData == null && curLegalProviderData == null">
-    <app-search-id (idSend) ="searchId($event)" [searchError]="searchError" [clean]="doClean"></app-search-id>
-  </div>
-  <div *ngIf="curNaturalProviderData != null && curLegalProviderData == null">
-    <app-provider-data [naturalProviderData]="curNaturalProviderData" [legalProviderData]="null" [anchorCompanies]="anchorCompanies" (Clean)="clean($event)"></app-provider-data>
-  </div>
-  <div *ngIf="curNaturalProviderData == null && curLegalProviderData != null">
-    <app-provider-data [naturalProviderData]="null" [legalProviderData]="curLegalProviderData"  [anchorCompanies]="anchorCompanies" (Clean)="clean($event)"></app-provider-data>
-  </div>
+  <app-search-id *ngIf="curNaturalProviderData == null && curLegalProviderData == null" (idSend)="searchId($event)"
+                 [searchError]="searchError" [clean]="doClean"></app-search-id>
+  <app-provider-data *ngIf="curNaturalProviderData !== null || curLegalProviderData !== null"
+                     [naturalProviderData]="curNaturalProviderData" [legalProviderData]="curLegalProviderData"
+                     [anchorCompanies]="anchorCompanies" (Clean)="clean($event)"></app-provider-data>
 </div>
 

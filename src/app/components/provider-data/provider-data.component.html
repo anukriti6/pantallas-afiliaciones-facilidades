@@ -10,21 +10,27 @@
       <h3 class="title">Datos Cliente Proveedor</h3>
     </div>
   </div>
-  <div class="row mt-3" *ngIf="naturalProviderData != null && legalProviderData == null">
+  <!--provider is natural-->
+  <div class="row mt-3" *ngIf="naturalProviderData !== null && legalProviderData === null">
+    <!--info section-->
     <div class="row mx-auto">
+
       <div class="col-12 col-sm-4 mx-auto">
+        <!--identification type-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Tipo Identificaci&oacute;n</mat-label>
         </div>
         <div class="row mx-auto">
           <mat-label class="content text-left my-2">C&eacute;dula de identidad</mat-label>
         </div>
+        <!--identification number-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">N&uacute;mero Identificaci&oacute;n</mat-label>
         </div>
         <div class="row mx-auto">
           <mat-label class="content text-left my-2">{{naturalProviderData.idNumber}}</mat-label>
         </div>
+        <!--client type-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Tipo de Cliente</mat-label>
         </div>
@@ -32,19 +38,23 @@
           <mat-label class="content text-left my-2">Persona Natural</mat-label>
         </div>
       </div>
+
       <div class="col-12 col-sm-4 mx-auto">
+        <!--full name-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Nombres Completos</mat-label>
         </div>
         <div class="row mx-auto">
           <mat-label class="content text-left my-2">{{naturalProviderData.name}}</mat-label>
         </div>
+        <!--nationality-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Nacionalidad</mat-label>
         </div>
         <div class="row mx-auto">
           <mat-label class="content text-left my-2">{{naturalProviderData.nationality}}</mat-label>
         </div>
+        <!--activity-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Actividad</mat-label>
         </div>
@@ -52,19 +62,23 @@
           <mat-label class="content text-left my-2">{{naturalProviderData.activity}}</mat-label>
         </div>
       </div>
+
       <div class="col-12 col-sm-4 mx-auto">
+        <!--address-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Direcci&oacute;n</mat-label>
         </div>
         <div class="row mx-auto">
           <mat-label class="content text-left my-2">{{naturalProviderData.address}}</mat-label>
         </div>
+        <!--phone-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Tel&eacute;fono</mat-label>
         </div>
         <div class="row mx-auto">
           <mat-label class="content text-left my-2">{{naturalProviderData.phone}}</mat-label>
         </div>
+        <!--cell phone-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">N&uacute;mero Celular</mat-label>
         </div>
@@ -72,9 +86,13 @@
           <mat-label class="content text-left my-2">{{naturalProviderData.mobilePhone}}</mat-label>
         </div>
       </div>
+
     </div>
+    <!--fields section-->
     <div class="row my-3 mx-auto">
+
       <div class="col-12 col-sm-4 mr-auto">
+        <!--civil state-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Estado Civil</mat-label>
         </div>
@@ -89,7 +107,8 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="row mx-auto">
+        <!--email-->
+       <!-- <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Email</mat-label>
         </div>
         <div class="row mx-auto">
@@ -112,9 +131,11 @@
             {{errorEmail}}
           </div>
           <div class="row errors text-center mx-auto my-3" *ngIf="errorEmails != null">{{errorEmails}}</div>
-        </div>
+        </div>-->
       </div>
+
       <div class="col-12 col-sm-4 mx-auto">
+        <!--Cédula de Identidad Cónyuge-->
         <div class="row mx-auto" *ngIf="naturalCivilStatus == 'Casado' || naturalCivilStatus == 'Union Libre'">
           <mat-label class="labels text-left my-2">Cédula de Identidad Cónyuge</mat-label>
         </div>
@@ -124,6 +145,7 @@
                    [(ngModel)]="naturalSpouseId">
           </mat-form-field>
         </div>
+        <!--Nombres Completos Cónyuge-->
         <div class="row mx-auto" *ngIf="naturalCivilStatus == 'Casado' || naturalCivilStatus == 'Union Libre'">
           <mat-label class="labels text-left my-2">Nombres Completos Cónyuge</mat-label>
         </div>
@@ -134,19 +156,26 @@
           </mat-form-field>
         </div>
 
-
       </div>
+
     </div>
+
   </div>
-  <div class="row" *ngIf="legalProviderData != null && naturalProviderData == null">
+
+  <!--provider is juridical-->
+  <div class="row mt-3" *ngIf="legalProviderData != null && naturalProviderData == null">
+    <!--info section-->
     <div class="row mx-auto">
+
       <div class="col-12 col-sm-4 mx-auto">
+        <!--identification type-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Tipo Identificaci&oacute;n</mat-label>
         </div>
         <div class="row mx-auto">
           <mat-label class="content text-left my-2">RUC</mat-label>
         </div>
+        <!--identification number-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">N&uacute;mero Identificaci&oacute;n</mat-label>
         </div>
@@ -154,13 +183,16 @@
           <mat-label class="content text-left my-2">{{legalProviderData.idNumber}}</mat-label>
         </div>
       </div>
+
       <div class="col-12 col-sm-4 mx-auto">
+        <!--client type-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Tipo de Cliente</mat-label>
         </div>
         <div class="row mx-auto">
           <mat-label class="content text-left my-2">Persona Jurídica</mat-label>
         </div>
+        <!--company name-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Nombre Empresa</mat-label>
         </div>
@@ -168,23 +200,37 @@
           <mat-label class="content text-left my-2">{{legalProviderData.name}}</mat-label>
         </div>
       </div>
+
       <div class="col-12 col-sm-4 mx-auto">
+        <!--activity-->
         <div class="row mx-auto">
-          <mat-label class="labels text-left my-2">Actividad</mat-label>
+          <mat-label class="labels text-left my-2">Actividad de la empresa</mat-label>
         </div>
         <div class="row mx-auto">
           <mat-label class="content text-left my-2">{{legalProviderData.activity}}</mat-label>
         </div>
+        <!--address-->
         <div class="row mx-auto">
-          <mat-label class="labels text-left my-2">Direcci&oacute;n</mat-label>
+          <mat-label class="labels text-left my-2">Direcci&oacute;n de la empresa</mat-label>
         </div>
         <div class="row mx-auto">
           <mat-label class="content text-left my-2">{{legalProviderData.address}}</mat-label>
         </div>
+        <!--company phone-->
+        <div class="row mx-auto">
+          <mat-label class="labels text-left my-2">Tel&eacute;fono de la empresa</mat-label>
+        </div>
+        <div class="row mx-auto">
+          <mat-label class="content text-left my-2">{{companyPhone}}</mat-label>
+        </div>
       </div>
+
     </div>
+    <!--fields section-->
     <div class="row my-3 mx-auto">
+
       <div class="col-12 col-sm-4 mr-auto">
+        <!--ID Representante Legal-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">ID Representante Legal</mat-label>
         </div>
@@ -194,15 +240,8 @@
                    [(ngModel)]="idLegalRepresentative">
           </mat-form-field>
         </div>
-        <div class="row mx-auto">
-          <mat-label class="labels text-left my-2">Nombre Representante Legal</mat-label>
-        </div>
-        <div class="row mx-auto">
-          <mat-form-field appearance="outline">
-            <input matInput type="tel" placeholder="Ana María Cárdenas Castillo" name="legalRepresentativeName"
-                   id="legalRepresentativeName" [(ngModel)]="legalRepresentativeName">
-          </mat-form-field>
-        </div>
+
+        <!--Cargo del Representante Legal-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Cargo del Representante Legal</mat-label>
         </div>
@@ -212,18 +251,20 @@
                    id="legalRepresentativePosition" [(ngModel)]="legalRepresentativePosition">
           </mat-form-field>
         </div>
-
       </div>
+
       <div class="col-12 col-sm-4 mx-auto">
+        <!--Nombre Representante Legal-->
         <div class="row mx-auto">
-          <mat-label class="labels text-left my-2">Tel&eacute;fono Empresa</mat-label>
+          <mat-label class="labels text-left my-2">Nombre Representante Legal</mat-label>
         </div>
         <div class="row mx-auto">
           <mat-form-field appearance="outline">
-            <input matInput type="tel" placeholder="022354671" name="legalCompanyPhone" id="legalCompanyPhone"
-                   [(ngModel)]="companyPhone">
+            <input matInput type="tel" placeholder="Ana María Cárdenas Castillo" name="legalRepresentativeName"
+                   id="legalRepresentativeName" [(ngModel)]="legalRepresentativeName">
           </mat-form-field>
         </div>
+        <!--civil status-->
         <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Estado Civil</mat-label>
         </div>
@@ -238,7 +279,8 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="row mx-auto">
+        <!--email-->
+       <!-- <div class="row mx-auto">
           <mat-label class="labels text-left my-2">Email</mat-label>
         </div>
         <div class="row mx-auto">
@@ -261,21 +303,28 @@
             {{errorEmail}}
           </div>
           <div class="row errors text-center mx-auto my-3" *ngIf="errorEmails != null">{{errorEmails}}</div>
-        </div>
-
-
+        </div>-->
       </div>
     </div>
   </div>
+  <!--buttons-->
+  <div class="row justify-content-left justify-content-sm-end  mx-auto">
+    <div class="col-0 col-sm-6"></div>
+    <div class=" col-12  my-3 col-sm-3 mr-sm-1">
+      <button class="btn  primaryBtn" id="saveAnchor" >Guardar</button>
+    </div>
+    <div class=" col-12 my-3 col-sm-3 ml-sm-1">
+      <button class="btn  secondaryBtn" id="cancelAnchor" (click)="clean()">Cancelar</button>
+    </div>
+  </div>
+  <!--spacer-->
   <hr class="col-11 mx-auto my-2 mx-2">
-  <div class="row" *ngIf="legalProviderData == null && naturalProviderData != null">
-    <app-relate-anchor-company [anchorCompanies]="anchorCompanies" [paymentAccounts]="naturalProviderData.paymentAccounts"
-                               [anchorId]="naturalProviderData.idAnchoredCompany"></app-relate-anchor-company>
-  </div>
-  <div class="row" *ngIf="legalProviderData != null && naturalProviderData == null">
-    <app-relate-anchor-company [anchorCompanies]="anchorCompanies" [anchorId]="legalProviderData.idAnchoredCompany"
-                               (idAnchorSend)="anchorId($event)"
-                               [paymentAccounts]="legalProviderData.paymentAccounts"></app-relate-anchor-company>
-  </div>
+  <!--relate anchor company section-->
+
+  <app-relate-anchor-company [anchorCompanies]="anchorCompanies"
+                             [anchorId]="legalProviderData?legalProviderData.idAnchoredCompany : null"
+                             (idAnchorSend)="anchorId($event)"
+                             [paymentAccounts]="legalProviderData?legalProviderData.paymentAccounts : []"></app-relate-anchor-company>
+
 </div>
 

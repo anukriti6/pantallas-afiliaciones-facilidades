@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IAnchorCompany} from 'src/app/services/provider/anchorCompanyInterface';
-import {IAccount} from "../../services/provider/accountInterface";
+import {IAccount} from '../../services/provider/accountInterface';
 
 @Component({
   selector: 'app-relate-anchor-company',
@@ -13,15 +13,18 @@ export class RelateAnchorCompanyComponent implements OnInit {
   @Input() paymentAccounts: IAccount[] | null = [];
   @Output() idAnchorSend = new EventEmitter<number>();
   curAnchorCompany: IAnchorCompany | null = null;
+  selectedAnchorCompany: IAnchorCompany | null = null;
   searchType: string | null = null;
   idSearch: number | null = null;
   companySearch: string | null = null;
   filteredCompanyNames: string[] = [];
   companyNames: string[] = [];
   interest: number | null = null;
-  matched: boolean = false;
+  matched = false;
+  edit = false;
   status: string | null = null;
   statuses: string[] = ['Activo', 'Inactivo', 'Bloqueado'];
+  displayedColumns: string[] = ['id', 'name', 'regional-name', 'rate', 'payment-account', 'email', 'status', 'actions'];
   paymentAccount: IAccount | null = null;
 
   constructor() {

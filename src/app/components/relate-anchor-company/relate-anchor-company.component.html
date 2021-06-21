@@ -1,119 +1,327 @@
-<div class="row mt-5">
+<!--<div class="row my-3">
   <div class="col-12 col-sm-6 text-center text-sm-left">
     <h3 class="title">Relacionar a empresa ancla</h3>
   </div>
+</div>-->
+<div class="row my-3">
+  <mat-tab-group dynamicHeight *ngIf="!edit">
+    <mat-tab label="Ver empresas">
+      <ng-template matTabContent>
+        <ng-container>
+          <table mat-table [dataSource]="anchorCompanies" class="my-4" style="width: 100%">
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef class="text-center">
+                ID
+              </th>
+              <td mat-cell *matCellDef="let element"><b>{{element.id}}</b></td>
+            </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef class="text-center">
+                Nombre
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <!-- regional-name Column -->
+            <ng-container matColumnDef="regional-name">
+              <th mat-header-cell *matHeaderCellDef class="text-center">
+                Nombre Regional
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.regionalName}} </td>
+            </ng-container>
+            <!-- rate Column -->
+            <ng-container matColumnDef="rate">
+              <th mat-header-cell *matHeaderCellDef class="text-center">
+                Tasa Anticipo<br> Proveedor (%)
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.interest}} </td>
+            </ng-container>
+            <!-- payment-account Column -->
+            <ng-container matColumnDef="payment-account">
+              <th mat-header-cell *matHeaderCellDef class="text-center">
+                Cuenta de pago<br> proveedor
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.currentPaymentAccount.account}} </td>
+            </ng-container>
+            <!-- email Column -->
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef class="text-center">
+                Email Proveedor
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+            <!-- status Column -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef class="text-center">
+                Estados
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+            <!-- actions Column -->
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef class="text-center"></th>
+              <td mat-cell *matCellDef="let element">
+                <div class="btn mx-auto" (click)="selectedAnchorCompany = element; edit = true;">
+                  <mat-icon>edit</mat-icon>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </ng-container>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Relacionar nueva empresa">
+      <ng-template matTabContent>
+        <ng-container>
+          <div class="my-4">
+            <!--search section-->
+            <div class="row mx-auto">
+              <div class="col-12 col-sm-4 mx-auto">
+                <!--search type-->
+                <div class="row mx-auto">
+                  <mat-radio-group aria-label="Select an option" [(ngModel)]="searchType">
+                    <mat-radio-button class="col-6 mr-auto" value='id'>Buscar por ID</mat-radio-button>
+                    <mat-radio-button class="col-6 ml-auto" value='company'>Buscar por nombre</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                <!--search-->
+                <div class="row mx-auto my-3 mb-0">
+                  <!--id search-->
+                  <mat-form-field appearance="outline" class="pb-1" *ngIf="searchType == 'id'">
+                    <input matInput type="text" placeholder="1798764536213" name="idSearch" id="idSearch"
+                           [(ngModel)]="idSearch">
+                  </mat-form-field>
+                  <!--company search-->
+                  <mat-form-field appearance="outline" class="pb-1" *ngIf="searchType == 'company'">
+                    <input type="text"
+                           placeholder="Nombre Empresa"
+                           matInput
+                           [matAutocomplete]="auto"
+                           [(ngModel)]="companySearch"
+                           (ngModelChange)="changedCompanySearch()">
+                    <mat-autocomplete #auto="matAutocomplete">
+                      <mat-option *ngFor="let name of filteredCompanyNames" [value]="name">
+                        {{name}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </div>
+                <!--search button-->
+                <div class="row mx-auto">
+                  <button class="primaryBtn col-6 my-2 mx-auto text-center" mat-button (click)="search()"
+                          [disabled]="(searchType == 'company' && (companySearch == null || companySearch == '')) || (searchType == 'id' && (idSearch == null || idSearch.toString() == ''))">
+                    Buscar
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!--first row results-->
+            <div class="row mx-auto my-4" *ngIf="matched && curAnchorCompany != null">
+              <div class="col-12 col-sm-4 mx-auto">
+                <!--company name-->
+                <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+                  <mat-label class="labels text-left my-2">Nombre Empresa</mat-label>
+                </div>
+                <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+                  <mat-label class="content text-left my-2">{{curAnchorCompany.name}}</mat-label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 mx-auto">
+                <!--identification-->
+                <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+                  <mat-label class="labels text-left my-2">Identificaci&oacute;n</mat-label>
+                </div>
+                <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+                  <mat-label class="content text-left my-2">{{curAnchorCompany.idNumber}}</mat-label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 mx-auto">
+                <!--regional name-->
+                <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+                  <mat-label class="labels text-left my-2">Nombre Regional</mat-label>
+                </div>
+                <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+                  <mat-label class="content text-left my-2">{{curAnchorCompany.regionalName}}</mat-label>
+                </div>
+              </div>
+            </div>
+            <!--second row fields-->
+            <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+              <div class="col-12 col-sm-4 mr-auto">
+                <!--con recurso-->
+                <!--<div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+                  <mat-label class="labels text-left my-2">Con Recurso</mat-label>
+                </div>
+                <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+                  <mat-form-field appearance="outline">
+                    <input matInput  type="text" placeholder="SI"  name="withResource"  id="withResource" [value]="curAnchorCompany.resource ? 'SI': 'NO'" disabled>
+                  </mat-form-field>
+                </div>-->
+                <!--Tasa anticipo de proveedor (%)-->
+                <div class="row mx-auto">
+                  <mat-label class="labels text-left my-2">Tasa anticipo de proveedor (%)</mat-label>
+                </div>
+                <div class="row mx-auto">
+                  <mat-form-field appearance="outline">
+                    <input matInput type="number" placeholder="10.22" name="interest" id="interest"
+                           [value]="curAnchorCompany.interest" disabled>
+                  </mat-form-field>
+                </div>
+                <!--Cuenta de Pago Proveedor-->
+                <div class="row mx-auto">
+                  <mat-label class="labels text-left my-2">Cuenta de Pago Proveedor</mat-label>
+                </div>
+                <div class="row mx-auto">
+                  <mat-form-field appearance="outline">
+                    <mat-select name="naturalPaymentAccount" id="naturalPaymentAccount" [(ngModel)]="curAnchorCompany.currentPaymentAccount"
+                                [ngModelOptions]="{standalone: true}">
+                      <mat-option *ngFor="let account of paymentAccounts;" [value]="account">
+                        {{account.type}} {{account.account}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 mx-auto">
+                <!--Email proveedor-->
+                <div class="row mx-auto">
+                  <mat-label class="labels text-left my-2">Email proveedor</mat-label>
+                </div>
+                <div class="row mx-auto">
+                  <mat-form-field appearance="outline">
+                    <input matInput type="email" placeholder="10.22" name="email" id="email"
+                           [value]="curAnchorCompany.email"
+                           disabled>
+                  </mat-form-field>
+                </div>
+                <!--Status-->
+                <div class="row mx-auto">
+                  <mat-label class="labels text-left my-2">Estado</mat-label>
+                </div>
+                <div class="row mx-auto">
+                  <mat-form-field appearance="outline" *ngIf="!curAnchorCompany.anchored">
+                    <input matInput type="text" placeholder="Activo" name="anchorStatus" id="anchorStatus"
+                           [value]="curAnchorCompany.status" disabled>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" *ngIf="curAnchorCompany.anchored">
+                    <mat-select [(ngModel)]="curAnchorCompany.status" name="anchorStatusSelect">
+                      <mat-option *ngFor="let status of statuses" [value]="status">
+                        {{status}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <!--buttons-->
+            <div class="row justify-content-left justify-content-sm-end  mx-auto"
+                 *ngIf="matched && curAnchorCompany != null">
+              <div class="col-0 col-sm-6"></div>
+              <div class=" col-12  my-3 col-sm-3 mr-sm-1">
+                <button class="btn  primaryBtn" id="saveAnchor" (click)="saveAnchor()">Relacionar</button>
+              </div>
+              <div class=" col-12 my-3 col-sm-3 ml-sm-1">
+                <button class="btn  secondaryBtn" id="cancelAnchor" (click)="cancel()">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+  <ng-container *ngIf="edit">
+    <div class="my-4" *ngIf="selectedAnchorCompany != null">
+      <div class="row">
+        <div class="btn col-2 text-left" (click)="edit = false; selectedAnchorCompany = null;">
+          <mat-icon class="arrowIcon">arrow_back</mat-icon>
+        </div>
+        <div class="col-9"></div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-12 col-sm-6 text-center text-sm-left">
+          <h3 class="title">Editar empresa relacionada</h3>
+        </div>
+      </div>
+      <!--second row fields-->
+      <div class="row mx-auto" >
+        <div class="col-12 col-sm-4 mr-auto">
+          <!--con recurso-->
+          <!--<div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+            <mat-label class="labels text-left my-2">Con Recurso</mat-label>
+          </div>
+          <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
+            <mat-form-field appearance="outline">
+              <input matInput  type="text" placeholder="SI"  name="withResource"  id="withResource" [value]="curAnchorCompany.resource ? 'SI': 'NO'" disabled>
+            </mat-form-field>
+          </div>-->
+          <!--Tasa anticipo de proveedor (%)-->
+          <div class="row mx-auto">
+            <mat-label class="labels text-left my-2">Tasa anticipo de proveedor (%)</mat-label>
+          </div>
+          <div class="row mx-auto">
+            <mat-form-field appearance="outline">
+              <input matInput type="number" placeholder="10.22" name="interest" id="editInterest"
+                     [value]="selectedAnchorCompany.interest">
+            </mat-form-field>
+          </div>
+          <!--Cuenta de Pago Proveedor-->
+          <div class="row mx-auto">
+            <mat-label class="labels text-left my-2">Cuenta de Pago Proveedor</mat-label>
+          </div>
+          <div class="row mx-auto">
+            <mat-form-field appearance="outline">
+              <mat-select name="naturalPaymentAccount" id="editNaturalPaymentAccount" [(ngModel)]="selectedAnchorCompany.currentPaymentAccount"
+                          [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let account of paymentAccounts;" [value]="account">
+                  {{account.type}} {{account.account}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-12 col-sm-4 mx-auto">
+          <!--Email proveedor-->
+          <div class="row mx-auto">
+            <mat-label class="labels text-left my-2">Email proveedor</mat-label>
+          </div>
+          <div class="row mx-auto">
+            <mat-form-field appearance="outline">
+              <input matInput type="email" placeholder="10.22" name="email" id="editEmail"
+                     [value]="selectedAnchorCompany.email">
+            </mat-form-field>
+          </div>
+          <!--Status-->
+          <div class="row mx-auto">
+            <mat-label class="labels text-left my-2">Estado</mat-label>
+          </div>
+          <div class="row mx-auto">
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="selectedAnchorCompany.status" name="anchorStatusSelect">
+                <mat-option *ngFor="let status of statuses" [value]="status">
+                  {{status}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <!--buttons-->
+      <div class="row justify-content-left justify-content-sm-end  mx-auto" >
+        <div class="col-0 col-sm-6"></div>
+        <div class=" col-12  my-3 col-sm-3 mr-sm-1">
+          <button class="btn  primaryBtn" id="saveEditAnchor" (click)="edit = false; selectedAnchorCompany = null;">Actualizar</button>
+        </div>
+        <div class=" col-12 my-3 col-sm-3 ml-sm-1">
+          <button class="btn  secondaryBtn" id="cancelEditAnchor" (click)="edit = false; selectedAnchorCompany = null;">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 </div>
-<div class="row mx-auto">
-  <div class="col-12 col-sm-4 mx-auto">
-    <div class="row mx-auto">
-      <mat-radio-group aria-label="Select an option" [(ngModel)]="searchType">
-        <mat-radio-button class="col-6 mr-auto" value='id'>B&uacute;squeda por ID</mat-radio-button>
-        <mat-radio-button class="col-6 ml-auto" value='company'>B&uacute;squeda por nombre de Empresa</mat-radio-button>
-      </mat-radio-group>
-    </div>
-    <div class="row mx-auto my-3" >
-      <mat-form-field appearance="outline" *ngIf="searchType == 'id'">
-        <input matInput  type="text" placeholder="1798764536213"  name="idSearch"  id="idSearch" [(ngModel)]="idSearch">
-      </mat-form-field>
-      <mat-form-field appearance="outline" *ngIf="searchType == 'company'">
-        <input type="text"
-               placeholder="Nombre Empresa"
-               matInput
-               [matAutocomplete]="auto"
-               [(ngModel)]="companySearch"
-               (ngModelChange)="changedCompanySearch()">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let name of filteredCompanyNames" [value]="name">
-            {{name}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </div>
-    <div class="row mx-auto">
-      <button class="primaryBtn col-6 my-3 mx-auto text-center" mat-button (click)="search()" [disabled]="(searchType == 'company' && (companySearch == null || companySearch == '')) || (searchType == 'id' && (idSearch == null || idSearch.toString() == ''))">Buscar</button>
-    </div>
-    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
-      <mat-label class="labels text-left my-2">Nombre Empresa</mat-label>
-    </div>
-    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
-      <mat-label class="content text-left my-2">{{curAnchorCompany.name}}</mat-label>
-    </div>
-    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
-      <mat-label class="labels text-left my-2">Identificaci&oacute;n</mat-label>
-    </div>
-    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
-      <mat-label class="content text-left my-2">{{curAnchorCompany.idNumber}}</mat-label>
-    </div>
-    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
-      <mat-label class="labels text-left my-2">Nombre Regional</mat-label>
-    </div>
-    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
-      <mat-label class="content text-left my-2">{{curAnchorCompany.regionalName}}</mat-label>
-    </div>
-  </div>
-  <div class="col-12 col-sm-4 mx-auto" *ngIf="matched && curAnchorCompany != null">
 
-    <!--<div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
-      <mat-label class="labels text-left my-2">Con Recurso</mat-label>
-    </div>
-    <div class="row mx-auto" *ngIf="matched && curAnchorCompany != null">
-      <mat-form-field appearance="outline">
-        <input matInput  type="text" placeholder="SI"  name="withResource"  id="withResource" [value]="curAnchorCompany.resource ? 'SI': 'NO'" disabled>
-      </mat-form-field>
-    </div>-->
 
-    <div class="row mx-auto" >
-      <mat-label class="labels text-left my-2">Tasa anticipo de proveedor (%)</mat-label>
-    </div>
-    <div class="row mx-auto" >
-      <mat-form-field appearance="outline" >
-        <input matInput  type="number" placeholder="10.22"  name="interest"  id="interest" [value]="curAnchorCompany.interest" disabled>
-      </mat-form-field>
-    </div>
-    <div class="row mx-auto">
-      <mat-label class="labels text-left my-2">Cuenta de Pago Proveedor</mat-label>
-    </div>
-    <div class="row mx-auto">
-      <mat-form-field appearance="outline" >
-        <mat-select name="naturalPaymentAccount" id="naturalPaymentAccount" [(ngModel)]="paymentAccount" [ngModelOptions]="{standalone: true}">
-          <mat-option *ngFor="let account of paymentAccounts;" [value]="account">
-            {{account.type}} {{account.account}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="row mx-auto" >
-      <mat-label class="labels text-left my-2">Email proveedor</mat-label>
-    </div>
-    <div class="row mx-auto" >
-      <mat-form-field appearance="outline" >
-        <input matInput  type="email" placeholder="10.22"  name="email"  id="email" [value]="curAnchorCompany.email" disabled>
-      </mat-form-field>
-    </div>
 
-    <div class="row mx-auto" >
-      <mat-label class="labels text-left my-2">Estado</mat-label>
-    </div>
-    <div class="row mx-auto" >
-      <mat-form-field appearance="outline" *ngIf="!curAnchorCompany.anchored">
-        <input matInput  type="text" placeholder="Activo"  name="anchorStatus"  id="anchorStatus" [value]="curAnchorCompany.status" disabled>
-      </mat-form-field>
-      <mat-form-field appearance="outline" *ngIf="curAnchorCompany.anchored">
-        <mat-select [(ngModel)]="status" name="anchorStatusSelect">
-          <mat-option *ngFor="let status of statuses" [value]="status">
-            {{status}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row justify-content-left justify-content-sm-end  mx-auto" *ngIf="matched && curAnchorCompany != null">
-    <div class="col-0 col-sm-6"></div>
-    <div class=" col-12  my-3 col-sm-3 mr-sm-1">
-      <button class="btn  primaryBtn" id="saveAnchor" (click)="saveAnchor()">Guardar</button>
-    </div>
-    <div class=" col-12 my-3 col-sm-3 ml-sm-1">
-      <button class="btn  secondaryBtn" id="cancelAnchor" (click)="cancel()">Cancelar</button>
-    </div>
-  </div>
-</div>
