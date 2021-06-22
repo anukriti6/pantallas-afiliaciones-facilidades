@@ -8,7 +8,48 @@
     <mat-tab label="Ver empresas">
       <ng-template matTabContent>
         <ng-container>
-          <table mat-table [dataSource]="anchorCompanies" class="my-4" style="width: 100%">
+          <!--search section-->
+          <div class="row mx-auto my-4">
+            <div class="col-12 col-sm-4 mx-auto">
+              <!--search type-->
+              <div class="row mx-auto">
+                <mat-radio-group aria-label="Select an option" [(ngModel)]="searchType">
+                  <mat-radio-button class="col-6 mr-auto" value='id'>Buscar por ID</mat-radio-button>
+                  <mat-radio-button class="col-6 ml-auto" value='company'>Buscar por nombre</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <!--search-->
+              <div class="row mx-auto my-3 mb-0">
+                <!--id search-->
+                <mat-form-field appearance="outline" class="pb-1" *ngIf="searchType == 'id'">
+                  <input matInput type="text" placeholder="1798764536213" name="idSearch" id="idSearch1"
+                         [(ngModel)]="idSearch">
+                </mat-form-field>
+                <!--company search-->
+                <mat-form-field appearance="outline" class="pb-1" *ngIf="searchType == 'company'">
+                  <input type="text"
+                         placeholder="Nombre Empresa"
+                         matInput
+                         [matAutocomplete]="auto"
+                         [(ngModel)]="companySearch"
+                         (ngModelChange)="changedCompanySearch()">
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let name of filteredCompanyNames" [value]="name">
+                      {{name}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </div>
+              <!--search button-->
+              <div class="row mx-auto">
+                <button class="primaryBtn col-6 my-2 mx-auto text-center" mat-button
+                        [disabled]="(searchType == 'company' && (companySearch == null || companySearch == '')) || (searchType == 'id' && (idSearch == null || idSearch.toString() == ''))">
+                  Buscar
+                </button>
+              </div>
+            </div>
+          </div>
+          <table mat-table [dataSource]="anchorCompanies" class="my-2" style="width: 100%">
             <!-- ID Column -->
             <ng-container matColumnDef="id">
               <th mat-header-cell *matHeaderCellDef class="text-center">
