@@ -1,0 +1,7 @@
+<div class="container my-5">
+  <app-search-id *ngIf="selectedCompany == null" (idSend)="searchId($event)"
+                 [searchError]="searchError" [clean]="doClean"></app-search-id>
+  <app-company-adc *ngIf="selectedCompany !== null"
+                     [company]="selectedCompany" (Clean)="clean($event)"></app-company-adc>
+</div>
+

@@ -1,0 +1,132 @@
+<div class="container">
+  <div class="row">
+    <div class="btn col-2 text-left" (click)="clean()">
+      <mat-icon class="arrowIcon">arrow_back</mat-icon>
+    </div>
+    <div class="col-10 text-left">
+      <h4>Nombre de la empresa:</h4>
+      <h3 class="title">{{company?.name}}</h3>
+    </div>
+  </div>
+  <h4>Informaci&oacute;n de l&iacute;nea de cr&eacute;dito</h4>
+  <div class="row">
+    <table mat-table [dataSource]="creditLines" class="my-4 table table-striped" style="width: 100%">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="text-center">
+          <b>ID</b>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <b >{{element.id}}</b>
+        </td>
+      </ng-container>
+      <!-- approved_quota Column -->
+      <ng-container matColumnDef="approved_quota">
+        <th mat-header-cell *matHeaderCellDef class="text-center">
+          <b>Cupo aprobado</b>
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.approved_quota}} </td>
+      </ng-container>
+      <!-- available_quota Column -->
+      <ng-container matColumnDef="available_quota">
+        <th mat-header-cell *matHeaderCellDef class="text-center">
+          <b>Cupo disponible</b>
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.available_quota}} </td>
+      </ng-container>
+      <!-- rate Column -->
+      <ng-container matColumnDef="approval_date">
+        <th mat-header-cell *matHeaderCellDef class="text-center">
+          <b>Fecha aprobaci&oacute;n</b>
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.approval_date}} </td>
+      </ng-container>
+      <!-- status Column -->
+      <ng-container matColumnDef="expiration_date">
+        <th mat-header-cell *matHeaderCellDef class="text-center">
+          <b>Fecha expiraci&oacute;n</b>
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.expiration_date}} </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedCreditLinesColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedCreditLinesColumns;"></tr>
+    </table>
+  </div>
+  <h4>Informaci&oacute;n facilidades</h4>
+  <div class="row">
+    <table mat-table [dataSource]="facilities" class="my-4 table table-striped" style="width: 100%">
+      <ng-container matColumnDef="facilities">
+        <th mat-header-cell *matHeaderCellDef [attr.colspan]="7" class="text-center"><b>Informaci&oacute;n de facilidades</b></th>
+      </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" class="text-center">
+          <b>Facilidad</b>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <b>{{element.name}}</b>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="long-term">
+        <th mat-header-cell *matHeaderCellDef [attr.colspan]="2" class="text-center"><b>Cupo largo plazo</b></th>
+      </ng-container>
+      <ng-container matColumnDef="short-term">
+        <th mat-header-cell *matHeaderCellDef [attr.colspan]="4" class="text-center"><b>Cupo corto plazo</b></th>
+      </ng-container>
+      <!-- approved_long_term Column -->
+      <ng-container matColumnDef="approved_long_term">
+        <th mat-header-cell *matHeaderCellDef class="text-center">
+          <b>Cupo aprobado</b>
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.approved_long_term}} </td>
+      </ng-container>
+      <!-- available_long_term Column -->
+      <ng-container matColumnDef="available_long_term">
+        <th mat-header-cell *matHeaderCellDef class="text-center">
+          <b>Cupo disponible</b>
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.available_long_term}} </td>
+      </ng-container>
+      <!-- approved_short_term Column -->
+      <ng-container matColumnDef="approved_short_term">
+        <th mat-header-cell *matHeaderCellDef class="text-center">
+          <b>Cupo aprobado</b>
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.approved_short_term}} </td>
+      </ng-container>
+      <!-- available_short_term Column -->
+      <ng-container matColumnDef="available_short_term">
+        <th mat-header-cell *matHeaderCellDef class="text-center">
+          <b>Cupo disponible</b>
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.available_short_term}} </td>
+      </ng-container>
+      <!-- available_short_term Column -->
+      <ng-container matColumnDef="blocked_short_term">
+        <th mat-header-cell *matHeaderCellDef class="text-center">
+          <b>Cupo bloqueado</b>
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.blocked_short_term}} </td>
+      </ng-container>
+      <!-- available_short_term Column -->
+      <ng-container matColumnDef="used_short_term">
+        <th mat-header-cell *matHeaderCellDef class="text-center">
+          <b>Cupo usado</b>
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.used_short_term}} </td>
+      </ng-container>
+
+      <!-- firstHeadersRow -->
+      <tr mat-header-row *matHeaderRowDef="firstHeadersRow"></tr>
+      <!-- secondHeadersRow -->
+      <tr mat-header-row *matHeaderRowDef="secondHeadersRow"></tr>
+      <tr mat-header-row *matHeaderRowDef="thirdHeadersRow"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedFacilitiesColumns"></tr>
+
+    </table>
+  </div>
+
+</div>
+

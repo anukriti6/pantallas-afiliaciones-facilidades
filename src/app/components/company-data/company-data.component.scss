@@ -1,0 +1,27 @@
+@import './src/variables';
+//provider data
+.arrowIcon{
+  color: $blue;
+}
+
+@media (min-width: 781px) {
+
+  .arrowIcon {
+    margin-left: 1%;
+    margin-top: 2%;
+  }
+}
+@media (max-width: 500px) {
+
+  .arrowIcon {
+    margin-left: 3%;
+    margin-top: 2%;
+  }
+}
+@media (min-width: 501px) and (max-width: 780px){
+
+  .arrowIcon {
+    margin-left: 5%;
+    margin-top: 2%;
+  }
+}

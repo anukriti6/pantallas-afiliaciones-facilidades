@@ -33,10 +33,14 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CdkTableModule} from '@angular/cdk/table';
 import { InterceptorService } from './services/interceptor.service';
-import { MatSnackBarModule }  from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotifierComponent } from './components/notifier/notifier.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {CreateCompanyComponent} from './pages/create-company/create-company.component';
+import {CompanyDataComponent} from './components/company-data/company-data.component';
+import {CompanyAdcComponent} from './components/company-adc/company-adc.component';
+import {AdcConsultationComponent} from './pages/adc-consultation/adc-consultation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +50,11 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     RelateAnchorCompanyComponent,
     CreateEditEasinessComponent,
     ProviderDataComponent,
-    NotifierComponent
+    NotifierComponent,
+    CreateCompanyComponent,
+    CompanyDataComponent,
+    CompanyAdcComponent,
+    AdcConsultationComponent
   ],
   imports: [
     BrowserModule,
