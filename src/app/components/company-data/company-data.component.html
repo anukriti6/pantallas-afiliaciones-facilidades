@@ -96,7 +96,12 @@
                     <mat-label class="labels text-left my-2">Tiene regional</mat-label>
                   </div>
                   <div class="row mx-auto">
-                    <mat-label class="content text-left my-2">{{company.has_regional}}</mat-label>
+                    <mat-radio-group aria-label="Select an option">
+                      <mat-radio-button class="mx-3" [(ngModel)]="company.has_regional" [value]="true">Si
+                      </mat-radio-button>
+                      <mat-radio-button class="mx-3" [(ngModel)]="company.has_regional" [value]="false">No
+                      </mat-radio-button>
+                    </mat-radio-group>
                   </div>
 
                 </div>
@@ -307,9 +312,9 @@
               <tr mat-row *matRowDef="let row; columns: displayedProductColumns;"></tr>
             </table>
           </ng-container>
-          <ng-container *ngIf="editProduct">
+          <ng-container *ngIf="editProduct" >
             <!--fields section-->
-            <div class="row mx-auto my-3">
+            <div class="row mx-auto my-3" >
               <div class="col-12 col-sm-4 mr-auto">
                 <!--name-->
                 <div class="row mx-auto">
@@ -341,10 +346,12 @@
                   <mat-label class="labels text-left my-2">D&eacute;bitos por regional</mat-label>
                 </div>
                 <div class="row mx-auto">
-                <!--  <mat-form-field appearance="outline">
-                    <input matInput type="text" placeholder="Id Producto" name="id" id="id"
-                           [(ngModel)]="selectedRegional.id">
-                  </mat-form-field>-->
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button class="mx-3" [value]="true">Si
+                    </mat-radio-button>
+                    <mat-radio-button class="mx-3" [value]="false">No
+                    </mat-radio-button>
+                  </mat-radio-group>
                 </div>
                 <!--description-->
                 <div class="row mx-auto">
@@ -416,12 +423,10 @@
                 </div>
                 <div class="row mx-auto">
                   <mat-form-field appearance="outline">
-                    <input matInput type="number"  name="effective_term" id="effective_term"
+                    <input matInput type="number" name="effective_term" id="effective_term"
                            [(ngModel)]="selectedProduct.effective_term">
                   </mat-form-field>
                 </div>
-
-
               </div>
               <div class="col-12 col-sm-4 mx-auto">
                 <!--capital_term-->
@@ -430,7 +435,7 @@
                 </div>
                 <div class="row mx-auto">
                   <mat-form-field appearance="outline">
-                    <input matInput type="number"  name="capital_term" id="capital_term"
+                    <input matInput type="number" name="capital_term" id="capital_term"
                            [(ngModel)]="selectedProduct.capital_term">
                   </mat-form-field>
                 </div>
@@ -440,7 +445,7 @@
                 </div>
                 <div class="row mx-auto">
                   <mat-form-field appearance="outline">
-                    <input matInput type="number"  name="confirmation_deadline" id="confirmation_deadline"
+                    <input matInput type="number" name="confirmation_deadline" id="confirmation_deadline"
                            [(ngModel)]="selectedProduct.confirmation_deadline">
                   </mat-form-field>
                 </div>
@@ -450,7 +455,7 @@
                 </div>
                 <div class="row mx-auto">
                   <mat-form-field appearance="outline">
-                    <input matInput type="number"  name="interest" id="interest"
+                    <input matInput type="number" name="interest" id="interest"
                            [(ngModel)]="selectedProduct.interest">
                   </mat-form-field>
                 </div>
@@ -458,17 +463,49 @@
                 <div class="row mx-auto">
                   <mat-label class="labels text-left my-2">Cobro comisi&oacute;n</mat-label>
                 </div>
+                <div class="row mx-auto">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button class="mx-3" [value]="true">Si
+                    </mat-radio-button>
+                    <mat-radio-button class="mx-3" [value]="false">No
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
                 <!--interest-->
                 <div class="row mx-auto">
                   <mat-label class="labels text-left my-2">Cobro de seguro</mat-label>
+                </div>
+                <div class="row mx-auto">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button class="mx-3" [value]="true">Si
+                    </mat-radio-button>
+                    <mat-radio-button class="mx-3" [value]="false">No
+                    </mat-radio-button>
+                  </mat-radio-group>
                 </div>
                 <!--interest-->
                 <div class="row mx-auto">
                   <mat-label class="labels text-left my-2">Con recurso</mat-label>
                 </div>
+                <div class="row mx-auto">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button class="mx-3" [value]="true">Si
+                    </mat-radio-button>
+                    <mat-radio-button class="mx-3" [value]="false">No
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
                 <!--interest-->
                 <div class="row mx-auto">
                   <mat-label class="labels text-left my-2">La empresa requiere cr&eacute;dito</mat-label>
+                </div>
+                <div class="row mx-auto">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button class="mx-3" [value]="true">Si
+                    </mat-radio-button>
+                    <mat-radio-button class="mx-3" [value]="false">No
+                    </mat-radio-button>
+                  </mat-radio-group>
                 </div>
                 <!--code-->
                 <div class="row mx-auto">
@@ -476,7 +513,7 @@
                 </div>
                 <div class="row mx-auto">
                   <mat-form-field appearance="outline">
-                    <input matInput type="text"  name="code" id="code"
+                    <input matInput type="text" name="code" id="code"
                            [(ngModel)]="selectedProduct.code">
                   </mat-form-field>
                 </div>
@@ -499,7 +536,7 @@
                 </div>
                 <div class="row mx-auto">
                   <mat-form-field appearance="outline">
-                    <input matInput type="number"  name="effective_term" id="operation_term"
+                    <input matInput type="number" name="effective_term" id="operation_term"
                            [(ngModel)]="selectedProduct.operation_term">
                   </mat-form-field>
                 </div>
@@ -526,7 +563,8 @@
                 </div>
                 <div class="row mx-auto">
                   <mat-form-field appearance="outline">
-                    <mat-select name="business_GAF_code" id="business_GAF_code" [(ngModel)]="selectedProduct.business_GAF_code"
+                    <mat-select name="business_GAF_code" id="business_GAF_code"
+                                [(ngModel)]="selectedProduct.business_GAF_code"
                                 [ngModelOptions]="{standalone: true}">
                       <mat-option value="101">101</mat-option>
                       <mat-option value="102">102</mat-option>
@@ -541,7 +579,8 @@
                 </div>
                 <div class="row mx-auto">
                   <mat-form-field appearance="outline">
-                    <mat-select name="product_GAF_code" id="product_GAF_code" [(ngModel)]="selectedProduct.product_GAF_code"
+                    <mat-select name="product_GAF_code" id="product_GAF_code"
+                                [(ngModel)]="selectedProduct.product_GAF_code"
                                 [ngModelOptions]="{standalone: true}">
                       <mat-option value="305">305</mat-option>
                       <mat-option value="204">204</mat-option>
