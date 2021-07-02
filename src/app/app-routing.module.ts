@@ -4,6 +4,7 @@ import { AffiliateProviderComponent } from './pages/affiliate-provider/affiliate
 import { CreateCompanyComponent } from './pages/create-company/create-company.component';
 import { RelateEasinessesComponent } from './pages/relate-easinesses/relate-easinesses.component';
 import {AdcConsultationComponent} from './pages/adc-consultation/adc-consultation.component';
+import {LoadInvoiceProviderComponent} from './pages/load-invoice-provider/load-invoice-provider.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'adc-consultation',
     component: AdcConsultationComponent
+  },
+  {
+    path: 'load-invoice-provider',
+    component: LoadInvoiceProviderComponent
   }
 ];
 

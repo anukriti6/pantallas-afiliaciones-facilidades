@@ -1,0 +1,6 @@
+<div class="container my-5">
+  <app-invoice-type [clean]="doClean" (type)="selectType($event)"></app-invoice-type>
+  <app-individual-invoice-provider *ngIf="selectedType !== null && selectedType === 'individual'" (Clean)="clean($event)"></app-individual-invoice-provider>
+  <app-massive-invoice-provider *ngIf="selectedType !== null && selectedType === 'massive'" (Clean)="clean($event)"></app-massive-invoice-provider>
+</div>
+

@@ -41,6 +41,12 @@ import {CreateCompanyComponent} from './pages/create-company/create-company.comp
 import {CompanyDataComponent} from './components/company-data/company-data.component';
 import {CompanyAdcComponent} from './components/company-adc/company-adc.component';
 import {AdcConsultationComponent} from './pages/adc-consultation/adc-consultation.component';
+import {LoadInvoiceProviderComponent} from './pages/load-invoice-provider/load-invoice-provider.component';
+import {InvoiceTypeComponent} from './components/invoice-type/invoice-type.component';
+import {IndividualInvoiceProviderComponent} from './components/individual-invoice-provider/individual-invoice-provider.component';
+import {MassiveInvoiceProviderComponent} from './components/massive-invoice-provider/massive-invoice-provider.component';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +60,11 @@ import {AdcConsultationComponent} from './pages/adc-consultation/adc-consultatio
     CreateCompanyComponent,
     CompanyDataComponent,
     CompanyAdcComponent,
-    AdcConsultationComponent
+    AdcConsultationComponent,
+    LoadInvoiceProviderComponent,
+    InvoiceTypeComponent,
+    IndividualInvoiceProviderComponent,
+    MassiveInvoiceProviderComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +93,9 @@ import {AdcConsultationComponent} from './pages/adc-consultation/adc-consultatio
     CdkTableModule,
     MatSnackBarModule,
     MatRadioModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MaterialFileInputModule,
+    MatProgressBarModule
   ],
   exports: [
     BrowserModule,
@@ -112,7 +124,8 @@ import {AdcConsultationComponent} from './pages/adc-consultation/adc-consultatio
     CdkTableModule,
     MatSnackBarModule,
     MatRadioModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MaterialFileInputModule
   ],
   providers: [EasinessService, ProviderService, {
     provide: HTTP_INTERCEPTORS,

@@ -124,6 +124,10 @@ body {
   color: $blue;
   border-radius: 4px;
 }
+.bg{
+  background-color: #f3f3f3;
+  border-right: 15px;
+}
 
 .primaryBtn:disabled {
   color: $lighterBlue;
