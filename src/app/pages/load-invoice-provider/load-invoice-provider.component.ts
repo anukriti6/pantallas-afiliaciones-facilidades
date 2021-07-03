@@ -11,7 +11,7 @@ import {CompanyService} from 'src/app/services/company/company.service';
 export class LoadInvoiceProviderComponent implements OnInit {
   doClean = false;
   selectedType: string | null = null;
-
+  types: string[] = ['individual', 'massive'];
   constructor() {}
 
   ngOnInit(): void {}
@@ -22,5 +22,6 @@ export class LoadInvoiceProviderComponent implements OnInit {
 
   clean(clean: boolean): void {
     this.doClean = clean;
+    this.selectedType = null;
   }
 }

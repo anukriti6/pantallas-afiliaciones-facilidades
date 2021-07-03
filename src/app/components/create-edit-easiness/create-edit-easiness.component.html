@@ -4,93 +4,93 @@
       <h3 class="title">{{easiness.companyName}}</h3>
     </div>
   </div>
-  <table mat-table [dataSource]="data()" class="table table-striped">
-    <!-- approved-quota Column -->
-    <ng-container matColumnDef="approved-quota">
-      <th mat-header-cell *matHeaderCellDef class="text-center">
-        <b>Cupo Aprobado</b>
-      </th>
-      <td mat-cell *matCellDef="let element"> {{element.quotes.approved}} </td>
-    </ng-container>
+  <div class="table-responsive">
+    <table mat-table [dataSource]="data()" class=" my-2 table table-striped">
+      <!-- approved-quota Column -->
+      <ng-container matColumnDef="approved-quota">
+        <th mat-header-cell *matHeaderCellDef class="text-center">
+          <b>Cupo Aprobado</b>
+        </th>
+        <td mat-cell *matCellDef="let element" > {{element.quotes.approved}} </td>
+      </ng-container>
 
-    <!-- available-quota Column -->
-    <ng-container matColumnDef="available-quota">
-      <th mat-header-cell *matHeaderCellDef class="text-center"><b>Cupo disponible</b></th>
-      <td mat-cell *matCellDef="let element"> {{element.quotes.available}} </td>
-    </ng-container>
+      <!-- available-quota Column -->
+      <ng-container matColumnDef="available-quota">
+        <th mat-header-cell *matHeaderCellDef class="text-center"><b>Cupo disponible</b></th>
+        <td mat-cell *matCellDef="let element"> {{element.quotes.available}} </td>
+      </ng-container>
 
-    <!-- blocked-quota Column -->
-    <ng-container matColumnDef="blocked-quota">
-      <th mat-header-cell *matHeaderCellDef class="text-center"><b>Cupo Bloqueado</b></th>
-      <td mat-cell *matCellDef="let element"> {{element.quotes.blocked}} </td>
-    </ng-container>
+      <!-- blocked-quota Column -->
+      <ng-container matColumnDef="blocked-quota">
+        <th mat-header-cell *matHeaderCellDef class="text-center"><b>Cupo Bloqueado</b></th>
+        <td mat-cell *matCellDef="let element"> {{element.quotes.blocked}} </td>
+      </ng-container>
 
-    <!-- used-quota Column -->
-    <ng-container matColumnDef="used-quota">
-      <th mat-header-cell *matHeaderCellDef class="text-center"><b>Cupo Usado</b></th>
-      <td mat-cell *matCellDef="let element"> {{element.quotes.used}} </td>
-    </ng-container>
+      <!-- used-quota Column -->
+      <ng-container matColumnDef="used-quota">
+        <th mat-header-cell *matHeaderCellDef class="text-center"><b>Cupo Usado</b></th>
+        <td mat-cell *matCellDef="let element"> {{element.quotes.used}} </td>
+      </ng-container>
 
-    <!-- Header row first group -->
-    <ng-container matColumnDef="facility-name">
-      <th mat-header-cell *matHeaderCellDef
-          [attr.rowspan]="2" class="mx-auto text-center">
-        <b>Nombre Facilidad</b>
-      </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+      <!-- Header row first group -->
+      <ng-container matColumnDef="facility-name">
+        <th mat-header-cell *matHeaderCellDef
+            [attr.rowspan]="2" class="mx-auto text-center">
+          <b>Nombre Facilidad</b>
+        </th>
+        <td mat-cell *matCellDef="let element" style="min-width: 200px !important;"> {{element.name}} </td>
+      </ng-container>
 
-    <!-- Header row second group -->
-    <ng-container matColumnDef="short-therm-quota">
-      <th mat-header-cell *matHeaderCellDef [attr.colspan]="4" class="text-center"><b>Cupo Corto Plazo</b></th>
-    </ng-container>
+      <!-- Header row second group -->
+      <ng-container matColumnDef="short-therm-quota">
+        <th mat-header-cell *matHeaderCellDef [attr.colspan]="4" class="text-center"><b>Cupo Corto Plazo</b></th>
+      </ng-container>
 
-    <!-- Header row status -->
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" class="mx-auto text-center" [attr.colspan]="2">
-        <b>Estado</b>
-      </th>
-      <td mat-cell *matCellDef="let element; let i = index;">
-        <span *ngIf="!isEditingArray[i]">{{element.status}}</span>
-        <div *ngIf="isEditingArray[i]">
-          <mat-form-field appearance="outline" class="mx-auto text-center inTable">
-            <mat-select [(ngModel)]="statuses[i]" name="status">
-              <mat-option value="Activo">Activo</mat-option>
-              <mat-option value="Bloqueado">Bloqueado</mat-option>
-              <mat-option value="Inactivo">Inactivo</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </td>
-    </ng-container>
+      <!-- Header row status -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" class="mx-auto text-center" [attr.colspan]="2">
+          <b>Estado</b>
+        </th>
+        <td mat-cell *matCellDef="let element; let i = index;">
+          <span *ngIf="!isEditingArray[i]">{{element.status}}</span>
+          <div *ngIf="isEditingArray[i]">
+            <mat-form-field appearance="outline" class="mx-auto text-center inTable">
+              <mat-select [(ngModel)]="statuses[i]" name="status">
+                <mat-option value="Activo">Activo</mat-option>
+                <mat-option value="Bloqueado">Bloqueado</mat-option>
+                <mat-option value="Inactivo">Inactivo</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </td>
+      </ng-container>
 
-    <!-- Header row related -->
-    <ng-container matColumnDef="related">
-      <td mat-cell *matCellDef="let element; let i = index;" class="mx-auto">
-        <div *ngIf="!easiness.related">
-          <mat-checkbox [(ngModel)]="isRelatedArray[i]"></mat-checkbox>
-        </div>
-        <div class="btn mx-auto" *ngIf="easiness.related" (click)="editStatus(i)">
-          <mat-icon>edit</mat-icon>
-        </div>
-      </td>
-    </ng-container>
+      <!-- Header row related -->
+      <ng-container matColumnDef="related">
+        <td mat-cell *matCellDef="let element; let i = index;" class="mx-auto">
+          <div *ngIf="!easiness.related">
+            <mat-checkbox [(ngModel)]="isRelatedArray[i]"></mat-checkbox>
+          </div>
+          <div class="btn mx-auto" *ngIf="easiness.related" (click)="editStatus(i)">
+            <mat-icon>edit</mat-icon>
+          </div>
+        </td>
+      </ng-container>
 
-    <!-- firstHeadersRow -->
-    <tr mat-header-row *matHeaderRowDef="firstHeadersRow"></tr>
+      <!-- firstHeadersRow -->
+      <tr mat-header-row *matHeaderRowDef="firstHeadersRow"></tr>
 
-    <!-- secondHeadersRow -->
-    <tr mat-header-row *matHeaderRowDef="secondHeadersRow"></tr>
-    <tr mat-row *matRowDef="let row; columns: datarow"></tr>
-  </table>
-
-
+      <!-- secondHeadersRow -->
+      <tr mat-header-row *matHeaderRowDef="secondHeadersRow"></tr>
+      <tr mat-row *matRowDef="let row; columns: datarow"></tr>
+    </table>
+  </div>
   <div class="row justify-content-left justify-content-sm-end  mx-auto">
     <div class="col-0 col-sm-6"></div>
-    <div class=" col-12  my-3 col-sm-3 mr-sm-1">
+    <div class=" col-12  my-3 col-sm-3 text-center">
       <button class="btn  primaryBtn" id="saveRelation" (click)="save()">Guardar</button>
     </div>
-    <div class=" col-12 my-3 col-sm-3 ml-sm-1">
+    <div class=" col-12 my-3 col-sm-3 text-center">
       <button class="btn  secondaryBtn" id="CleanRelation" (click)="clean()">Limpiar</button>
     </div>
   </div>

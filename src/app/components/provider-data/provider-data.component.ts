@@ -8,8 +8,7 @@ import { IAnchorCompany } from 'src/app/services/provider/anchorCompanyInterface
 
 @Component({
   selector: 'app-provider-data',
-  templateUrl: './provider-data.component.html',
-  styleUrls: ['./provider-data.component.scss']
+  templateUrl: './provider-data.component.html'
 })
 export class ProviderDataComponent implements OnInit {
   @Input() naturalProviderData: INaturalProvider | null = null;

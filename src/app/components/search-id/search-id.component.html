@@ -15,7 +15,7 @@
     <div class="row mx-auto">
       <mat-label class=" col-12 col-sm-4 mx-auto labels text-left my-2">N&uacute;mero ID</mat-label>
     </div>
-    <div class="row">
+    <div class="row mx-auto">
       <mat-form-field appearance="outline"  class="col-12 col-sm-4 mx-auto">
         <input matInput *ngIf="typeId == typeIds[0]"  type="number" placeholder="1709876543213"  name="idRuc"  id="idRuc"
           [(ngModel)]="id" (ngModelChange)="validateId(13)">

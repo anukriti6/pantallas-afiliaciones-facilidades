@@ -7,8 +7,7 @@ import {IRegional} from '../../services/company/regionalInterface';
 
 @Component({
   selector: 'app-company-data',
-  templateUrl: './company-data.component.html',
-  styleUrls: ['./company-data.component.scss']
+  templateUrl: './company-data.component.html'
 })
 export class CompanyDataComponent implements OnInit {
   @Input() company: ICompanyData | null = null;
@@ -25,8 +24,7 @@ export class CompanyDataComponent implements OnInit {
   email1: string | null = null;
   companyPhone: string | null = null;
   idLegalRepresentative: number | null = null;
-  legalRepresentativeName: string | null = null;
-  legalRepresentativePosition: string | null = null;
+
   status: string | null = null;
   editRegional = false;
   editProduct = false;

@@ -5,8 +5,7 @@ import {IInvoice} from '../../services/invoice/invoiceInterface';
 
 @Component({
   selector: 'app-individual-invoice-provider',
-  templateUrl: './individual-invoice-provider.component.html',
-  styleUrls: ['./individual-invoice-provider.component.scss']
+  templateUrl: './individual-invoice-provider.component.html'
 })
 export class IndividualInvoiceProviderComponent implements OnInit {
 
@@ -43,7 +42,7 @@ export class IndividualInvoiceProviderComponent implements OnInit {
       provider: 'Proveedor Activo',
       payment_date: new Date(),
       number: '18457958413',
-      observations: 'Nota',
+      observations: 'Creado Exitosamente',
       request: '',
       identification: '17457542001',
       identification_type: 'R-P-C',
@@ -60,11 +59,11 @@ export class IndividualInvoiceProviderComponent implements OnInit {
       provider: 'Proveedor 2',
       payment_date: new Date(),
       number: '18457958413',
-      observations: 'Nota',
+      observations: 'Falta Empresa',
       request: '',
       identification: '17457542001',
       identification_type: 'R-P-C',
-      status: 'Exitoso'
+      status: 'Fallido'
     },
     {
       id: 1,
@@ -77,11 +76,45 @@ export class IndividualInvoiceProviderComponent implements OnInit {
       provider: 'Proveedor 3',
       payment_date: new Date(),
       number: '18457958413',
-      observations: 'Nota',
+      observations: 'Creado Exitosamente',
       request: '',
       identification: '17457542001',
       identification_type: 'R-P-C',
       status: 'Exitoso'
+    },
+    {
+      id: 1,
+      type: 'Factura',
+      regional: 'Regional 4',
+      start_date: new Date(),
+      authorization: '100005454000000000',
+      value: '2500,0',
+      company: 'Empresa Activa 3',
+      provider: 'Proveedor 5',
+      payment_date: new Date(),
+      number: '18457958413',
+      observations: 'Falta valor',
+      request: '',
+      identification: '17457542001',
+      identification_type: 'R-P-C',
+      status: 'Fallido'
+    },
+    {
+      id: 1,
+      type: 'Factura',
+      regional: 'Regional 3',
+      start_date: new Date(),
+      authorization: '100005454000000000',
+      value: '2500,0',
+      company: 'Empresa Activa 3',
+      provider: 'Proveedor 7',
+      payment_date: new Date(),
+      number: '18457958413',
+      observations: 'Datos Incorrectos',
+      request: '',
+      identification: '17457542001',
+      identification_type: 'R-P-C',
+      status: 'Fallido'
     },
 
   ];

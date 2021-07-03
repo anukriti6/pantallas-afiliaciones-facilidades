@@ -3,13 +3,11 @@
     <div class="btn col-2 text-left" (click)="clean()">
       <mat-icon class="arrowIcon">arrow_back</mat-icon>
     </div>
-    <div class="col-9"></div>
-  </div>
-  <div class="row">
-    <div class="col-12 col-sm-6 text-center text-sm-left">
-      <h3 class="title">Datos Cliente Proveedor</h3>
+    <div class="col-9 text-left">
+      <h4 class="title">Datos Cliente Proveedor</h4>
     </div>
   </div>
+
   <!--provider is natural-->
   <div class="row mt-3" *ngIf="naturalProviderData !== null && legalProviderData === null">
     <!--info section-->
@@ -227,7 +225,7 @@
 
     </div>
     <!--fields section-->
-    <div class="row my-3 mx-auto">
+    <div class="row my-1 my-md-3 mx-auto">
 
       <div class="col-12 col-sm-4 mr-auto">
         <!--ID Representante Legal-->
@@ -310,10 +308,10 @@
   <!--buttons-->
   <div class="row justify-content-left justify-content-sm-end  mx-auto">
     <div class="col-0 col-sm-6"></div>
-    <div class=" col-12  my-3 col-sm-3 mr-sm-1">
+    <div class=" col-12  my-3 col-sm-3 text-center">
       <button class="btn  primaryBtn" id="saveAnchor" >Guardar</button>
     </div>
-    <div class=" col-12 my-3 col-sm-3 ml-sm-1">
+    <div class=" col-12 my-3 col-sm-3 text-center">
       <button class="btn  secondaryBtn" id="cancelAnchor" (click)="clean()">Cancelar</button>
     </div>
   </div>

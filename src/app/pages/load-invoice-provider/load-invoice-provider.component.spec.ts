@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateCompanyComponent } from './affiliate-provider.component';
+import { LoadInvoiceProviderComponent } from './load-invoice-provider.component';
 
-describe('AffiliateProviderComponent', () => {
-  let component: CreateCompanyComponent;
-  let fixture: ComponentFixture<CreateCompanyComponent>;
+describe('LoadInvoiceProviderComponent', () => {
+  let component: LoadInvoiceProviderComponent;
+  let fixture: ComponentFixture<LoadInvoiceProviderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateCompanyComponent ]
+      declarations: [ LoadInvoiceProviderComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateCompanyComponent);
+    fixture = TestBed.createComponent(LoadInvoiceProviderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -42,7 +42,6 @@ import {CompanyDataComponent} from './components/company-data/company-data.compo
 import {CompanyAdcComponent} from './components/company-adc/company-adc.component';
 import {AdcConsultationComponent} from './pages/adc-consultation/adc-consultation.component';
 import {LoadInvoiceProviderComponent} from './pages/load-invoice-provider/load-invoice-provider.component';
-import {InvoiceTypeComponent} from './components/invoice-type/invoice-type.component';
 import {IndividualInvoiceProviderComponent} from './components/individual-invoice-provider/individual-invoice-provider.component';
 import {MassiveInvoiceProviderComponent} from './components/massive-invoice-provider/massive-invoice-provider.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
@@ -62,7 +61,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     CompanyAdcComponent,
     AdcConsultationComponent,
     LoadInvoiceProviderComponent,
-    InvoiceTypeComponent,
     IndividualInvoiceProviderComponent,
     MassiveInvoiceProviderComponent
   ],

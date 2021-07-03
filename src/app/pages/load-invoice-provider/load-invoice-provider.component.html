@@ -1,5 +1,18 @@
 <div class="container my-5">
-  <app-invoice-type [clean]="doClean" (type)="selectType($event)"></app-invoice-type>
+  <div class="container py-2 py-md-5 bg">
+    <mat-radio-group class="row mx-auto justify-content-center" name="type" [(ngModel)]="selectedType">
+      <div class="col-10 col-sm-5" aria-label="Carga Individual">
+        <mat-radio-button class="mx-auto my-4" name="individual" [value]="types[0]">
+            Carga Individual
+        </mat-radio-button>
+      </div>
+      <div class="col-10 col-sm-4" aria-label="Carga Masiva">
+        <mat-radio-button class="mx-auto my-4" name="massive" [value]="types[1]">
+            Carga Masiva
+        </mat-radio-button>
+      </div>
+    </mat-radio-group>
+  </div>
   <app-individual-invoice-provider *ngIf="selectedType !== null && selectedType === 'individual'" (Clean)="clean($event)"></app-individual-invoice-provider>
   <app-massive-invoice-provider *ngIf="selectedType !== null && selectedType === 'massive'" (Clean)="clean($event)"></app-massive-invoice-provider>
 </div>

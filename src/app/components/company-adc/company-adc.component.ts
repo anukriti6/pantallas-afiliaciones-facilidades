@@ -7,8 +7,7 @@ import {IFacilityAdc} from '../../services/adc/facilityAdcInterface';
 
 @Component({
   selector: 'app-company-adc',
-  templateUrl: './company-adc.component.html',
-  styleUrls: ['./company-adc.component.scss']
+  templateUrl: './company-adc.component.html'
 })
 export class CompanyAdcComponent implements OnInit {
   @Input() company: ICompanyAdc | null = null;
