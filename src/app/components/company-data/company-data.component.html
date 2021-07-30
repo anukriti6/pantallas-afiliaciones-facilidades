@@ -452,7 +452,7 @@
                   </mat-form-field>
                 </div>
                 <!--interest-->
-                <div class="row mx-auto">
+            <!--    <div class="row mx-auto">
                   <mat-label class="labels text-left my-2">Tasa de inter&eacute;s anticipo de factura</mat-label>
                 </div>
                 <div class="row mx-auto">
@@ -460,6 +460,30 @@
                     <input matInput type="number" name="interest" id="interest"
                            [(ngModel)]="selectedProduct.interest">
                   </mat-form-field>
+                </div>-->
+                <!--approved-->
+                <div class="row mx-auto">
+                  <mat-label class="labels text-left my-2">Requiere Aprobaci&oacute;n</mat-label>
+                </div>
+                <div class="row mx-auto">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button class="mx-3" [value]="true">Si
+                    </mat-radio-button>
+                    <mat-radio-button class="mx-3" [value]="false">No
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                <!--confirmed-->
+                <div class="row mx-auto">
+                  <mat-label class="labels text-left my-2">Requiere confirmaci&oacute;n factura</mat-label>
+                </div>
+                <div class="row mx-auto">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button class="mx-3" [value]="true">Si
+                    </mat-radio-button>
+                    <mat-radio-button class="mx-3" [value]="false">No
+                    </mat-radio-button>
+                  </mat-radio-group>
                 </div>
                 <!--interest-->
                 <div class="row mx-auto">
@@ -509,6 +533,7 @@
                     </mat-radio-button>
                   </mat-radio-group>
                 </div>
+
                 <!--code-->
                 <div class="row mx-auto">
                   <mat-label class="labels text-left my-2">C&oacute;digo empresa</mat-label>
