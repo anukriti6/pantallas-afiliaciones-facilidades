@@ -1,0 +1,120 @@
+<div class="container">
+  <form action="" name="idForm">
+    <div class="container py-4 bg">
+      <mat-radio-group class="row mx-auto justify-content-center" name="type" [(ngModel)]="data.selectedType">
+        <div class="col-10 col-sm-4" aria-label="Carga Individual">
+          <mat-radio-button class="mx-auto my-2" [name]="types[0]" [value]="types[0]">
+            Empresa
+          </mat-radio-button>
+        </div>
+        <div class="col-10 col-sm-3" aria-label="Carga Masiva">
+          <mat-radio-button class="mx-auto my-2" [name]="types[1]" [value]="types[1]">
+            Proveedor
+          </mat-radio-button>
+        </div>
+      </mat-radio-group>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-6">
+        <div class="row mx-auto">
+          <mat-label class="col-12 mx-auto labels text-left my-2">Nombre Empresa / Proveedor</mat-label>
+        </div>
+        <div class="row mx-auto">
+          <mat-form-field appearance="outline" class="col-12 mx-auto">
+            <input type="text"
+                   placeholder="Nombre Empresa / Proveedor"
+                   matInput
+                   name="company"
+                   [matAutocomplete]="auto"
+                   [(ngModel)]="data.company"
+                   (ngModelChange)="changedCompanySearch()">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let name of filteredCompanyNames" [value]="name">
+                {{name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+        </div>
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="row mx-auto">
+          <mat-label class=" col-12 mx-auto labels text-left my-2">Identificación Empresa / Proveedor
+          </mat-label>
+        </div>
+        <div class="row mx-auto">
+          <mat-form-field appearance="outline" class="col-12 mx-auto">
+            <input matInput type="number" placeholder="Identificación" name="identification" id="identification"
+                   [(ngModel)]="data.identification">
+          </mat-form-field>
+        </div>
+      </div>
+
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-6">
+        <div class="row mx-auto">
+          <mat-label class=" col-12 mx-auto labels text-left my-2">Desde:</mat-label>
+        </div>
+        <div class="row mx-auto">
+          <mat-form-field appearance="outline" class="col-12 mx-auto">
+            <input matInput [matDatepicker]="datepicker" [(ngModel)]="data.selectedStartDate" name="selectedStartDate">
+            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancelar</button>
+                <button mat-raised-button color="primary" matDatepickerApply>Seleccionar</button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+
+          </mat-form-field>
+
+        </div>
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="row mx-auto">
+          <mat-label class=" col-12 mx-auto labels text-left my-2">Hasta:</mat-label>
+        </div>
+        <div class="row mx-auto">
+          <mat-form-field appearance="outline" class="col-12 mx-auto">
+            <input matInput [matDatepicker]="datepicker1" [(ngModel)]="data.selectedEndDate" name="selectedEndDate">
+            <mat-datepicker-toggle matSuffix [for]="datepicker1"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker1>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancelar</button>
+                <button mat-raised-button color="primary" matDatepickerApply>Seleccionar</button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mx-auto">
+      <mat-label class=" col-12 col-sm-4 mx-auto labels text-left my-2">Número Factura</mat-label>
+    </div>
+    <div class="row mx-auto">
+      <mat-form-field appearance="outline" class="col-12 col-sm-4 mx-auto">
+        <input matInput type="number" name="number" id="number"
+               [(ngModel)]="data.number" (ngModelChange)="validateNumber(15)">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="errors col-12 col-sm-4 mx-auto text-center my-2">
+        {{errorNumber}}
+      </div>
+    </div>
+
+    <div class="row">
+      <button class="primaryBtn col-6 col-sm-2 my-3 mx-auto text-center" mat-button
+              [disabled]="(!data.company && !data.identification && !data.selectedStartDate && !data.selectedEndDate && !data.number) || errorNumber !== null"
+              (click)="search()">Buscar
+      </button>
+    </div>
+  </form>
+  <div class="row" *ngIf="searchError != null">
+    <div class="alert my-3 alert-danger col-12 col-sm-4 mx-auto text-center" role="alert">{{searchError}}</div>
+  </div>
+</div>

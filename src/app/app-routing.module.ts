@@ -5,6 +5,8 @@ import { CreateCompanyComponent } from './pages/create-company/create-company.co
 import { RelateEasinessesComponent } from './pages/relate-easinesses/relate-easinesses.component';
 import {AdcConsultationComponent} from './pages/adc-consultation/adc-consultation.component';
 import {LoadInvoiceProviderComponent} from './pages/load-invoice-provider/load-invoice-provider.component';
+import {InvoiceApprovalComponent} from './pages/invoice-approval/invoice-approval.component';
+import {InvoiceConfirmationComponent} from './pages/invoice-confirmation/invoice-confirmation.component';
 
 const routes: Routes = [
   {
@@ -24,8 +26,16 @@ const routes: Routes = [
     component: AdcConsultationComponent
   },
   {
-    path: 'load-invoice-provider',
+    path: 'load-provider-invoices',
     component: LoadInvoiceProviderComponent
+  },
+  {
+    path: 'approve-provider-invoices',
+    component: InvoiceApprovalComponent
+  },
+  {
+    path: 'confirm-provider-invoices',
+    component: InvoiceConfirmationComponent
   }
 ];
 

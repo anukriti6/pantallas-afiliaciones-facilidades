@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "type": "Empresa",
+    "regional": "Regional Activa",
+    "company": "Coca-cola",
+    "identification": "17457542001",
+    "start_date": "15-08-2020",
+    "client_provider": "proveedor 1",
+    "invoice_value": 2500.50,
+    "invoice_number": "18457958413",
+    "observations": "Sin problema",
+    "effective_date": "15-12-2021",
+    "expiration_date": "15-12-2021",
+    "interest": 15.2,
+    "identification_type": "RUC",
+    "status": "Exitoso"
+  }
+]
