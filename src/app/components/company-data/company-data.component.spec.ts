@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CompanyDataComponent } from './provider-data.component';
+import { CompanyDataComponent } from './company-data.component';
 
 describe('ProviderDataComponent', () => {
   let component: CompanyDataComponent;

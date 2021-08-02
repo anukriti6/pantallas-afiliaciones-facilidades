@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InvoiceConfirmationComponent } from './relate-easinesses.component';
+import { InvoiceConfirmationComponent } from './invoice-confirmation.component';
 
 describe('RelateEasinessesComponent', () => {
   let component: InvoiceConfirmationComponent;

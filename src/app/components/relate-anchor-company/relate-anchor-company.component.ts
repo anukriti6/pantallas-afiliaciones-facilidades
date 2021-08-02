@@ -48,6 +48,7 @@ export class RelateAnchorCompanyComponent implements OnInit {
 
   search(): void {
     for (let i = 0; i < this.anchorCompanies.length; i++) {
+
       if ((this.searchType === 'id' && this.anchorCompanies[i].idNumber === this.idSearch) || (this.searchType === 'company' && this.anchorCompanies[i].name === this.companySearch)) {
         this.matched = true;
         this.curAnchorCompany = this.anchorCompanies[i];

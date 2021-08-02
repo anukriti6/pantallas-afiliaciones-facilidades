@@ -33,7 +33,7 @@ export class RelateEasinessesComponent implements OnInit {
             }
           }
           if (!this.matched) {
-            this.searchError = 'Usuario no encontrado. Intente nuevamente'
+            this.searchError = 'Usuario no encontrado. Intente nuevamente';
             this.currEasinessData = null;
           }
         }

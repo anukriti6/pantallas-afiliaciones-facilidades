@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SIInvoice } from './smallInvoiceInterface';
+import { IItem } from './ItemInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { SIInvoice } from './smallInvoiceInterface';
 export class InvoicesService {
   private invoicesIdsUrl = 'assets/data/invoicesData.json';
   constructor(private http: HttpClient) { }
-  getInvoices(): Observable<SIInvoice[]> {
-    return this.http.get<SIInvoice[]>(this.invoicesIdsUrl);
+  getInvoices(): Observable<IItem[]> {
+    return this.http.get<IItem[]>(this.invoicesIdsUrl);
   }
 }

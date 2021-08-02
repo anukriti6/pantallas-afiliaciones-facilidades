@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {SelectionModel} from '@angular/cdk/collections';
 import {InvoicesService} from '../../services/invoice/invoices.service';
-// @ts-ignore
-import {SInvoice} from '../../services/invoice/SmallInvoiceInterface';
+import {IItem} from '../../services/invoice/ItemInterface';
+
 
 @Component({
   selector: 'app-invoice-confirmation',
@@ -12,7 +12,7 @@ import {SInvoice} from '../../services/invoice/SmallInvoiceInterface';
 export class InvoiceConfirmationComponent implements OnInit {
   doClean = false;
   searchError: string | null = null;
-  invoices: SInvoice[] = [];
+  invoices: IItem[] = [];
   matched = false;
   selectedType: string | null = null;
   types: string[] = ['company', 'provider'];
@@ -23,7 +23,7 @@ export class InvoiceConfirmationComponent implements OnInit {
   headers: string[] = ['select', 'company', 'identification', 'client_provider', 'invoice_number', 'invoice_value', 'observations'];
   /*'start_date', 'effective_date', 'expiration_date', 'interest'*/
   extraHeaders: FormGroup;
-  selection = new SelectionModel<SInvoice>(true, []);
+  selection = new SelectionModel<IItem>(true, []);
 
 
   constructor(private invoiceService: InvoicesService, fb: FormBuilder) {
@@ -100,7 +100,7 @@ export class InvoiceConfirmationComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: SInvoice): string {
+  checkboxLabel(row?: IItem): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }

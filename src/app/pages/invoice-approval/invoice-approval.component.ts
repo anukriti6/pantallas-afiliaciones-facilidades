@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SIInvoice} from '../../services/invoice/smallInvoiceInterface';
+import {IItem} from '../../services/invoice/ItemInterface';
 import {InvoicesService} from '../../services/invoice/invoices.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {SelectionModel} from '@angular/cdk/collections';
@@ -12,7 +12,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 export class InvoiceApprovalComponent implements OnInit {
   doClean = false;
   searchError: string | null = null;
-  invoices: SIInvoice[] = [];
+  invoices: IItem[] = [];
   matched = false;
   selectedType: string | null = null;
   types: string[] = ['company', 'provider'];
@@ -23,7 +23,7 @@ export class InvoiceApprovalComponent implements OnInit {
   headers: string[] = ['select', 'company', 'identification', 'client_provider', 'invoice_number', 'invoice_value', 'observations'];
   /*'start_date', 'effective_date', 'expiration_date', 'interest'*/
   extraHeaders: FormGroup;
-  selection = new SelectionModel<SIInvoice>(true, []);
+  selection = new SelectionModel<IItem>(true, []);
 
 
   constructor(private invoiceService: InvoicesService, fb: FormBuilder) {
@@ -100,7 +100,7 @@ export class InvoiceApprovalComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: SIInvoice): string {
+  checkboxLabel(row?: IItem): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }

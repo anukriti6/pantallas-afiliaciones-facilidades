@@ -4,7 +4,7 @@ import {IAccount} from 'src/app/services/provider/accountInterface';
 import {ILegalProvider} from 'src/app/services/provider/legalProviderInterface';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {INaturalProvider} from 'src/app/services/provider/naturalProviderInterface';
-import { IAnchorCompany } from 'src/app/services/provider/anchorCompanyInterface';
+import {IAnchorCompany} from 'src/app/services/provider/anchorCompanyInterface';
 
 @Component({
   selector: 'app-provider-data',
@@ -36,7 +36,7 @@ export class ProviderDataComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.naturalProviderData !=  null  && this.legalProviderData == null){
+    if (this.naturalProviderData != null && this.legalProviderData == null) {
       if (this.naturalProviderData.emails.length) {
         for (let i = 0; i < this.naturalProviderData.emails.length; i++) {
           this.emails.push(this.naturalProviderData.emails[i]);
@@ -46,7 +46,7 @@ export class ProviderDataComponent implements OnInit {
       this.paymentAccount = this.naturalProviderData.currentPaymentAccount;
       this.naturalSpouseId = this.naturalProviderData.spouse.idNumber;
       this.naturalSpouseName = this.naturalProviderData.spouse.name;
-    } else if ( this.naturalProviderData ==  null  && this.legalProviderData != null ) {
+    } else if (this.naturalProviderData == null && this.legalProviderData != null) {
       if (this.legalProviderData.emails.length) {
         for (let i = 0; i < this.legalProviderData.emails.length; i++) {
           this.emails.push(this.legalProviderData.emails[i]);
@@ -105,18 +105,20 @@ export class ProviderDataComponent implements OnInit {
 
   validateEmail(email: string): boolean {
     const regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-      if (regexp.test(email)) {
-        return true;
-      }
-      return false;
+    if (regexp.test(email)) {
+      return true;
+    }
+    return false;
   }
-  anchorId(event: number) {
+
+  anchorId(event: number): void {
     if (this.naturalProviderData != null && this.legalProviderData == null) {
       this.naturalProviderData.idAnchoredCompany = event;
     } else if (this.naturalProviderData == null && this.legalProviderData != null) {
       this.legalProviderData.idAnchoredCompany = event;
     }
   }
+
   addEmail(event: MatChipInputEvent): void {
     if (this.emails.length < 10) {
       if (event.value != null) {

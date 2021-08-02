@@ -1,4 +1,4 @@
-export interface SInvoice {
+export interface IItem {
   id: number;
   type: string;
   regional: string;
