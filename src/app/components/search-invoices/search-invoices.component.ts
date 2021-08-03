@@ -117,7 +117,14 @@ export class SearchInvoicesComponent implements OnInit {
 
   cleanFields(clean: boolean): void {
     if (clean) {
-      this.id = null;
+      this.data = {
+        identification: null,
+        company: null,
+        selectedType: null,
+        selectedEndDate: null,
+        selectedStartDate: null,
+        number: null
+      };
     }
   }
 }

@@ -3,7 +3,11 @@ import {IItem} from '../../services/invoice/ItemInterface';
 import {InvoicesService} from '../../services/invoice/invoices.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {SelectionModel} from '@angular/cdk/collections';
-
+import {MatDialog} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {NotifierComponent} from '../../components/notifier/notifier.component';
+import {SuccessDialogComponent} from '../../components/dialogs/success-dialog.component';
+import {DeclineDialogComponent} from '../../components/dialogs/decline-dialog.component';
 
 @Component({
   selector: 'app-invoice-approval',
@@ -20,15 +24,14 @@ export class InvoiceApprovalComponent implements OnInit {
   effectiveDate = false;
   expirationDate = false;
   interest = false;
-  headers: string[] = ['select', 'company', 'identification', 'client_provider', 'invoice_number', 'invoice_value', 'observations'];
+  headers: string[] = ['select', 'company', 'identification', 'client_provider', 'invoice_number', 'invoice_value', 'start_date', 'observations'];
   /*'start_date', 'effective_date', 'expiration_date', 'interest'*/
   extraHeaders: FormGroup;
   selection = new SelectionModel<IItem>(true, []);
 
 
-  constructor(private invoiceService: InvoicesService, fb: FormBuilder) {
+  constructor(private invoiceService: InvoicesService, public fb: FormBuilder, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.extraHeaders = fb.group({
-      start_date: false,
       effective_date: false,
       expiration_date: false,
       interest: false
@@ -37,6 +40,58 @@ export class InvoiceApprovalComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  openModal(type: string): void {
+    switch (type) {
+      case 'success':
+        const successDialog = this.dialog.open(SuccessDialogComponent, {
+          width: '350px',
+          data: {total: this.selection.selected.length}
+        });
+
+        successDialog.afterClosed().subscribe(result => {
+          console.log('The dialog was closed', result);
+          if (result) {
+            this.snackBar.openFromComponent(NotifierComponent, {
+              data: {
+                message: 'Datos guardados exitosamente',
+                dismiss: 'Cerrar',
+                type: 'Exito'
+              },
+              panelClass: 'success'
+            });
+          }
+        });
+
+        break;
+      case 'error':
+
+        const errorDialog = this.dialog.open(DeclineDialogComponent, {
+          width: '350px',
+          data: {total: this.selection.selected.length}
+        });
+
+        errorDialog.afterClosed().subscribe(result => {
+          console.log('The dialog was closed', result);
+          if (result) {
+            this.snackBar.openFromComponent(NotifierComponent, {
+              data: {
+                message: 'Datos guardados exitosamente',
+                dismiss: 'Cerrar',
+                type: 'Exito'
+              },
+              panelClass: 'success'
+            });
+          }
+        });
+
+        break;
+      default:
+        console.log('default');
+        break;
+
+    }
   }
 
   searchInvoices(search: any): void {
@@ -67,18 +122,25 @@ export class InvoiceApprovalComponent implements OnInit {
     this.doClean = clean;
     this.searchError = null;
     this.invoices = [];
+    this.extraHeaders = this.fb.group({
+      effective_date: false,
+      expiration_date: false,
+      interest: false
+    });
+    this.selection.clear();
   }
 
   updateTable(): void {
     console.log('this.extraHeaders.value', this.extraHeaders.value);
     const keys = Object.keys(this.extraHeaders.value);
-    this.headers = ['select', 'company', 'identification', 'client_provider', 'invoice_number', 'invoice_value', 'observations'];
+    this.headers = ['select', 'company', 'identification', 'client_provider', 'invoice_number', 'invoice_value', 'start_date'];
     keys.forEach((key) => {
       const val = this.extraHeaders.value[key];
       if (val) {
         this.headers.push(key);
       }
     });
+    this.headers.push('observations');
     console.log('headers', this.headers);
   }
 
@@ -107,3 +169,5 @@ export class InvoiceApprovalComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row `;
   }
 }
+
+

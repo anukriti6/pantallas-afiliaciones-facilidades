@@ -1,0 +1,8 @@
+<h3 mat-dialog-title><b>¿Está seguro de rechazar?</b></h3>
+<div mat-dialog-content>
+  <p>{{data.total > 1 ? 'Serán rechazadas' : 'Será rechazada'}} {{data.total}} {{data.total > 1 ? 'facturas' : 'factura'}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Rechazar</button>
+</div>

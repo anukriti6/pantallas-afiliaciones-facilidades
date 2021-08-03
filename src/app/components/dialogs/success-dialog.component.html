@@ -1,0 +1,8 @@
+<h3 mat-dialog-title><b>¿Está seguro de aprobar?</b></h3>
+<div mat-dialog-content>
+  <p>{{data.total > 1 ? 'Serán aprobadas' : 'Será aprobada'}} {{data.total}} {{data.total > 1 ? 'facturas' : 'factura'}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Aprobar</button>
+</div>

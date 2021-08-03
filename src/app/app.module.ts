@@ -51,6 +51,8 @@ import {SearchInvoicesComponent} from './components/search-invoices/search-invoi
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {InvoiceConfirmationComponent} from './pages/invoice-confirmation/invoice-confirmation.component';
+import {SuccessDialogComponent} from './components/dialogs/success-dialog.component';
+import {DeclineDialogComponent} from './components/dialogs/decline-dialog.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import {InvoiceConfirmationComponent} from './pages/invoice-confirmation/invoice
     MassiveInvoiceProviderComponent,
     InvoiceApprovalComponent,
     SearchInvoicesComponent,
-    InvoiceConfirmationComponent
+    InvoiceConfirmationComponent,
+    SuccessDialogComponent,
+    DeclineDialogComponent
   ],
   imports: [
     BrowserModule,
