@@ -25,6 +25,27 @@
         </a>
       </mat-nav-list>
       <mat-expansion-panel style="width: 100%;">
+        <mat-expansion-panel-header>Carga Facturas</mat-expansion-panel-header>
+        <mat-nav-list class="mat-nav-list">
+          <a mat-list-item class="mat-list-item" routerLink="/load-provider-invoices"
+             (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
+            Carga de Facturas Proveedor
+          </a>
+          <a mat-list-item class="mat-list-item" routerLink="/approve-provider-invoices"
+             (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
+            Aprobar Facturas Proveedor
+          </a>
+          <a mat-list-item class="mat-list-item" routerLink="/confirm-provider-invoices"
+             (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
+            Confirmar Facturas Proveedor
+          </a>
+          <a mat-list-item class="mat-list-item" routerLink="/"
+             (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
+            Carga de Facturas Distribuidor
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel style="width: 100%;">
         <mat-expansion-panel-header>Asociar Facilidades</mat-expansion-panel-header>
         <mat-nav-list class="mat-nav-list">
           <a mat-list-item class="mat-list-item" routerLink="/relate-easiness"
@@ -44,27 +65,8 @@
         </a>
       </mat-nav-list>
 
-      <mat-expansion-panel style="width: 100%;">
-        <mat-expansion-panel-header>Carga Facturas</mat-expansion-panel-header>
-        <mat-nav-list class="mat-nav-list">
-          <a mat-list-item class="mat-list-item" routerLink="/load-provider-invoices"
-             (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
-            Carga de Facturas Proveedor
-          </a>
-          <a mat-list-item class="mat-list-item" routerLink="/approve-provider-invoices"
-             (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
-            Aprobaci&oacute;n Facturas Proveedor
-          </a>
-          <a mat-list-item class="mat-list-item" routerLink="/confirm-provider-invoices"
-             (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
-            Confirmaci&oacute;n Facturas Proveedor
-          </a>
-          <a mat-list-item class="mat-list-item" routerLink="/"
-             (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
-            Carga de Facturas Distribuidor
-          </a>
-        </mat-nav-list>
-      </mat-expansion-panel>
+
+
       <mat-nav-list class="mat-nav-list">
         <a mat-list-item class="mat-list-item" routerLink="/"
            (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
