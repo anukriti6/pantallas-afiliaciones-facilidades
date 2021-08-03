@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-sm-5 mt-3">
     <div class="col-12 col-sm-6 mx-auto">
-      <h1 class="title text-center"> Confirmaci&oacute;n Facturas Proveedor</h1>
+      <h1 class="title text-center"> Confirmar Facturas Proveedor</h1>
     </div>
   </div>
   <app-search-invoices (searchObj)="searchInvoices($event)" [searchError]="searchError"
@@ -23,13 +23,12 @@
           <!-- Checkbox Column -->
           <ng-container matColumnDef="select">
             <th mat-header-cell *matHeaderCellDef
-                matTooltip="Seleccionar Todos" class="text-center"
-                [matTooltipPosition]="'above'"
-                aria-label="Selecciona todos los contactos">
-              <mat-checkbox (change)="$event ? masterToggle() : null"
+                class="text-center">
+              <mat-checkbox (change)="$event ? masterToggle() : null" class="px-2"
                             [checked]="selection.hasValue() && isAllSelected()"
                             [indeterminate]="selection.hasValue() && !isAllSelected()">
               </mat-checkbox>
+              <span>Seleccionar<br>Todos</span>
             </th>
             <td mat-cell *matCellDef="let row">
               <mat-checkbox (click)="$event.stopPropagation()"
