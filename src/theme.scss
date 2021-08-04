@@ -2757,3 +2757,11 @@ th.mat-header-cell{
   text-align: right;
   width: 104px;
 }
+
+.mat-expansion-panel-header {
+  padding: 0 16px !important;
+}
+
+.mat-expansion-panel-body {
+  padding: 0 4px !important;
+}
