@@ -103,6 +103,18 @@
                       </mat-radio-button>
                     </mat-radio-group>
                   </div>
+                  <!--cell has_regional-->
+                  <div class="row mx-auto">
+                    <mat-label class="labels text-left my-2">Activar L&iacute;nea Vencida</mat-label>
+                  </div>
+                  <div class="row mx-auto">
+                    <mat-radio-group aria-label="Select an option">
+                      <mat-radio-button class="mx-3" [(ngModel)]="company.line" [value]="true">Si
+                      </mat-radio-button>
+                      <mat-radio-button class="mx-3" [(ngModel)]="company.line" [value]="false">No
+                      </mat-radio-button>
+                    </mat-radio-group>
+                  </div>
 
                 </div>
 

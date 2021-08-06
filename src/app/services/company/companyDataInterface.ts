@@ -16,6 +16,7 @@ export interface ICompanyData {
   charge_legal_representative: string;
   has_regional: boolean;
   status: string;
+  line: string;
   emails1: string[];
   emails2: string[];
   regionals: IRegional[];

@@ -14,6 +14,7 @@
     "legal_representative": "Flores Flores Lorena",
     "charge_legal_representative": "Jefe Talento",
     "has_regional": true,
+    "line": true,
     "emails1": [
       "email1@pichincha.com",
       "email2@pichincha.com",
@@ -127,7 +128,7 @@
     ]
   },
   {
-    "id": 55,
+    "id": 56,
     "name": "Coca Cola Company",
     "id_number": 1733524250001,
     "id_type": "RUC",
@@ -135,6 +136,7 @@
     "taxpayer_type": "Persona Juridica",
     "address": "Av lulubamba",
     "phone": "098754321",
+    "line": true,
     "payment_account_1": "21001582585",
     "payment_account_2": "21001582585",
     "disbursement_account": "21001582585",
@@ -254,7 +256,7 @@
     ]
   },
   {
-    "id": 55,
+    "id": 57,
     "name": "Internacional S.A.",
     "id_number": 1789524250001,
     "id_type": "RUC",
@@ -268,6 +270,7 @@
     "legal_representative": "Flores Flores Lorena",
     "charge_legal_representative": "Jefe Talento",
     "has_regional": true,
+    "line": true,
     "emails1": [
       "email1@pichincha.com",
       "email2@pichincha.com",
