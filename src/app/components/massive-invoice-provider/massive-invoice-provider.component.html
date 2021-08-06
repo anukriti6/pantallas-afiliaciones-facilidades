@@ -21,6 +21,16 @@
   <div class="row mx-auto">
 
     <div class="col-12 col-sm-4 mr-auto">
+      <!--type-->
+      <div class="row mx-auto">
+        <mat-label class="labels text-left my-2">Tipo de documento</mat-label>
+      </div>
+      <div class="row mx-auto">
+        <mat-form-field appearance="outline">
+          <input matInput type="text" placeholder="FACTURA" disabled name="type" id="type"
+                 [(ngModel)]="invoice.type">
+        </mat-form-field>
+      </div>
       <!--empresa-->
       <div class="row mx-auto">
         <mat-label class="labels text-left my-2">Empresa</mat-label>
@@ -36,6 +46,11 @@
           </mat-select>
         </mat-form-field>
       </div>
+
+
+
+    </div>
+    <div class="col-12 col-sm-4 mx-auto">
       <!--Regional empresa-->
       <div class="row mx-auto">
         <mat-label class="labels text-left my-2">Regional empresa</mat-label>
@@ -51,10 +66,6 @@
           </mat-select>
         </mat-form-field>
       </div>
-
-
-    </div>
-    <div class="col-12 col-sm-4 mx-auto">
       <!--request-->
       <div class="row mx-auto">
         <mat-label class="labels text-left my-2">Solicita</mat-label>
