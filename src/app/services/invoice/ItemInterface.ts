@@ -10,6 +10,7 @@ export interface IItem {
   observations: string;
   start_date: string;
   effective_date: string;
+  payment_date: string;
   expiration_date: string;
   interest: number;
   status: string;

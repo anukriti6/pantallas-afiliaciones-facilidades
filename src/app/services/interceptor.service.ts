@@ -38,7 +38,7 @@ export class InterceptorService implements HttpInterceptor {
               dismiss: 'Cerrar',
               type: 'Success',
             },
-            panelClass: 'success'
+            panelClass: 'alert-success'
           });
           // ,event.statusText,'Close'
         }
@@ -53,7 +53,7 @@ export class InterceptorService implements HttpInterceptor {
             dismiss: 'Cerrar',
             type: 'Error',
           },
-          panelClass: 'error'
+          panelClass: 'alert-danger'
         });
         // error.error.message,'Close'
       })

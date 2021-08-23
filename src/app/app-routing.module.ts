@@ -7,6 +7,7 @@ import {AdcConsultationComponent} from './pages/adc-consultation/adc-consultatio
 import {LoadInvoiceProviderComponent} from './pages/load-invoice-provider/load-invoice-provider.component';
 import {InvoiceApprovalComponent} from './pages/invoice-approval/invoice-approval.component';
 import {InvoiceConfirmationComponent} from './pages/invoice-confirmation/invoice-confirmation.component';
+import {InvoiceDeleteComponent} from './pages/invoice-delete/invoice-delete.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'confirm-provider-invoices',
     component: InvoiceConfirmationComponent
+  },
+  {
+    path: 'delete-provider-invoices',
+    component: InvoiceDeleteComponent
   }
 ];
 

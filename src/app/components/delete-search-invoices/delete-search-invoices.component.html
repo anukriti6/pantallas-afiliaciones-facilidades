@@ -93,20 +93,36 @@
         </div>
       </div>
     </div>
-
-
-    <div class="row mx-auto">
-      <mat-label class=" col-12 col-sm-4 mx-auto labels text-left my-2">Número Factura</mat-label>
-    </div>
-    <div class="row mx-auto">
-      <mat-form-field appearance="outline" class="col-12 col-sm-4 mx-auto">
-        <input matInput type="number" name="number" id="number"
-               [(ngModel)]="data.number" (ngModelChange)="validateNumber(15)">
-      </mat-form-field>
-    </div>
-    <div class="row">
-      <div class="errors col-12 col-sm-4 mx-auto text-center my-2">
-        {{errorNumber}}
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-6">
+        <div class="row mx-auto">
+          <mat-label class=" col-12 mx-auto labels text-left my-2">Estado Factura</mat-label>
+        </div>
+        <div class="row mx-auto">
+          <mat-form-field appearance="outline"  class="col-12 mx-auto">
+            <mat-select [(ngModel)]="data.type" name="type" >
+              <mat-option *ngFor="let type of invoiceTypes" [value]="type">
+                {{type}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="row mx-auto">
+          <mat-label class=" col-12 mx-auto labels text-left my-2">Número Factura</mat-label>
+        </div>
+        <div class="row mx-auto">
+          <mat-form-field appearance="outline" class="col-12 mx-auto">
+            <input matInput type="number" name="number" id="number"
+                   [(ngModel)]="data.number" (ngModelChange)="validateNumber(15)">
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <div class="errors col-12 col-sm-4 mx-auto text-center my-2">
+            {{errorNumber}}
+          </div>
+        </div>
       </div>
     </div>
 

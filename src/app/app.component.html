@@ -39,6 +39,14 @@
              (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
             Confirmar Facturas Proveedor
           </a>
+          <a mat-list-item class="mat-list-item" routerLink="/delete-provider-invoices"
+             (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
+            Eliminar Facturas Proveedor
+          </a>
+          <a mat-list-item class="mat-list-item" routerLink="/"
+             (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
+            Cobro Anticipado de Facturas Proveedor
+          </a>
           <a mat-list-item class="mat-list-item" routerLink="/"
              (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
             Carga de Facturas Distribuidor
