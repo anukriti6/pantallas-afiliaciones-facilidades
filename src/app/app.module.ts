@@ -53,6 +53,7 @@ import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {InvoiceConfirmationComponent} from './pages/invoice-confirmation/invoice-confirmation.component';
 import {SuccessDialogComponent} from './components/dialogs/success-dialog.component';
 import {DeclineDialogComponent} from './components/dialogs/decline-dialog.component';
+import {DialogComponent} from './components/dialogs/dialog.component';
 import {InvoiceDeleteComponent} from './pages/invoice-delete/invoice-delete.component';
 import {DeleteSearchInvoicesComponent} from './components/delete-search-invoices/delete-search-invoices.component';
 
@@ -78,6 +79,7 @@ import {DeleteSearchInvoicesComponent} from './components/delete-search-invoices
     InvoiceConfirmationComponent,
     SuccessDialogComponent,
     DeclineDialogComponent,
+    DialogComponent,
     InvoiceDeleteComponent,
     DeleteSearchInvoicesComponent
   ],

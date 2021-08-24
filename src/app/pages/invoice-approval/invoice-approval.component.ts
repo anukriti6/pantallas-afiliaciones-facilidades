@@ -8,6 +8,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {NotifierComponent} from '../../components/notifier/notifier.component';
 import {SuccessDialogComponent} from '../../components/dialogs/success-dialog.component';
 import {DeclineDialogComponent} from '../../components/dialogs/decline-dialog.component';
+import {DialogComponent} from '../../components/dialogs/dialog.component';
 
 @Component({
   selector: 'app-invoice-approval',
@@ -43,11 +44,17 @@ export class InvoiceApprovalComponent implements OnInit {
   }
 
   openModal(type: string): void {
+    const selected = this.selection.selected.length;
     switch (type) {
       case 'success':
-        const successDialog = this.dialog.open(SuccessDialogComponent, {
+        const successDialog = this.dialog.open(DialogComponent, {
           width: '350px',
-          data: {total: this.selection.selected.length}
+          data: {
+            total: selected,
+            title: '¿Está seguro de aprobar?',
+            body: (selected > 1 ? 'Serán aprobadas ' : 'Será aprobada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
+            button: 'Aprobar'
+          }
         });
 
         successDialog.afterClosed().subscribe(result => {
@@ -55,11 +62,11 @@ export class InvoiceApprovalComponent implements OnInit {
           if (result) {
             this.snackBar.openFromComponent(NotifierComponent, {
               data: {
-                message: 'Datos guardados exitosamente',
+                message: 'Aprobación exitosa',
                 dismiss: 'Cerrar',
-                type: 'Exito'
+                type: 'Alerta'
               },
-              panelClass: 'success'
+              panelClass: 'alert-success'
             });
           }
         });
@@ -67,9 +74,14 @@ export class InvoiceApprovalComponent implements OnInit {
         break;
       case 'error':
 
-        const errorDialog = this.dialog.open(DeclineDialogComponent, {
+        const errorDialog = this.dialog.open(DialogComponent, {
           width: '350px',
-          data: {total: this.selection.selected.length}
+          data: {
+            total: selected,
+            title: '¿Está seguro de rechazar?',
+            body: (selected > 1 ? 'Serán rechazadas ' : 'Será rechazada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
+            button: 'Rechazar'
+          }
         });
 
         errorDialog.afterClosed().subscribe(result => {
@@ -77,11 +89,11 @@ export class InvoiceApprovalComponent implements OnInit {
           if (result) {
             this.snackBar.openFromComponent(NotifierComponent, {
               data: {
-                message: 'Datos guardados exitosamente',
+                message: 'Rechazo Exitoso',
                 dismiss: 'Cerrar',
-                type: 'Exito'
+                type: 'Alerta'
               },
-              panelClass: 'success'
+              panelClass: 'alert-danger'
             });
           }
         });
