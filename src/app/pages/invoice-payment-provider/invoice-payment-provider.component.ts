@@ -150,7 +150,7 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
             total: selected,
             title: 'Error en Pago',
             body: (selected > 1 ? 'No fueron pagadas ' : 'No fue pagada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
-            button: 'Rechazar'
+            button: 'Aceptar'
           }
         });
 
