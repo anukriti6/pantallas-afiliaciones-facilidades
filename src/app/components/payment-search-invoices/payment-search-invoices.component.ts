@@ -135,6 +135,8 @@ export class PaymentSearchInvoicesComponent implements OnInit {
       };
       this.companyNames = ['Coca cola', 'la industrial', 'Renault', 'KFC', 'El Rosado'];
       this.providerNames = ['Proveedor 1', 'Proveedor 2', 'Proveedor 3', 'Proveedor 4', 'Proveedor 5'];
+      this.filteredCompanyNames = this.companyNames;
+      this.filteredProviderNames = this.providerNames;
     }
   }
 }
