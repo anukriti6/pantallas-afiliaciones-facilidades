@@ -12,8 +12,8 @@ export class PaymentSearchInvoicesComponent implements OnInit {
   companySearch = '';
   filteredCompanyNames: string[] = [];
   filteredProviderNames: string[] = [];
-  companyNames: string[] = ['Coca cola', 'la industrial', 'Renault'];
-  providerNames: string[] = ['Proveedor 1', 'Proveedor 2', 'Proveedor 3'];
+  companyNames: string[] = ['Coca cola', 'la industrial', 'Renault', 'KFC', 'El Rosado'];
+  providerNames: string[] = ['Proveedor 1', 'Proveedor 2', 'Proveedor 3', 'Proveedor 4', 'Proveedor 5'];
   identification: number | null = null;
   number: number | null = null;
   data: any = {
@@ -133,6 +133,8 @@ export class PaymentSearchInvoicesComponent implements OnInit {
         number: null,
         operation: null
       };
+      this.companyNames = ['Coca cola', 'la industrial', 'Renault', 'KFC', 'El Rosado'];
+      this.providerNames = ['Proveedor 1', 'Proveedor 2', 'Proveedor 3', 'Proveedor 4', 'Proveedor 5'];
     }
   }
 }

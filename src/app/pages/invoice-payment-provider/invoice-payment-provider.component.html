@@ -7,9 +7,9 @@
   <app-payment-search-invoices (searchObj)="searchInvoices($event)" [searchError]="searchError"
                        [clean]="doClean"></app-payment-search-invoices>
   <div class="row justify-content-center" *ngIf="invoices.length>0">
-    <div class="row justify-content-left justify-content-sm-end mt-4 mx-auto">
+    <div class="row justify-content-left justify-content-sm-end mt-1 mx-auto">
       <div class="col-12 col-sm-11">
-        <h4 class="title my-3">Facturas por pagar</h4>
+        <h4 class="title my-2">Facturas por pagar</h4>
       </div>
     </div>
 
@@ -106,9 +106,9 @@
             <td mat-cell *matCellDef="let element"> {{element.balance}} </td>
           </ng-container>
           <!-- balance Column -->
-          <ng-container matColumnDef="operationNumber">
+          <ng-container matColumnDef="operation_number">
             <th mat-header-cell *matHeaderCellDef class="text-center"><b>NUMERO OPERACION</b></th>
-            <td mat-cell *matCellDef="let element"> {{element.operationNumber}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.operation_number}} </td>
           </ng-container>
 
 
@@ -132,16 +132,16 @@
         </mat-paginator>
       </div>
       <div class="row">
-        <div class="col-12 col-sm-6">
+        <div class="col-12 col-sm-4">
           <section class="example-section" [formGroup]="extraHeaders">
-            <h4 class="my-2"><b>Agregar columnas:</b></h4>
+            <h3 class="my-2 mt-4"><b>Agregar columnas:</b></h3>
             <p>
-              <mat-checkbox formControlName="payment_date" [(ngModel)]="operationNumber" (ngModelChange)="updateTable()">
+              <mat-checkbox formControlName="operation_number" [(ngModel)]="operationNumber" (ngModelChange)="updateTable()">
                 NUMERO OPERACION
               </mat-checkbox>
             </p>
             <p>
-              <mat-checkbox formControlName="payment_date" [(ngModel)]="startDate" (ngModelChange)="updateTable()">
+              <mat-checkbox formControlName="start_date" [(ngModel)]="startDate" (ngModelChange)="updateTable()">
                 FECHA INGRESO FACTURA
               </mat-checkbox>
             </p>
@@ -151,7 +151,7 @@
               </mat-checkbox>
             </p>
             <p>
-              <mat-checkbox formControlName="observations" [(ngModel)]="balance" (ngModelChange)="updateTable()">
+              <mat-checkbox formControlName="balance" [(ngModel)]="balance" (ngModelChange)="updateTable()">
                 SALDO FACTURA
               </mat-checkbox>
             </p>
@@ -162,16 +162,68 @@
             </p>
           </section>
         </div>
-        <div class="col-12 col-sm-6">
+        <div class="col-12 col-sm-8 row justify-content-center">
+          <h3 class="my-2 mt-4"><b>Detalle para el pago de facturas:</b></h3>
+          <div class="col-6">
+            <div class="row mx-auto">
+              <mat-label class=" col-12 mx-auto labels text-left my-2">Número de Cuenta Empresa</mat-label>
+            </div>
+            <div class="row mx-auto">
+              <!--<mat-form-field appearance="outline" class="col-12 mx-auto">
+                <input matInput type="number" placeholder="Número de Cuenta Empresa" name="identification"
+                       id="identification"
+                       [(ngModel)]="data.identification">
+              </mat-form-field>-->
+              <mat-form-field appearance="outline"  class="col-12 mx-auto">
+                <mat-select [(ngModel)]="account" name="account" >
+                  <mat-option *ngFor="let account of accounts" [value]="account">
+                    {{account}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row mx-auto">
+              <mat-label class=" col-12 mx-auto labels text-left my-2">Saldo Disponible Cuenta Empresa</mat-label>
+            </div>
+            <div class="row mx-auto">
+              <mat-form-field appearance="outline" class="col-12 mx-auto">
+                <input matInput type="number" placeholder="Saldo Disponible" name="account_balance" id="account_balance"
+                       [(ngModel)]="accountBalance">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row mx-auto">
+              <mat-label class=" col-12 mx-auto labels text-left my-2">Total a Pagar</mat-label>
+            </div>
+            <div class="row mx-auto">
+              <mat-form-field appearance="outline" class="col-12 mx-auto">
+                <input matInput type="number" placeholder="Total a Pagar" name="total" id="total"
+                       [(ngModel)]="total">
+              </mat-form-field>
+            </div>
+            <div class="row mx-auto">
+              <mat-label class=" col-12 mx-auto labels text-left my-2">Notificación por Email</mat-label>
+            </div>
+            <div class="row mx-auto">
+              <mat-form-field appearance="outline" class="col-12 mx-auto">
+                <input matInput type="email" placeholder="Notificación por Email" name="email" id="email"
+                       [(ngModel)]="email">
+              </mat-form-field>
+            </div>
+          </div>
 
         </div>
       </div>
 
 
       <div class="row justify-content-left justify-content-sm-end  mx-auto">
-        <div class="col-0 col-sm-12"></div>
+        <div class="col-0 col-sm-3"></div>
         <div class=" col-12  my-3 col-sm-3 text-center">
-          <button class="btn  primaryBtn" id="save" *ngIf="!selection.isEmpty()" (click)="openModal('success')" >Eliminar</button>
+          <button class="btn  primaryBtn" id="save" *ngIf="!selection.isEmpty() && canPay" (click)="openModal()" >Pagar</button>
+        </div>
+        <div class=" col-12  my-3 col-sm-3 text-center">
+          <button class="btn secondaryBtn" id="calculate" *ngIf="!selection.isEmpty()" (click)="calculate()">Calcular</button>
         </div>
         <div class=" col-12 my-3 col-sm-3 text-center">
           <button class="btn  secondaryBtn" id="clean" (click)="clean(true)">Limpiar</button>

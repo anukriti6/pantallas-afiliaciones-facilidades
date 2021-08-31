@@ -20,10 +20,18 @@ export class InvoicePaymentProviderComponent implements OnInit {
   matched = false;
   selectedType: string | null = null;
   types: string[] = ['company', 'provider'];
+  items: string[] = ['success', 'error'];
+  accounts: string[] = ['14785-343-232', '535-34322-3434', '3432-3432-34546'];
+  account = '';
   startDate = false;
   paymentDate = false;
   expirationDate = false;
   observations = false;
+  canPay = false;
+  email = '';
+  total = 0;
+  accountBalance = 0;
+  availableBalance = true;
   balance = false;
   operationNumber = false;
   // tslint:disable-next-line:max-line-length
@@ -37,9 +45,9 @@ export class InvoicePaymentProviderComponent implements OnInit {
     this.extraHeaders = fb.group({
       start_date: false,
       expiration_date: false,
-      observations: false,
       balance: false,
-      operationNumber: false
+      operation_number: false,
+      observations: false
     });
   }
 
@@ -63,14 +71,48 @@ export class InvoicePaymentProviderComponent implements OnInit {
     this.extraHeaders = this.fb.group({
       start_date: false,
       expiration_date: false,
-      observations: false,
       balance: false,
-      operationNumber: false
+      operation_number: false,
+      observations: false
     });
+    this.total = 0;
+    this.accountBalance = 0;
+    this.account = '';
     this.selection.clear();
   }
 
-  openModal(type: string): void {
+  calculate(): void {
+    this.total = 0;
+    this.selection.selected.forEach((item) => {
+      this.total += item.payment;
+    });
+    this.accountBalance = this.availableBalance ? (this.total + 1000) : (this.total - 100);
+    if (this.availableBalance) {
+      this.canPay = true;
+      this.snackBar.openFromComponent(NotifierComponent, {
+        data: {
+          message: 'Saldo Disponible',
+          dismiss: 'Cerrar',
+          type: 'Mensaje'
+        },
+        panelClass: 'alert-success'
+      });
+    } else {
+      this.canPay = false;
+      this.snackBar.openFromComponent(NotifierComponent, {
+        data: {
+          message: 'Saldo No Disponible',
+          dismiss: 'Cerrar',
+          type: 'Mensaje'
+        },
+        panelClass: 'alert-danger'
+      });
+    }
+    this.availableBalance = !this.availableBalance;
+  }
+
+  openModal(): void {
+    const type = this.items[Math.floor(Math.random() * this.items.length)];
     const selected = this.selection.selected.length;
     switch (type) {
       case 'success':
@@ -78,24 +120,14 @@ export class InvoicePaymentProviderComponent implements OnInit {
           width: '350px',
           data: {
             total: selected,
-            title: '¿Está seguro de eliminar?',
-            body: (selected > 1 ? 'Serán eliminadas ' : 'Será eliminada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
-            button: 'Eliminar'
+            title: 'Pago Exitoso',
+            body: (selected > 1 ? 'Fueron pagadas ' : 'fue pagada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
+            button: 'Aceptar'
           }
         });
 
         successDialog.afterClosed().subscribe(result => {
           console.log('The dialog was closed', result);
-          if (result) {
-            this.snackBar.openFromComponent(NotifierComponent, {
-              data: {
-                message: 'Confirmación exitosa',
-                dismiss: 'Cerrar',
-                type: 'Alerta'
-              },
-              panelClass: 'alert-success'
-            });
-          }
         });
 
         break;
@@ -105,24 +137,14 @@ export class InvoicePaymentProviderComponent implements OnInit {
           width: '350px',
           data: {
             total: selected,
-            title: '¿Está seguro de rechazar?',
-            body: (selected > 1 ? 'Serán rechazadas ' : 'Será rechazada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
+            title: 'Error en Pago',
+            body: (selected > 1 ? 'No fueron pagadas ' : 'No fue pagada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
             button: 'Rechazar'
           }
         });
 
         errorDialog.afterClosed().subscribe(result => {
           console.log('The dialog was closed', result);
-          if (result) {
-            this.snackBar.openFromComponent(NotifierComponent, {
-              data: {
-                message: 'Rechazo Exitoso',
-                dismiss: 'Cerrar',
-                type: 'Alerta'
-              },
-              panelClass: 'alert-danger'
-            });
-          }
         });
 
         break;
@@ -133,18 +155,20 @@ export class InvoicePaymentProviderComponent implements OnInit {
     }
   }
 
+
   updateTable(): void {
     console.log('this.extraHeaders.value', this.extraHeaders.value);
     const keys = Object.keys(this.extraHeaders.value);
     this.headers = ['select', 'identification', 'company', 'identification_provider', 'client_provider', 'invoice_number', 'payment_date', 'invoice_value'];
     keys.forEach((key) => {
       const val = this.extraHeaders.value[key];
-      this.headers.push(key);
-      console.log('key', key);
+      if (val) {
+        this.headers.push(key);
+        console.log('key', key);
+      }
     });
     this.headers.push('payment');
     console.log('this.headers', this.headers);
-    console.log('this.observations', this.observations);
   }
 
   /** Whether the number of selected elements matches the total number of rows. */

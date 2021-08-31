@@ -24,19 +24,6 @@
       </div>
       <div class="col-12 col-sm-6">
         <div class="row mx-auto">
-          <mat-label class=" col-12 mx-auto labels text-left my-2">Identificación Empresa</mat-label>
-        </div>
-        <div class="row mx-auto">
-          <mat-form-field appearance="outline" class="col-12 mx-auto">
-            <input matInput type="number" placeholder="Identificación Empresa" name="identification" id="identification"
-                   [(ngModel)]="data.identification">
-          </mat-form-field>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-12 col-sm-4">
-        <div class="row mx-auto">
           <mat-label class="col-12 mx-auto labels text-left my-2">Nombre Proveedor</mat-label>
         </div>
         <div class="row mx-auto">
@@ -53,6 +40,20 @@
                 {{name}}
               </mat-option>
             </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </div>
+
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-4">
+        <div class="row mx-auto">
+          <mat-label class=" col-12 mx-auto labels text-left my-2">Identificación Empresa</mat-label>
+        </div>
+        <div class="row mx-auto">
+          <mat-form-field appearance="outline" class="col-12 mx-auto">
+            <input matInput type="number" placeholder="Identificación Empresa" name="identification" id="identification"
+                   [(ngModel)]="data.identification">
           </mat-form-field>
         </div>
       </div>
