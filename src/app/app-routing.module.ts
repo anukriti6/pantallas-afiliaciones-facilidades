@@ -8,6 +8,7 @@ import {LoadInvoiceProviderComponent} from './pages/load-invoice-provider/load-i
 import {InvoiceApprovalComponent} from './pages/invoice-approval/invoice-approval.component';
 import {InvoiceConfirmationComponent} from './pages/invoice-confirmation/invoice-confirmation.component';
 import {InvoiceDeleteComponent} from './pages/invoice-delete/invoice-delete.component';
+import {InvoicePaymentProviderComponent} from './pages/invoice-payment-provider/invoice-payment-provider.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'delete-provider-invoices',
     component: InvoiceDeleteComponent
+  },
+  {
+    path: 'pay-provider-invoices',
+    component: InvoicePaymentProviderComponent
   }
 ];
 

@@ -56,6 +56,8 @@ import {DeclineDialogComponent} from './components/dialogs/decline-dialog.compon
 import {DialogComponent} from './components/dialogs/dialog.component';
 import {InvoiceDeleteComponent} from './pages/invoice-delete/invoice-delete.component';
 import {DeleteSearchInvoicesComponent} from './components/delete-search-invoices/delete-search-invoices.component';
+import {InvoicePaymentProviderComponent} from './pages/invoice-payment-provider/invoice-payment-provider.component';
+import {PaymentSearchInvoicesComponent} from './components/payment-search-invoices/payment-search-invoices.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +83,9 @@ import {DeleteSearchInvoicesComponent} from './components/delete-search-invoices
     DeclineDialogComponent,
     DialogComponent,
     InvoiceDeleteComponent,
-    DeleteSearchInvoicesComponent
+    DeleteSearchInvoicesComponent,
+    InvoicePaymentProviderComponent,
+    PaymentSearchInvoicesComponent
   ],
   imports: [
     BrowserModule,
