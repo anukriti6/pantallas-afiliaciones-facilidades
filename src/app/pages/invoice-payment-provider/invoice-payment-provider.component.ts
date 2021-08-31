@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {SelectionModel} from '@angular/cdk/collections';
 import {InvoicesService} from '../../services/invoice/invoices.service';
@@ -7,13 +7,14 @@ import {NotifierComponent} from '../../components/notifier/notifier.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../../components/dialogs/dialog.component';
-
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-invoice-payment-provider',
   templateUrl: './invoice-payment-provider.component.html',
 })
-export class InvoicePaymentProviderComponent implements OnInit {
+export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
   doClean = false;
   searchError: string | null = null;
   invoices: IItem[] = [];
@@ -40,6 +41,16 @@ export class InvoicePaymentProviderComponent implements OnInit {
   extraHeaders: FormGroup;
   selection = new SelectionModel<IItem>(true, []);
 
+  dataSource = new MatTableDataSource(this.invoices);
+  @ViewChild(MatSort) sort: MatSort | null | undefined;
+
+
+  // tslint:disable-next-line:typedef
+  ngAfterViewInit() {
+    // @ts-ignore
+    this.dataSource.sort = this.sort;
+  }
+
 
   constructor(private invoiceService: InvoicesService, public fb: FormBuilder, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.extraHeaders = fb.group({
@@ -52,8 +63,8 @@ export class InvoicePaymentProviderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
+
 
   searchInvoices(search: any): void {
     console.log('data', search);
