@@ -9,6 +9,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../../components/dialogs/dialog.component';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-invoice-payment-provider',
@@ -41,18 +42,16 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
   extraHeaders: FormGroup;
   selection = new SelectionModel<IItem>(true, []);
 
-  dataSource = new MatTableDataSource(this.invoices);
-  @ViewChild(MatSort) sort: MatSort | null | undefined;
+  dataSource: MatTableDataSource<IItem>;
 
-
-  // tslint:disable-next-line:typedef
-  ngAfterViewInit() {
-    // @ts-ignore
-    this.dataSource.sort = this.sort;
+  @ViewChild(MatPaginator, {static: false}) paginator!: MatPaginator;
+  @ViewChild(MatSort, {static: false})
+  set sort(value: MatSort) {
+    this.dataSource.sort = value;
   }
-
-
   constructor(private invoiceService: InvoicesService, public fb: FormBuilder, public dialog: MatDialog, private snackBar: MatSnackBar) {
+    this.dataSource = new MatTableDataSource(this.invoices);
+
     this.extraHeaders = fb.group({
       start_date: false,
       expiration_date: false,
@@ -65,12 +64,26 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
 
   searchInvoices(search: any): void {
     console.log('data', search);
     this.invoiceService.getInvoices().subscribe(
       (data) => {
         this.invoices = data;
+        this.dataSource = new MatTableDataSource(this.invoices);
       }
     );
   }

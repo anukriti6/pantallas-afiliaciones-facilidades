@@ -58,7 +58,7 @@ import {InvoiceDeleteComponent} from './pages/invoice-delete/invoice-delete.comp
 import {DeleteSearchInvoicesComponent} from './components/delete-search-invoices/delete-search-invoices.component';
 import {InvoicePaymentProviderComponent} from './pages/invoice-payment-provider/invoice-payment-provider.component';
 import {PaymentSearchInvoicesComponent} from './components/payment-search-invoices/payment-search-invoices.component';
-import {MatSortModule} from "@angular/material/sort";
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -88,40 +88,40 @@ import {MatSortModule} from "@angular/material/sort";
     InvoicePaymentProviderComponent,
     PaymentSearchInvoicesComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        MatCheckboxModule,
-        MatToolbarModule,
-        MatTabsModule,
-        MatButtonModule,
-        MatIconModule,
-        MatCardModule,
-        MatSidenavModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatPaginatorModule,
-        MatSelectModule,
-        MatDialogModule,
-        MatExpansionModule,
-        MatListModule,
-        FormsModule,
-        MatTableModule,
-        FlexLayoutModule,
-        MatChipsModule,
-        MatTooltipModule,
-        CdkTableModule,
-        MatSnackBarModule,
-        MatRadioModule,
-        MatAutocompleteModule,
-        MaterialFileInputModule,
-        MatProgressBarModule,
-        MatDatepickerModule,
-        ReactiveFormsModule,
-        MatSortModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatListModule,
+    FormsModule,
+    MatTableModule,
+    FlexLayoutModule,
+    MatChipsModule,
+    MatTooltipModule,
+    CdkTableModule,
+    MatSnackBarModule,
+    MatRadioModule,
+    MatAutocompleteModule,
+    MaterialFileInputModule,
+    MatProgressBarModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatSortModule
+  ],
   exports: [
     BrowserModule,
     AppRoutingModule,
@@ -151,7 +151,10 @@ import {MatSortModule} from "@angular/material/sort";
     MatRadioModule,
     MatAutocompleteModule,
     MaterialFileInputModule,
-    MatNativeDateModule
+    MatProgressBarModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatSortModule
   ],
   providers: [EasinessService, ProviderService, {
     provide: HTTP_INTERCEPTORS,
