@@ -9,7 +9,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../../components/dialogs/dialog.component';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator} from "@angular/material/paginator";
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-invoice-payment-provider',
@@ -31,13 +31,14 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
   observations = false;
   canPay = false;
   email = '';
-  total = 0;
-  accountBalance = 0;
+  total: number | null = null;
+  accountBalance: number | null = null;
   availableBalance = true;
   balance = false;
   operationNumber = false;
   // tslint:disable-next-line:max-line-length
-  headers: string[] = ['select', 'identification', 'company', 'identification_provider', 'client_provider', 'invoice_number', 'payment_date', 'invoice_value', 'payment'];
+  headers: string[] = ['select', 'identification', 'company', 'identification_provider', 'client_provider', 'invoice_number', 'payment_date', 'invoice_value'];
+  headersTotal: string[] = ['payment'];
   /*'start_date', 'effective_date', 'expiration_date', 'interest'*/
   extraHeaders: FormGroup;
   selection = new SelectionModel<IItem>(true, []);
@@ -45,10 +46,12 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<IItem>;
 
   @ViewChild(MatPaginator, {static: false}) paginator!: MatPaginator;
+
   @ViewChild(MatSort, {static: false})
   set sort(value: MatSort) {
     this.dataSource.sort = value;
   }
+
   constructor(private invoiceService: InvoicesService, public fb: FormBuilder, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.dataSource = new MatTableDataSource(this.invoices);
 
@@ -99,8 +102,6 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
       operation_number: false,
       observations: false
     });
-    this.total = 0;
-    this.accountBalance = 0;
     this.account = '';
     this.selection.clear();
   }
@@ -108,6 +109,7 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
   calculate(): void {
     this.total = 0;
     this.selection.selected.forEach((item) => {
+      // @ts-ignore
       this.total += item.payment;
     });
     this.accountBalance = this.availableBalance ? (this.total + 1000) : (this.total - 100);
@@ -191,7 +193,7 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
         console.log('key', key);
       }
     });
-    this.headers.push('payment');
+    // this.headers.push('payment');
     console.log('this.headers', this.headers);
   }
 

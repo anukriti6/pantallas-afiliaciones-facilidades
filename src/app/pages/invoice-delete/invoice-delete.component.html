@@ -5,14 +5,9 @@
     </div>
   </div>
   <app-delete-search-invoices (searchObj)="searchInvoices($event)" [searchError]="searchError"
-                       [clean]="doClean"></app-delete-search-invoices>
+                              [clean]="doClean"></app-delete-search-invoices>
+  <h4 class="title my-1" *ngIf="invoices.length>0">Facturas por Eliminar</h4>
   <div class="row justify-content-center" *ngIf="invoices.length>0">
-    <div class="row justify-content-left justify-content-sm-end mt-4 mx-auto">
-      <div class="col-12 col-sm-11">
-        <h4 class="title my-3">Facturas por Eliminar</h4>
-      </div>
-    </div>
-
     <div class="col-12 my-3">
       <p class="label">Se muestran {{invoices.length}} de un total de {{invoices.length}} facturas</p>
       <div class="table-responsive">
@@ -37,64 +32,63 @@
           <!-- company Column -->
           <ng-container matColumnDef="company">
             <th mat-header-cell *matHeaderCellDef class="text-center">
-              <b>EMPRESA</b>
+              <b>Empresa</b>
             </th>
             <td mat-cell *matCellDef="let element"> {{element.company}} </td>
           </ng-container>
 
           <!-- identification Column -->
           <ng-container matColumnDef="identification">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>IDENTIFICACIÓN</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Identificación</b></th>
             <td mat-cell *matCellDef="let element"> {{element.identification}} </td>
           </ng-container>
 
           <!-- client-provider Column -->
           <ng-container matColumnDef="client_provider">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>CLIENTE PROVEEDOR</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Cliente Proveedor</b></th>
             <td mat-cell *matCellDef="let element"> {{element.client_provider}} </td>
           </ng-container>
 
           <!-- invoice_number Column -->
           <ng-container matColumnDef="invoice_number">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>NUMERO FACTURA</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número Factura</b></th>
             <td mat-cell *matCellDef="let element"> {{element.invoice_number}} </td>
           </ng-container>
 
           <!-- invoice_value Column -->
           <ng-container matColumnDef="invoice_value">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>MONTO FACTURA</b></th>
-            <td mat-cell *matCellDef="let element"> {{element.invoice_value}} </td>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Monto Factura</b></th>
+            <td mat-cell *matCellDef="let element"> $ {{element.invoice_value}} </td>
           </ng-container>
           <!-- start_date Column -->
           <ng-container matColumnDef="start_date">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>FECHA INGRESO FACTURA</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Ingreso Factura</b></th>
             <td mat-cell *matCellDef="let element"> {{element.start_date}} </td>
           </ng-container>
           <!-- observations Column -->
           <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>ESTADO FACTURA</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Estado Factura</b></th>
             <td mat-cell *matCellDef="let element"> {{element.status}} </td>
           </ng-container>
           <!-- observations Column -->
           <ng-container matColumnDef="observations">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>OBSERVACIONES</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Observaciones</b></th>
             <td mat-cell *matCellDef="let element">
-              <mat-form-field>
-                <input matInput [(ngModel)]="element.observations" >
-              </mat-form-field>
+              <input type="text" placeholder="Observaciones" matInput name="observations"
+                     [(ngModel)]="element.observations" class="inside-form">
             </td>
           </ng-container>
 
           <!-- effective_date Column -->
           <ng-container matColumnDef="payment_date">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>FECHA PAGO FACTURA</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Pago Factura</b></th>
             <td mat-cell *matCellDef="let element"> {{element.payment_date}} </td>
 
           </ng-container>
 
           <!-- expiration_date Column -->
           <ng-container matColumnDef="expiration_date">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>FECHA VENCIMIENTO CREDITO</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Vencimiento Crédito</b></th>
             <td mat-cell *matCellDef="let element"> {{element.expiration_date}} </td>
           </ng-container>
 
@@ -102,34 +96,39 @@
           <tr mat-header-row *matHeaderRowDef="headers"></tr>
           <tr mat-row *matRowDef="let row; columns: headers;"></tr>
         </table>
-        <mat-paginator [pageSizeOptions]="[10, 20, 50]"
-                       showFirstLastButtons
-                       aria-label="Seleccione la pagina">
-        </mat-paginator>
       </div>
+      <mat-paginator [pageSizeOptions]="[10, 20, 50, 100, 200, 300]"
+                     showFirstLastButtons
+                     aria-label="Seleccione la pagina">
+      </mat-paginator>
       <section class="example-section" [formGroup]="extraHeaders">
         <h4 class="my-2"><b>Agregar columnas:</b></h4>
-        <p>
-          <mat-checkbox formControlName="payment_date" [(ngModel)]="paymentDate" (ngModelChange)="updateTable()">
-            FECHA PAGO FACTURA
-          </mat-checkbox>
-        </p>
-        <p>
-          <mat-checkbox formControlName="expiration_date" [(ngModel)]="expirationDate" (ngModelChange)="updateTable()">
-            FECHA VENCIMIENTO CREDITO
-          </mat-checkbox>
-        </p>
-        <p>
-          <mat-checkbox formControlName="observations" [(ngModel)]="observations" (ngModelChange)="updateTable()">
-            OBSERVACIONES
-          </mat-checkbox>
-        </p>
+        <div class="row justify-content-center">
+          <p class="col-12 col-sm-4 text-center">
+            <mat-checkbox formControlName="payment_date" [(ngModel)]="paymentDate" (ngModelChange)="updateTable()">
+              FECHA PAGO FACTURA
+            </mat-checkbox>
+          </p>
+          <p class="col-12 col-sm-4 text-center">
+            <mat-checkbox formControlName="expiration_date" [(ngModel)]="expirationDate"
+                          (ngModelChange)="updateTable()">
+              FECHA VENCIMIENTO CRÉDITO
+            </mat-checkbox>
+          </p>
+          <p class="col-12 col-sm-4 text-center">
+            <mat-checkbox formControlName="observations" [(ngModel)]="observations" (ngModelChange)="updateTable()">
+              OBSERVACIONES
+            </mat-checkbox>
+          </p>
+        </div>
       </section>
 
       <div class="row justify-content-left justify-content-sm-end  mx-auto">
         <div class="col-0 col-sm-12"></div>
         <div class=" col-12  my-3 col-sm-3 text-center">
-          <button class="btn  primaryBtn" id="save" *ngIf="!selection.isEmpty()" (click)="openModal('success')" >Eliminar</button>
+          <button class="btn  primaryBtn" id="save" *ngIf="!selection.isEmpty()" (click)="openModal('success')">
+            Eliminar
+          </button>
         </div>
         <div class=" col-12 my-3 col-sm-3 text-center">
           <button class="btn  secondaryBtn" id="clean" (click)="clean(true)">Limpiar</button>

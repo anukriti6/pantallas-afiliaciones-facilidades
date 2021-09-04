@@ -5,14 +5,9 @@
     </div>
   </div>
   <app-payment-search-invoices (searchObj)="searchInvoices($event)" [searchError]="searchError"
-                       [clean]="doClean"></app-payment-search-invoices>
+                               [clean]="doClean"></app-payment-search-invoices>
   <div class="row justify-content-center" *ngIf="invoices.length>0">
-    <div class="row justify-content-left  mt-1 mx-auto">
-      <div class="col-12 col-sm-11">
-        <h4 class="title my-2">Facturas por Pagar</h4>
-      </div>
-    </div>
-
+    <h4 class="title my-2">Facturas por Pagar</h4>
     <div class="col-12 my-3 row justify-content-center">
       <mat-form-field appearance="outline" class="col-12 col-md-5">
         <mat-label>Filtro por Proveedor y Fecha de Pago</mat-label>
@@ -21,216 +16,260 @@
       </mat-form-field>
 
       <p class="label">Se muestran {{invoices.length}} de un total de {{invoices.length}} facturas</p>
-      <div class="table-responsive">
-        <table mat-table [dataSource]="dataSource" matSort class=" table table-striped">
-          <!-- Checkbox Column -->
-          <ng-container matColumnDef="select">
-            <th mat-header-cell *matHeaderCellDef
-                class="text-center">
-              <mat-checkbox (change)="$event ? masterToggle() : null" class="px-2"
-                            [checked]="selection.hasValue() && isAllSelected()"
-                            [indeterminate]="selection.hasValue() && !isAllSelected()">
-              </mat-checkbox>
-              <span>Seleccionar<br>Todos</span>
-            </th>
-            <td mat-cell *matCellDef="let row">
-              <mat-checkbox (click)="$event.stopPropagation()"
-                            (change)="$event ? selection.toggle(row) : null"
-                            [checked]="selection.isSelected(row)">
-              </mat-checkbox>
-            </td>
-          </ng-container>
-          <!-- identification Column -->
-          <ng-container matColumnDef="identification" >
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>RUC EMPRESA</b></th>
-            <td mat-cell *matCellDef="let element"> {{element.identification}} </td>
-          </ng-container>
-          <!-- company Column -->
-          <ng-container matColumnDef="company">
-            <th mat-header-cell *matHeaderCellDef class="text-center">
-              <b>EMPRESA</b>
-            </th>
-            <td mat-cell *matCellDef="let element"> {{element.company}} </td>
-          </ng-container>
+      <div class="row no-gutters justify-content-between">
+        <div class="col-8 col-sm-9 col-md-10">
+          <div class="table-responsive">
+            <table mat-table [dataSource]="dataSource" matSort class=" table table-striped">
+              <!-- Checkbox Column -->
+              <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef
+                    class="text-center">
+                  <mat-checkbox (change)="$event ? masterToggle() : null" class="px-2"
+                                [checked]="selection.hasValue() && isAllSelected()"
+                                [indeterminate]="selection.hasValue() && !isAllSelected()">
+                  </mat-checkbox>
+                  <span>Seleccionar<br>Todos</span>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                  <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? selection.toggle(row) : null"
+                                [checked]="selection.isSelected(row)">
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+              <!-- identification Column -->
+              <ng-container matColumnDef="identification">
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>RUC Empresa</b></th>
+                <td mat-cell *matCellDef="let element"> {{element.identification}} </td>
+              </ng-container>
+              <!-- company Column -->
+              <ng-container matColumnDef="company">
+                <th mat-header-cell *matHeaderCellDef class="text-center">
+                  <b>Empresa</b>
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.company}} </td>
+              </ng-container>
 
-          <!-- client-provider Column -->
-          <ng-container matColumnDef="identification_provider">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>IDENTIFICACION PROVEEDOR</b></th>
-            <td mat-cell *matCellDef="let element"> {{element.identification_provider}} </td>
-          </ng-container>
+              <!-- client-provider Column -->
+              <ng-container matColumnDef="identification_provider">
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Identificación Proveedor</b></th>
+                <td mat-cell *matCellDef="let element"> {{element.identification_provider}} </td>
+              </ng-container>
 
-          <!-- client-provider Column -->
-          <ng-container matColumnDef="client_provider">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"><b>CLIENTE PROVEEDOR</b></th>
-            <td mat-cell *matCellDef="let element"> {{element.client_provider}} </td>
-          </ng-container>
+              <!-- client-provider Column -->
+              <ng-container matColumnDef="client_provider">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"><b>Cliente Proveedor</b></th>
+                <td mat-cell *matCellDef="let element"> {{element.client_provider}} </td>
+              </ng-container>
 
-          <!-- invoice_number Column -->
-          <ng-container matColumnDef="invoice_number">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>NUMERO FACTURA</b></th>
-            <td mat-cell *matCellDef="let element"> {{element.invoice_number}} </td>
-          </ng-container>
+              <!-- invoice_number Column -->
+              <ng-container matColumnDef="invoice_number">
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número Factura</b></th>
+                <td mat-cell *matCellDef="let element"> {{element.invoice_number}} </td>
+              </ng-container>
 
-          <!-- effective_date Column -->
-          <ng-container matColumnDef="payment_date">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"><b>FECHA PAGO FACTURA</b></th>
-            <td mat-cell *matCellDef="let element"> {{element.payment_date}} </td>
+              <!-- effective_date Column -->
+              <ng-container matColumnDef="payment_date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"><b>Fecha Pago Factura</b></th>
+                <td mat-cell *matCellDef="let element"> {{element.payment_date}} </td>
 
-          </ng-container>
+              </ng-container>
 
-          <!-- invoice_value Column -->
-          <ng-container matColumnDef="invoice_value">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>MONTO FACTURA</b></th>
-            <td mat-cell *matCellDef="let element"> {{element.invoice_value}} </td>
-          </ng-container>
+              <!-- invoice_value Column -->
+              <ng-container matColumnDef="invoice_value">
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Monto Factura</b></th>
+                <td mat-cell *matCellDef="let element"> $ {{element.invoice_value}} </td>
+              </ng-container>
 
-          <!-- payment Column -->
-          <ng-container matColumnDef="payment">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>VALOR A PAGAR</b></th>
-            <td mat-cell *matCellDef="let element">
-              <mat-form-field>
-                <input matInput [(ngModel)]="element.payment" >
-              </mat-form-field>
-            </td>
-          </ng-container>
+              <!-- payment Column -->
+              <!-- <ng-container matColumnDef="payment" >
+                 <th mat-header-cell *matHeaderCellDef class="text-center"><b>VALOR A PAGAR</b></th>
+                 <td mat-cell *matCellDef="let element">
+                   &lt;!&ndash; <mat-form-field>
+                      <input matInput [(ngModel)]="element.payment">
+                    </mat-form-field>&ndash;&gt;
+                   {{element.payment}}
+                 </td>
+               </ng-container>-->
 
-          <!-- start_date Column -->
-          <ng-container matColumnDef="start_date">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>FECHA INGRESO FACTURA</b></th>
-            <td mat-cell *matCellDef="let element"> {{element.start_date}} </td>
-          </ng-container>
+              <!-- start_date Column -->
+              <ng-container matColumnDef="start_date">
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Ingreso Factura</b></th>
+                <td mat-cell *matCellDef="let element"> {{element.start_date}} </td>
+              </ng-container>
 
-          <!-- expiration_date Column -->
-          <ng-container matColumnDef="expiration_date">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>FECHA VENCIMIENTO CREDITO</b></th>
-            <td mat-cell *matCellDef="let element"> {{element.expiration_date}} </td>
-          </ng-container>
+              <!-- expiration_date Column -->
+              <ng-container matColumnDef="expiration_date">
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Vencimiento Crédito</b></th>
+                <td mat-cell *matCellDef="let element"> {{element.expiration_date}} </td>
+              </ng-container>
 
-          <!-- balance Column -->
-          <ng-container matColumnDef="balance">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>SALDO FACTURA</b></th>
-            <td mat-cell *matCellDef="let element"> {{element.balance}} </td>
-          </ng-container>
-          <!-- balance Column -->
-          <ng-container matColumnDef="operation_number">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>NUMERO OPERACION</b></th>
-            <td mat-cell *matCellDef="let element"> {{element.operation_number}} </td>
-          </ng-container>
+              <!-- balance Column -->
+              <ng-container matColumnDef="balance">
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Saldo Factura</b></th>
+                <td mat-cell *matCellDef="let element"> $ {{element.balance}} </td>
+              </ng-container>
+              <!-- balance Column -->
+              <ng-container matColumnDef="operation_number">
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número Operación</b></th>
+                <td mat-cell *matCellDef="let element"> {{element.operation_number}} </td>
+              </ng-container>
 
 
-          <!-- observations Column -->
-          <ng-container matColumnDef="observations">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>OBSERVACIONES</b></th>
-            <td mat-cell *matCellDef="let element">
-              <mat-form-field>
-                <input matInput [(ngModel)]="element.observations" >
-              </mat-form-field>
-            </td>
-          </ng-container>
+              <!-- observations Column -->
+              <ng-container matColumnDef="observations">
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Observaciones</b></th>
+                <td mat-cell *matCellDef="let element">
+                  <input type="text" placeholder="Observaciones" matInput name="observations"
+                         [(ngModel)]="element.observations" class="inside-form">
+                </td>
+              </ng-container>
 
-          <!-- firstHeadersRow -->
-          <tr mat-header-row *matHeaderRowDef="headers"></tr>
-          <tr mat-row *matRowDef="let row; columns: headers;"></tr>
-        </table>
-        <mat-paginator [pageSizeOptions]="[10, 20, 50]"
-                       showFirstLastButtons
-                       aria-label="Seleccione la pagina">
-        </mat-paginator>
-      </div>
-      <div class="row">
-        <div class="col-12 col-sm-4">
-          <section class="example-section" [formGroup]="extraHeaders">
-            <h3 class="my-2 mt-4"><b>Agregar columnas:</b></h3>
-            <p>
-              <mat-checkbox formControlName="operation_number" [(ngModel)]="operationNumber" (ngModelChange)="updateTable()">
-                NUMERO OPERACION
-              </mat-checkbox>
-            </p>
-            <p>
-              <mat-checkbox formControlName="start_date" [(ngModel)]="startDate" (ngModelChange)="updateTable()">
-                FECHA INGRESO FACTURA
-              </mat-checkbox>
-            </p>
-            <p>
-              <mat-checkbox formControlName="expiration_date" [(ngModel)]="expirationDate" (ngModelChange)="updateTable()">
-                FECHA VENCIMIENTO CREDITO
-              </mat-checkbox>
-            </p>
-            <p>
-              <mat-checkbox formControlName="balance" [(ngModel)]="balance" (ngModelChange)="updateTable()">
-                SALDO FACTURA
-              </mat-checkbox>
-            </p>
-            <p>
-              <mat-checkbox formControlName="observations" [(ngModel)]="observations" (ngModelChange)="updateTable()">
-                OBSERVACIONES
-              </mat-checkbox>
-            </p>
-          </section>
+              <!-- firstHeadersRow -->
+              <tr mat-header-row *matHeaderRowDef="headers"></tr>
+              <tr mat-row *matRowDef="let row; columns: headers;"></tr>
+            </table>
+          </div>
         </div>
-        <div class="col-12 col-sm-8 row justify-content-center">
-          <h3 class="my-2 mt-4"><b>Detalle para el pago de facturas:</b></h3>
-          <div class="col-6">
-            <div class="row mx-auto">
-              <mat-label class=" col-12 mx-auto labels text-left my-2">Número de Cuenta Empresa</mat-label>
-            </div>
-            <div class="row mx-auto">
-              <!--<mat-form-field appearance="outline" class="col-12 mx-auto">
-                <input matInput type="number" placeholder="Número de Cuenta Empresa" name="identification"
-                       id="identification"
-                       [(ngModel)]="data.identification">
-              </mat-form-field>-->
-              <mat-form-field appearance="outline"  class="col-12 mx-auto">
-                <mat-select [(ngModel)]="account" name="account" >
-                  <mat-option *ngFor="let account of accounts" [value]="account">
-                    {{account}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="row mx-auto">
-              <mat-label class=" col-12 mx-auto labels text-left my-2">Saldo Disponible Cuenta Empresa</mat-label>
-            </div>
-            <div class="row mx-auto">
-              <mat-form-field appearance="outline" class="col-12 mx-auto">
-                <input matInput type="number" placeholder="Saldo Disponible" name="account_balance" id="account_balance"
-                       [(ngModel)]="accountBalance">
-              </mat-form-field>
-            </div>
+        <div class="col-4 col-sm-3 col-md-2">
+          <div class="table-responsive ml-2">
+            <table mat-table [dataSource]="dataSource" matSort class=" table table-striped">
+              <!-- payment Column -->
+              <ng-container matColumnDef="payment">
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Valor A Pagar</b></th>
+                <td mat-cell *matCellDef="let element">
+                  <input type="text" placeholder="Valor a Pagar" style="display: inline-block;"
+                         matInput name="payment" class="inside-form"
+                         [(ngModel)]="element.payment">
+
+                </td>
+              </ng-container>
+              <!-- firstHeadersRow -->
+              <tr mat-header-row *matHeaderRowDef="headersTotal"></tr>
+              <tr mat-row *matRowDef="let row; columns: headersTotal;"></tr>
+            </table>
           </div>
-          <div class="col-6">
-            <div class="row mx-auto">
-              <mat-label class=" col-12 mx-auto labels text-left my-2">Total a Pagar</mat-label>
-            </div>
-            <div class="row mx-auto">
-              <mat-form-field appearance="outline" class="col-12 mx-auto">
-                <input matInput type="number" placeholder="Total a Pagar" name="total" id="total"
-                       [(ngModel)]="total">
-              </mat-form-field>
-            </div>
-            <div class="row mx-auto">
-              <mat-label class=" col-12 mx-auto labels text-left my-2">Notificación por Email</mat-label>
-            </div>
-            <div class="row mx-auto">
-              <mat-form-field appearance="outline" class="col-12 mx-auto">
-                <input matInput type="email" placeholder="Notificación por Email" name="email" id="email"
-                       [(ngModel)]="email">
-              </mat-form-field>
-            </div>
+        </div>
+
+      </div>
+
+      <mat-paginator [pageSizeOptions]="[10, 20, 50, 100, 200, 300]"
+                     showFirstLastButtons
+                     aria-label="Seleccione la pagina">
+      </mat-paginator>
+      <section class="example-section" [formGroup]="extraHeaders">
+        <h3 class="my-2 mt-4"><b>Agregar columnas:</b></h3>
+        <div class="row justify-content-center">
+          <p class="col-sm-2 col-12 text-center">
+            <mat-checkbox formControlName="operation_number" [(ngModel)]="operationNumber"
+                          (ngModelChange)="updateTable()">
+              NUMERO OPERACIÓN
+            </mat-checkbox>
+          </p>
+          <p class="col-sm-3 col-12 text-center">
+            <mat-checkbox formControlName="start_date" [(ngModel)]="startDate" (ngModelChange)="updateTable()">
+              FECHA INGRESO FACTURA
+            </mat-checkbox>
+          </p>
+          <p class="col-sm-3 col-12 text-center">
+            <mat-checkbox formControlName="expiration_date" [(ngModel)]="expirationDate"
+                          (ngModelChange)="updateTable()">
+              FECHA VENCIMIENTO CRÉDITO
+            </mat-checkbox>
+          </p>
+          <p class="col-sm-2 col-12 text-center">
+            <mat-checkbox formControlName="balance" [(ngModel)]="balance" (ngModelChange)="updateTable()">
+              SALDO FACTURA
+            </mat-checkbox>
+          </p>
+          <p class="col-sm-2 col-12 text-center">
+            <mat-checkbox formControlName="observations" [(ngModel)]="observations" (ngModelChange)="updateTable()">
+              OBSERVACIONES
+            </mat-checkbox>
+          </p>
+        </div>
+      </section>
+      <h4 class="title my-4">Detalle para el pago de facturas</h4>
+      <div class="col-12 row ">
+        <div class="col-sm-4 col-12">
+          <div class="row mx-auto">
+            <mat-label class=" col-12 mx-auto labels text-left my-2">Número de Cuenta Empresa</mat-label>
+          </div>
+        </div>
+        <div class="col-sm-5 col-12">
+          <div class="row mx-auto">
+            <mat-form-field appearance="outline" class="col-12 mx-auto">
+              <mat-select [(ngModel)]="account" name="account">
+                <mat-option [value]="''">Seleccione una Cuenta</mat-option>
+                <mat-option *ngFor="let account of accounts" [value]="account">
+                  {{account}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 row ">
+        <div class="col-sm-4 col-12">
+          <div class="row mx-auto">
+            <mat-label class=" col-12 mx-auto labels text-left my-2">Saldo Disponible Cuenta Empresa</mat-label>
           </div>
 
+        </div>
+        <div class="col-sm-5 col-12">
+          <div class="row mx-auto">
+            <mat-form-field appearance="outline" class="col-12 mx-auto">
+              <input matInput type="number" placeholder="Saldo Disponible" name="account_balance" id="account_balance"
+                     [(ngModel)]="accountBalance">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-sm-3 col-12">
+          <button class="btn secondaryBtn mt-2" id="calculate" [disabled]="selection.isEmpty()" (click)="calculate()">
+            Calcular
+          </button>
+        </div>
+      </div>
+      <div class="col-12 row ">
+        <div class="col-sm-4 col-12">
+          <div class="row mx-auto">
+            <mat-label class=" col-12 mx-auto labels text-left my-2">Total a Pagar</mat-label>
+          </div>
+        </div>
+        <div class="col-sm-5 col-12">
+          <div class="row mx-auto">
+            <mat-form-field appearance="outline" class="col-12 mx-auto">
+              <input matInput type="number" placeholder="Total a Pagar" name="total" id="total"
+                     [(ngModel)]="total">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 row ">
+        <div class="col-sm-4 col-12">
+          <div class="row mx-auto">
+            <mat-label class=" col-12 mx-auto labels text-left my-2">Notificación por Email</mat-label>
+          </div>
+        </div>
+        <div class="col-sm-5 col-12">
+          <div class="row mx-auto">
+            <mat-form-field appearance="outline" class="col-12 mx-auto">
+              <input matInput type="email" placeholder="Notificación por Email" name="email" id="email"
+                     [(ngModel)]="email">
+            </mat-form-field>
+          </div>
         </div>
       </div>
 
 
       <div class="row justify-content-left justify-content-sm-end  mx-auto">
-        <div class="col-0 col-sm-3"></div>
+        <div class="col-0 col-sm-6"></div>
         <div class=" col-12  my-3 col-sm-3 text-center">
-          <button class="btn  primaryBtn" id="save" *ngIf="!selection.isEmpty() && canPay" (click)="openModal()" >Pagar</button>
+          <button class="btn  primaryBtn" id="save" [disabled]="selection.isEmpty() || !canPay" (click)="openModal()">
+            Pagar
+          </button>
         </div>
-        <div class=" col-12  my-3 col-sm-3 text-center">
-          <button class="btn secondaryBtn" id="calculate" *ngIf="!selection.isEmpty()" (click)="calculate()">Calcular</button>
-        </div>
+
         <div class=" col-12 my-3 col-sm-3 text-center">
           <button class="btn  secondaryBtn" id="clean" (click)="clean(true)">Limpiar</button>
         </div>

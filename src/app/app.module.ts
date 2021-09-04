@@ -120,7 +120,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatProgressBarModule,
     MatDatepickerModule,
     ReactiveFormsModule,
-    MatSortModule
+    MatSortModule,
+    MatNativeDateModule
   ],
   exports: [
     BrowserModule,
@@ -154,7 +155,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatProgressBarModule,
     MatDatepickerModule,
     ReactiveFormsModule,
-    MatSortModule
+    MatSortModule,
+    MatNativeDateModule
   ],
   providers: [EasinessService, ProviderService, {
     provide: HTTP_INTERCEPTORS,
