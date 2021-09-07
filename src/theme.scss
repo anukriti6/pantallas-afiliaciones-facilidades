@@ -2761,5 +2761,10 @@ th.mat-header-cell{
 .mat-expansion-panel-header {
   padding: 0 16px !important;
 }
+.mat-sort-header-arrow, [dir=rtl] .mat-sort-header-position-before .mat-sort-header-arrow {
+  display: none !important;
+}
 
-
+.sort-icon{
+  margin-right: 5px !important;
+}

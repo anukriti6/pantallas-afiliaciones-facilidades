@@ -270,11 +270,18 @@ table {
 }
 
 .mat-column-payment {
-  border: #ff6e6e 2px solid;
-  border-bottom: #ff6e6e 2px solid !important;
+
   padding-left: 5px;
   padding-right: 5px;
+  border: #0f265c 2px solid !important;
+
+
 }
+#custom-header{
+  background-color: #0f265c !important;
+  color: white !important;
+}
+
 
 .inside-form {
   border-bottom: black 1px solid !important;

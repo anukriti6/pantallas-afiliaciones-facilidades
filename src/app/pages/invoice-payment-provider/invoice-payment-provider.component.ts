@@ -33,6 +33,10 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
   email = '';
   total: number | null = null;
   accountBalance: number | null = null;
+  dateFilterStart: Date| null = null;
+  dateFilterEnd: Date| null = null;
+  providerIcon = 'sort_by_alpha';
+  dateIcon = 'sort_by_alpha';
   availableBalance = true;
   balance = false;
   operationNumber = false;
@@ -74,6 +78,7 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
 
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
+    console.log('filterValue', filterValue);
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
@@ -135,6 +140,35 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
       });
     }
     this.availableBalance = !this.availableBalance;
+  }
+
+  sortData(e: any): void {
+    console.log('evet', e);
+    console.log('direction', e.direction);
+    switch (e.direction) {
+      case 'asc':
+        if (e.active === 'client_provider') {
+          this.providerIcon = 'arrow_circle_up';
+        } else {
+          this.dateIcon = 'arrow_circle_up';
+        }
+
+        break;
+      case 'desc':
+        if (e.active === 'client_provider') {
+          this.providerIcon = 'arrow_circle_down';
+        } else {
+          this.dateIcon = 'arrow_circle_down';
+        }
+        break;
+      default:
+        if (e.active === 'client_provider') {
+          this.providerIcon = 'sort_by_alpha';
+        } else {
+          this.dateIcon = 'sort_by_alpha';
+        }
+        break;
+    }
   }
 
   openModal(): void {
