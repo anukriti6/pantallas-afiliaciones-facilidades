@@ -1,0 +1,82 @@
+<div class="container">
+  <form action="" name="idForm">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-6">
+        <div class="row mx-auto">
+          <mat-label class="col-12 mx-auto labels text-left my-2">Nombre Empresa</mat-label>
+        </div>
+        <div class="row mx-auto">
+          <mat-form-field appearance="outline" class="col-12 mx-auto">
+            <input type="text"
+                   placeholder="Nombre Empresa"
+                   matInput
+                   name="company"
+                   [matAutocomplete]="auto"
+                   [(ngModel)]="data.company"
+                   (ngModelChange)="changedCompanySearch()">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let name of filteredCompanyNames" [value]="name">
+                {{name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="row mx-auto">
+          <mat-label class=" col-12 mx-auto labels text-left my-2">Identificación Empresa</mat-label>
+        </div>
+        <div class="row mx-auto">
+          <mat-form-field appearance="outline" class="col-12 mx-auto">
+            <input matInput type="number" placeholder="Identificación Empresa" name="identification" id="identification"
+                   [(ngModel)]="data.identification">
+          </mat-form-field>
+        </div>
+      </div>
+
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-6">
+        <div class="row mx-auto">
+          <mat-label class=" col-12 mx-auto labels text-left my-2">Número Factura</mat-label>
+        </div>
+        <div class="row mx-auto">
+          <mat-form-field appearance="outline" class="col-12 mx-auto">
+            <input matInput type="number" name="number" id="number" placeholder="Número Factura"
+                   [(ngModel)]="data.number" (ngModelChange)="validateNumber(15)">
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <div class="errors col-12  mx-auto text-center my-2">
+            {{errorNumber}}
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="row mx-auto">
+          <mat-label class="col-12 mx-auto labels text-left my-2">Número Operación</mat-label>
+        </div>
+        <div class="row mx-auto">
+          <mat-form-field appearance="outline" class="col-12 mx-auto">
+            <input type="text"
+                   placeholder="Número Operación"
+                   matInput
+                   name="company"
+                   [matAutocomplete]="auto"
+                   [(ngModel)]="data.operation">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <button class="primaryBtn col-6 col-sm-2 my-1 mx-auto text-center" mat-button
+              [disabled]="(!data.company && !data.identification) || errorNumber !== null"
+              (click)="search()">Buscar
+      </button>
+    </div>
+  </form>
+  <div class="row" *ngIf="searchError != null">
+    <div class="alert my-3 alert-danger col-12 col-sm-4 mx-auto text-center" role="alert">{{searchError}}</div>
+  </div>
+</div>

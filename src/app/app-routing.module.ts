@@ -9,6 +9,7 @@ import {InvoiceApprovalComponent} from './pages/invoice-approval/invoice-approva
 import {InvoiceConfirmationComponent} from './pages/invoice-confirmation/invoice-confirmation.component';
 import {InvoiceDeleteComponent} from './pages/invoice-delete/invoice-delete.component';
 import {InvoicePaymentProviderComponent} from './pages/invoice-payment-provider/invoice-payment-provider.component';
+import {CreditPaymentProviderComponent} from './pages/credit-payment-provider/credit-payment-provider.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'pay-provider-invoices',
     component: InvoicePaymentProviderComponent
+  },
+  {
+    path: 'pay-distributor-invoices',
+    component: CreditPaymentProviderComponent
   }
 ];
 

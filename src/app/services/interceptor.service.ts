@@ -36,7 +36,7 @@ export class InterceptorService implements HttpInterceptor {
             data: {
               message: event.statusText,
               dismiss: 'Cerrar',
-              type: 'Success',
+              type: 'Aviso',
             },
             panelClass: 'alert-success'
           });
@@ -51,7 +51,7 @@ export class InterceptorService implements HttpInterceptor {
           data: {
             message: error.message,
             dismiss: 'Cerrar',
-            type: 'Error',
+            type: 'Aviso',
           },
           panelClass: 'alert-danger'
         });

@@ -1,23 +1,23 @@
 <div class="container">
   <div class="row mt-sm-5 mt-3">
     <div class="col-12 col-sm-6 mx-auto">
-      <h1 class="title text-center"> Pagar Facturas Proveedor</h1>
+      <h1 class="title text-center"> Pagar Créditos Proveedor</h1>
     </div>
   </div>
-  <app-payment-search-invoices (searchObj)="searchInvoices($event)" [searchError]="searchError"
-                               [clean]="doClean"></app-payment-search-invoices>
+  <app-payment-search-provider (searchObj)="searchInvoices($event)" [searchError]="searchError"
+                               [clean]="doClean"></app-payment-search-provider>
   <div class="row justify-content-center" *ngIf="invoices.length>0">
-    <h4 class="title my-2">Facturas por Pagar</h4>
+    <h4 class="title my-2">Créditos por Pagar</h4>
     <div class="col-12 my-3 row justify-content-center">
-      <mat-form-field appearance="outline" class="col-12 col-md-5">
+      <!--<mat-form-field appearance="outline" class="col-12 col-md-5">
         <mat-label>Filtro por Proveedor</mat-label>
         <input type="text" placeholder="Filtra según las letras ingresadas" matInput name="filter"
                (keyup)="applyFilter($event)" #input>
-      </mat-form-field>
+      </mat-form-field>-->
 
 
       <mat-form-field appearance="outline" class="col-12 col-md-5">
-        <mat-label>Filtro por Fecha de Pago</mat-label>
+        <mat-label>Filtro por Fecha de Vencimiento Crédito</mat-label>
         <mat-date-range-input [rangePicker]="picker"  (change)="applyFilter($event)">
           <input matStartDate placeholder="Fecha inicial">
           <input matEndDate placeholder="Fecha final">
@@ -48,11 +48,6 @@
                   </mat-checkbox>
                 </td>
               </ng-container>
-              <!-- identification Column -->
-              <ng-container matColumnDef="identification">
-                <th mat-header-cell *matHeaderCellDef class="text-center"><b>RUC Empresa</b></th>
-                <td mat-cell *matCellDef="let element"> {{element.identification}} </td>
-              </ng-container>
               <!-- company Column -->
               <ng-container matColumnDef="company">
                 <th mat-header-cell *matHeaderCellDef class="text-center">
@@ -62,16 +57,9 @@
               </ng-container>
 
               <!-- client-provider Column -->
-              <ng-container matColumnDef="identification_provider">
-                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Identificación Proveedor</b></th>
-                <td mat-cell *matCellDef="let element"> {{element.identification_provider}} </td>
-              </ng-container>
-
-              <!-- client-provider Column -->
               <ng-container matColumnDef="client_provider">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center">
+                <th mat-header-cell *matHeaderCellDef class="text-center">
                   <b>Cliente Proveedor</b>
-                  <mat-icon class="sort-icon">{{providerIcon}}</mat-icon>
                 </th>
                 <td mat-cell *matCellDef="let element"> {{element.client_provider}} </td>
               </ng-container>
@@ -82,37 +70,27 @@
                 <td mat-cell *matCellDef="let element"> {{element.invoice_number}} </td>
               </ng-container>
 
-              <!-- effective_date Column -->
-              <ng-container matColumnDef="payment_date">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center">
-                  <b>Fecha Pago Factura</b>
-                  <mat-icon class="sort-icon">{{dateIcon}}</mat-icon>
+              <!-- operation_number Column -->
+              <ng-container matColumnDef="operation_number">
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número Operación</b></th>
+                <td mat-cell *matCellDef="let element"> {{element.operation_number}} </td>
+              </ng-container>
+
+              <!-- concession_date Column -->
+              <ng-container matColumnDef="concession_date">
+                <th mat-header-cell *matHeaderCellDef class="text-center">
+                  <b>Fecha Concesión</b>
                 </th>
-                <td mat-cell *matCellDef="let element"> {{element.payment_date}} </td>
-
+                <td mat-cell *matCellDef="let element"> {{element.concession_date}} </td>
               </ng-container>
 
-              <!-- invoice_value Column -->
-              <ng-container matColumnDef="invoice_value">
-                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Monto Factura</b></th>
-                <td mat-cell *matCellDef="let element"> $ {{element.invoice_value}} </td>
-              </ng-container>
-
-              <!-- payment Column -->
-              <!-- <ng-container matColumnDef="payment" >
-                 <th mat-header-cell *matHeaderCellDef class="text-center"><b>VALOR A PAGAR</b></th>
-                 <td mat-cell *matCellDef="let element">
-                   &lt;!&ndash; <mat-form-field>
-                      <input matInput [(ngModel)]="element.payment">
-                    </mat-form-field>&ndash;&gt;
-                   {{element.payment}}
-                 </td>
-               </ng-container>-->
-
-              <!-- start_date Column -->
-              <ng-container matColumnDef="start_date">
-                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Ingreso Factura</b></th>
-                <td mat-cell *matCellDef="let element"> {{element.start_date}} </td>
+              <!-- effective_date Column -->
+              <ng-container matColumnDef="default_days">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center">
+                  <b class="sort-header">Días de Mora</b>
+                  <mat-icon class="sort-icon">{{icon}}</mat-icon>
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.default_days}} </td>
               </ng-container>
 
               <!-- expiration_date Column -->
@@ -121,25 +99,16 @@
                 <td mat-cell *matCellDef="let element"> {{element.expiration_date}} </td>
               </ng-container>
 
+              <!-- invoice_value Column -->
+              <ng-container matColumnDef="invoice_value">
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Monto Factura</b></th>
+                <td mat-cell *matCellDef="let element"> $ {{element.invoice_value}} </td>
+              </ng-container>
+
               <!-- balance Column -->
               <ng-container matColumnDef="balance">
-                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Saldo Factura</b></th>
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Saldo Crédito</b></th>
                 <td mat-cell *matCellDef="let element"> $ {{element.balance}} </td>
-              </ng-container>
-              <!-- balance Column -->
-              <ng-container matColumnDef="operation_number">
-                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número Operación</b></th>
-                <td mat-cell *matCellDef="let element"> {{element.operation_number}} </td>
-              </ng-container>
-
-
-              <!-- observations Column -->
-              <ng-container matColumnDef="observations">
-                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Observaciones</b></th>
-                <td mat-cell *matCellDef="let element">
-                  <input type="text" placeholder="Observaciones" matInput name="observations"
-                         [(ngModel)]="element.observations" class="inside-form">
-                </td>
               </ng-container>
 
               <!-- firstHeadersRow -->
@@ -176,36 +145,27 @@
       <section class="example-section" [formGroup]="extraHeaders">
         <h3 class="my-2 mt-4"><b>Agregar columnas:</b></h3>
         <div class="row justify-content-center">
-          <p class="col-sm-2 col-12 text-center">
-            <mat-checkbox formControlName="operation_number" [(ngModel)]="operationNumber"
+          <p class="col-sm-4 col-12 text-center">
+            <mat-checkbox formControlName="company" [(ngModel)]="company"
                           (ngModelChange)="updateTable()">
-              NUMERO OPERACIÓN
+              EMPRESA
             </mat-checkbox>
           </p>
-          <p class="col-sm-3 col-12 text-center">
-            <mat-checkbox formControlName="start_date" [(ngModel)]="startDate" (ngModelChange)="updateTable()">
-              FECHA INGRESO FACTURA
+          <p class="col-sm-4 col-12 text-center">
+            <mat-checkbox formControlName="client_provider" [(ngModel)]="client_provider" (ngModelChange)="updateTable()">
+              CLIENTE PROVEEDOR
             </mat-checkbox>
           </p>
-          <p class="col-sm-3 col-12 text-center">
-            <mat-checkbox formControlName="expiration_date" [(ngModel)]="expirationDate"
+          <p class="col-sm-4 col-12 text-center">
+            <mat-checkbox formControlName="concession_date" [(ngModel)]="concession_date"
                           (ngModelChange)="updateTable()">
-              FECHA VENCIMIENTO CRÉDITO
+              FECHA CONCESIÓN
             </mat-checkbox>
           </p>
-          <p class="col-sm-2 col-12 text-center">
-            <mat-checkbox formControlName="balance" [(ngModel)]="balance" (ngModelChange)="updateTable()">
-              SALDO FACTURA
-            </mat-checkbox>
-          </p>
-          <p class="col-sm-2 col-12 text-center">
-            <mat-checkbox formControlName="observations" [(ngModel)]="observations" (ngModelChange)="updateTable()">
-              OBSERVACIONES
-            </mat-checkbox>
-          </p>
+
         </div>
       </section>
-      <h4 class="title my-4">Detalle para el pago de facturas</h4>
+      <h4 class="title my-4">Detalle para el pago de créditos</h4>
       <div class="col-12 row ">
         <div class="col-sm-4 col-12">
           <div class="row mx-auto">

@@ -75,11 +75,17 @@
       </mat-nav-list>
 
       <mat-expansion-panel style="width: 100%;">
-        <mat-expansion-panel-header>Liberación de Cupo/ Pago Crédito</mat-expansion-panel-header>
+        <mat-expansion-panel-header>Liberación de Cupo / Pago Crédito</mat-expansion-panel-header>
         <mat-nav-list class="mat-nav-list">
           <a mat-list-item class="mat-list-item" routerLink="/pay-provider-invoices"
              (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
             Pago Facturas Proveedor
+          </a>
+        </mat-nav-list>
+        <mat-nav-list class="mat-nav-list">
+          <a mat-list-item class="mat-list-item" routerLink="/pay-distributor-invoices"
+             (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
+            Pago Crédito Proveedor
           </a>
         </mat-nav-list>
       </mat-expansion-panel>

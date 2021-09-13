@@ -11,8 +11,10 @@ export interface IItem {
   invoice_number: string;
   invoice_value: number;
   payment: number;
+  default_days: number;
   observations: string;
   start_date: string;
+  concession_date: string;
   effective_date: string;
   payment_date: string;
   expiration_date: string;

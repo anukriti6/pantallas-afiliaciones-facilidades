@@ -57,8 +57,10 @@ import {DialogComponent} from './components/dialogs/dialog.component';
 import {InvoiceDeleteComponent} from './pages/invoice-delete/invoice-delete.component';
 import {DeleteSearchInvoicesComponent} from './components/delete-search-invoices/delete-search-invoices.component';
 import {InvoicePaymentProviderComponent} from './pages/invoice-payment-provider/invoice-payment-provider.component';
-import {PaymentSearchInvoicesComponent} from './components/payment-search-invoices/payment-search-invoices.component';
 import {MatSortModule} from '@angular/material/sort';
+import {PaymentSearchInvoicesComponent} from './components/payment-search-invoices/payment-search-invoices.component';
+import {SearchProviderInvoicesComponent} from './components/search-provider-invoices/search-provider-invoices.component';
+import {CreditPaymentProviderComponent} from './pages/credit-payment-provider/credit-payment-provider.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +88,9 @@ import {MatSortModule} from '@angular/material/sort';
     InvoiceDeleteComponent,
     DeleteSearchInvoicesComponent,
     InvoicePaymentProviderComponent,
-    PaymentSearchInvoicesComponent
+    PaymentSearchInvoicesComponent,
+    SearchProviderInvoicesComponent,
+    CreditPaymentProviderComponent
   ],
   imports: [
     BrowserModule,

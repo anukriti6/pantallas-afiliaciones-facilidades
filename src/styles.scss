@@ -232,9 +232,7 @@ table {
   min-width: 100px !important;
 }
 
-.mat-form-field-appearance-outline .mat-form-field-wrapper {
-  padding-bottom: 0;
-}
+
 
 @media (min-width: 781px) {
 
@@ -273,7 +271,7 @@ table {
 
   padding-left: 5px;
   padding-right: 5px;
-  border: #0f265c 2px solid !important;
+  border: #0f265c 1px solid !important;
 
 
 }
@@ -288,4 +286,18 @@ table {
   padding-bottom: 5px !important;
 }
 
+.table-description{
+  font-family: $preloSemiBold;
+}
 
+.alert{
+  border-color: #B7B7B9;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  padding-bottom: 0;
+  //height: 14px;
+}
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0.7em 0 0.7em 0;
+}
