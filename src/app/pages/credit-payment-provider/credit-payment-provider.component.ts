@@ -173,7 +173,9 @@ export class CreditPaymentProviderComponent implements OnInit, AfterViewInit {
             total: selected,
             title: 'Pago Exitoso',
             body: (selected > 1 ? 'Fueron pagadas ' : 'fue pagada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
-            button: 'Aceptar'
+            question: '¿Desea descargar comprobantes?',
+            button: 'Si',
+            dismiss: 'No'
           }
         });
 

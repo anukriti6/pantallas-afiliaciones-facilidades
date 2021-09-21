@@ -1,8 +1,10 @@
 <h3 mat-dialog-title><b>{{data.title}}</b></h3>
 <div mat-dialog-content>
   <p>{{data.body}}</p>
+  <p *ngIf="data.question">{{data.question}}</p>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button *ngIf="data.dismiss" mat-button (click)="onNoClick()">{{data.dismiss}}</button>
+  <button *ngIf="!data.dismiss" mat-button (click)="onNoClick()">Cancelar</button>
   <button mat-button [mat-dialog-close]="true" cdkFocusInitial>{{data.button}}</button>
 </div>

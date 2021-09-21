@@ -5,6 +5,8 @@ export interface DialogData {
   total: number;
   title: string;
   body: string;
+  question: string;
+  dismiss: string;
   button: string;
 }
 
