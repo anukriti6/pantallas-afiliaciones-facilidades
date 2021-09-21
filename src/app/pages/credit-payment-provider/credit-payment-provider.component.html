@@ -122,7 +122,7 @@
             <table mat-table [dataSource]="dataSource" matSort class=" table table-striped">
               <!-- payment Column -->
               <ng-container matColumnDef="payment">
-                <th id="custom-header" mat-header-cell *matHeaderCellDef class="text-center "><b>Total Valor a Pagar</b></th>
+                <th id="custom-header" mat-header-cell *matHeaderCellDef class="text-center "><b>Valor a Pagar</b></th>
                 <td mat-cell *matCellDef="let element">
                   <input type="text" placeholder="Valor a Pagar" style="display: inline-block;"
                          matInput name="payment" class="inside-form"
@@ -209,13 +209,13 @@
       <div class="col-12 row ">
         <div class="col-sm-4 col-12">
           <div class="row mx-auto">
-            <mat-label class=" col-12 mx-auto labels text-left my-2">Total a Pagar</mat-label>
+            <mat-label class=" col-12 mx-auto labels text-left my-2">Total Valor a Pagar</mat-label>
           </div>
         </div>
         <div class="col-sm-5 col-12">
           <div class="row mx-auto">
             <mat-form-field appearance="outline" class="col-12 mx-auto">
-              <input matInput type="number" placeholder="Total a Pagar" name="total" id="total"
+              <input matInput type="number" placeholder="Total Valor a Pagar" name="total" id="total"
                      [(ngModel)]="total">
             </mat-form-field>
           </div>
