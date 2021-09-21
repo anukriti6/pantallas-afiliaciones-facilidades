@@ -33,8 +33,8 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
   email = '';
   total: number | null = null;
   accountBalance: number | null = null;
-  dateFilterStart: Date| null = null;
-  dateFilterEnd: Date| null = null;
+  dateFilterStart: Date | null = null;
+  dateFilterEnd: Date | null = null;
   providerIcon = 'sort_by_alpha';
   dateIcon = 'sort_by_alpha';
   availableBalance = true;
@@ -182,11 +182,16 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
             total: selected,
             title: 'Pago Exitoso',
             body: (selected > 1 ? 'Fueron pagadas ' : 'fue pagada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
-            button: 'Aceptar'
+            question: '¿Desea descargar comprobantes?',
+            button: 'Si',
+            dismiss: 'No'
           }
         });
 
         successDialog.afterClosed().subscribe(result => {
+          if (!result) {
+            this.clean(true);
+          }
           console.log('The dialog was closed', result);
         });
 

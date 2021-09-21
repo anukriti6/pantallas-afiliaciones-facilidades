@@ -180,6 +180,9 @@ export class CreditPaymentProviderComponent implements OnInit, AfterViewInit {
         });
 
         successDialog.afterClosed().subscribe(result => {
+          if (!result) {
+            this.clean(true);
+          }
           console.log('The dialog was closed', result);
         });
 
