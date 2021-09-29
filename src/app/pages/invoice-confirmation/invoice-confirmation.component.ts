@@ -102,6 +102,7 @@ export class InvoiceConfirmationComponent implements OnInit {
                 dismiss: 'Cerrar',
                 type: 'Alerta'
               },
+              duration: 1300,
               panelClass: 'alert-success'
             });
           }
@@ -129,6 +130,7 @@ export class InvoiceConfirmationComponent implements OnInit {
                 dismiss: 'Cerrar',
                 type: 'Alerta'
               },
+              duration: 1300,
               panelClass: 'alert-danger'
             });
           }

@@ -38,6 +38,7 @@ export class InterceptorService implements HttpInterceptor {
               dismiss: 'Cerrar',
               type: 'Aviso',
             },
+            duration: 1300,
             panelClass: 'alert-success'
           });
           // ,event.statusText,'Close'
@@ -53,6 +54,7 @@ export class InterceptorService implements HttpInterceptor {
             dismiss: 'Cerrar',
             type: 'Aviso',
           },
+          duration: 1300,
           panelClass: 'alert-danger'
         });
         // error.error.message,'Close'

@@ -8,7 +8,7 @@ import {NotifierComponent} from '../../components/notifier/notifier.component';
 import {DeclineDialogComponent} from '../../components/dialogs/decline-dialog.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
-import {DialogComponent} from "../../components/dialogs/dialog.component";
+import {DialogComponent} from '../../components/dialogs/dialog.component';
 
 
 @Component({
@@ -88,6 +88,7 @@ export class InvoiceDeleteComponent implements OnInit {
                 dismiss: 'Cerrar',
                 type: 'Alerta'
               },
+              duration: 1300,
               panelClass: 'alert-success'
             });
           }
@@ -115,6 +116,7 @@ export class InvoiceDeleteComponent implements OnInit {
                 dismiss: 'Cerrar',
                 type: 'Alerta'
               },
+              duration: 1300,
               panelClass: 'alert-danger'
             });
           }

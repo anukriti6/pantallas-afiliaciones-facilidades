@@ -1,0 +1,82 @@
+<div class="container" *ngIf="names">
+  <div class="row mt-sm-5 mt-3">
+    <div class="col-12 col-sm-6 mx-auto">
+      <h1 class="title text-center">Especialista {{names}}</h1>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-12 col-md-5 text-center">
+      <mat-label class="mx-auto labels  my-2">Empresa</mat-label>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <mat-form-field appearance="outline" class="col-12 col-md-5">
+      <mat-label>Filtro por Nombre</mat-label>
+      <input type="text" placeholder="Filtra según las letras ingresadas" matInput name="filter"
+             (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 my-3">
+      <p class="table-description">Se muestran {{companies.length}} de un total de {{companies.length}}
+        empresas</p>
+      <div class="table-responsive">
+        <table mat-table [dataSource]="dataSource" class=" table table-striped" >
+          <!-- Checkbox Column -->
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef
+                class="text-center">
+              <mat-checkbox (change)="$event ? masterToggle() : null" class="px-2"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+              </mat-checkbox>
+              <span>Seleccionar<br>Todos</span>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+
+          <!-- ruc Column -->
+          <ng-container matColumnDef="ruc">
+            <th mat-header-cell *matHeaderCellDef class="text-center">
+              <b>RUC</b>
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{element.id_number}}
+            </td>
+          </ng-container>
+
+          <!-- names Column -->
+          <ng-container matColumnDef="name" >
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Empresa</b></th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <!-- firstHeadersRow -->
+          <tr mat-header-row *matHeaderRowDef="headers"></tr>
+          <tr mat-row *matRowDef="let row; columns: headers;"></tr>
+        </table>
+      </div>
+      <mat-paginator [pageSizeOptions]="[10, 20, 50, 100, 200, 300]"
+                     showFirstLastButtons
+                     aria-label="Seleccione la pagina">
+      </mat-paginator>
+    </div>
+  </div>
+  <div class="row justify-content-left justify-content-sm-end  mx-auto">
+    <div class="col-0 col-sm-6"></div>
+    <div class=" col-12  my-3 col-sm-3 text-center">
+      <button class="btn primaryBtn" id="save" [disabled]="selection.isEmpty()" (click)="relate()">
+        Relacionar
+      </button>
+    </div>
+
+    <div class=" col-12 my-3 col-sm-3 text-center">
+      <button class="btn secondaryBtn" id="clean" (click)="onBack()">Cancelar</button>
+    </div>
+  </div>
+</div>

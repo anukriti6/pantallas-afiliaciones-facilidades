@@ -268,24 +268,23 @@ table {
 }
 
 .mat-column-payment {
-
   padding-left: 5px;
   padding-right: 5px;
   border: #0f265c 1px solid !important;
-
-
 }
+
 .mat-column-company {
-
   min-width: 320px;
-
-
-}.mat-column-client_provider {
-
-  min-width: 320px;
-
-
 }
+
+.mat-column-client_provider {
+  min-width: 320px;
+}
+
+.mat-column-names{
+  min-width: 200px;
+}
+
 #custom-header{
   background-color: #0f265c !important;
   color: white !important;

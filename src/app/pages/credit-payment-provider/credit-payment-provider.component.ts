@@ -129,6 +129,7 @@ export class CreditPaymentProviderComponent implements OnInit, AfterViewInit {
           dismiss: 'Cerrar',
           type: 'Aviso'
         },
+        duration: 1300,
         panelClass: 'alert-success'
       });
     } else {
@@ -142,6 +143,7 @@ export class CreditPaymentProviderComponent implements OnInit, AfterViewInit {
           dismiss: 'Cerrar',
           type: 'Aviso'
         },
+        duration: 1300,
         panelClass: 'alert-danger'
       });
     }

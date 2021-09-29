@@ -61,6 +61,8 @@ import {MatSortModule} from '@angular/material/sort';
 import {PaymentSearchInvoicesComponent} from './components/payment-search-invoices/payment-search-invoices.component';
 import {SearchProviderInvoicesComponent} from './components/search-provider-invoices/search-provider-invoices.component';
 import {CreditPaymentProviderComponent} from './pages/credit-payment-provider/credit-payment-provider.component';
+import {ProductSpecialistsComponent} from './pages/product-specialists/product-specialists.component';
+import {ProductSpecialistsRelationComponent} from './pages/product-specialists-relation/product-specialists-relation.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +92,9 @@ import {CreditPaymentProviderComponent} from './pages/credit-payment-provider/cr
     InvoicePaymentProviderComponent,
     PaymentSearchInvoicesComponent,
     SearchProviderInvoicesComponent,
-    CreditPaymentProviderComponent
+    CreditPaymentProviderComponent,
+    ProductSpecialistsComponent,
+    ProductSpecialistsRelationComponent
   ],
   imports: [
     BrowserModule,

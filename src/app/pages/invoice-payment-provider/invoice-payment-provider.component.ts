@@ -89,7 +89,7 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
   searchInvoices(search: any): void {
     console.log('data', search);
     this.invoiceService.getInvoices().subscribe(
-      (data) => {
+      (data: IItem[]) => {
         this.invoices = data;
         this.dataSource = new MatTableDataSource(this.invoices);
       }
@@ -126,6 +126,7 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
           dismiss: 'Cerrar',
           type: 'Mensaje'
         },
+        duration: 1300,
         panelClass: 'alert-success'
       });
     } else {
@@ -136,6 +137,7 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
           dismiss: 'Cerrar',
           type: 'Mensaje'
         },
+        duration: 1300,
         panelClass: 'alert-danger'
       });
     }
