@@ -1,7 +1,7 @@
 [
   {
     "id": 55,
-    "name": "La internacional S.A.",
+    "name": "Telas S.A.",
     "id_number": 1723524250001,
     "status": "ACTIVO",
     "credit_lines": [
@@ -72,7 +72,7 @@
   },
   {
     "id": 33,
-    "name": "Flores del valle CIA. LTDA. VALLEFLOR",
+    "name": "Flores del Valle",
     "id_number": 1723576250001,
     "status": "ACTIVO",
     "credit_lines": [
@@ -143,7 +143,7 @@
   },
   {
     "id": 55,
-    "name": "COCA COLA S.A.",
+    "name": "Coca Cola S.A.",
     "id_number": 1723444250001,
     "status": "ACTIVO",
     "credit_lines": [
@@ -285,7 +285,7 @@
   },
   {
     "id": 86,
-    "name": "KFC",
+    "name": "Kfc",
     "id_number": 1798784250001,
     "status": "ACTIVO",
     "credit_lines": [
