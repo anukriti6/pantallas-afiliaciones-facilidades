@@ -62,7 +62,7 @@ export class AssignProductSpecialistsComponent implements OnInit {
   search(): void {
     console.log('data', this.data);
     if (this.data.company) {
-      this.router.navigate(['assign-product-specialists']).then(r => console.log(r));
+      this.router.navigate(['assign-product-specialists-modify']).then(r => console.log(r));
     } else {
       this.searchCompanies();
     }
