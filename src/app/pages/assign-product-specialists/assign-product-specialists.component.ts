@@ -11,6 +11,7 @@ import {MatSort} from '@angular/material/sort';
 import {ISpecialist} from '../../services/specialist/SpecialistInterface';
 import {ICompanyAdc} from '../../services/adc/companyAdcInterface';
 import {AdcService} from '../../services/adc/adc.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-assign-product-specialists',
@@ -49,7 +50,7 @@ export class AssignProductSpecialistsComponent implements OnInit {
   }
 
   // tslint:disable-next-line:max-line-length
-  constructor(private specialistsService: SpecialistsService, private companyService: AdcService, public dialog: MatDialog, private snackBar: MatSnackBar) {
+  constructor(private specialistsService: SpecialistsService, private companyService: AdcService, private router: Router, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.dataSource = new MatTableDataSource(this.companies);
     this.filteredCompanyNames = this.companyNames.sort();
     this.filteredSpecialistNames = this.specialistNames.sort();
@@ -60,7 +61,11 @@ export class AssignProductSpecialistsComponent implements OnInit {
 
   search(): void {
     console.log('data', this.data);
-    this.searchCompanies();
+    if (this.data.company) {
+      this.router.navigate(['assign-product-specialists']).then(r => console.log(r));
+    } else {
+      this.searchCompanies();
+    }
   }
 
   cleanSearch(): void {
