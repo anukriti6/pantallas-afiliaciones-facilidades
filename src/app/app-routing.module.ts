@@ -12,6 +12,8 @@ import {InvoicePaymentProviderComponent} from './pages/invoice-payment-provider/
 import {CreditPaymentProviderComponent} from './pages/credit-payment-provider/credit-payment-provider.component';
 import {ProductSpecialistsComponent} from './pages/product-specialists/product-specialists.component';
 import {ProductSpecialistsRelationComponent} from './pages/product-specialists-relation/product-specialists-relation.component';
+import {AssignProductSpecialistsComponent} from './pages/assign-product-specialists/assign-product-specialists.component';
+import {AssignProductSpecialistsModifyComponent} from './pages/assing-product-specialists-modify/assign-product-specialists-modify.component';
 
 const routes: Routes = [
   {
@@ -61,7 +63,15 @@ const routes: Routes = [
   {
     path: 'product-specialists/:id',
     component: ProductSpecialistsRelationComponent
-  }
+  },
+  {
+    path: 'assign-product-specialists',
+    component: AssignProductSpecialistsComponent
+  },
+  {
+    path: 'assign-product-specialists/:id',
+    component: AssignProductSpecialistsModifyComponent
+  },
 ];
 
 @NgModule({

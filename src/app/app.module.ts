@@ -63,6 +63,8 @@ import {SearchProviderInvoicesComponent} from './components/search-provider-invo
 import {CreditPaymentProviderComponent} from './pages/credit-payment-provider/credit-payment-provider.component';
 import {ProductSpecialistsComponent} from './pages/product-specialists/product-specialists.component';
 import {ProductSpecialistsRelationComponent} from './pages/product-specialists-relation/product-specialists-relation.component';
+import {AssignProductSpecialistsComponent} from './pages/assign-product-specialists/assign-product-specialists.component';
+import {AssignProductSpecialistsModifyComponent} from './pages/assing-product-specialists-modify/assign-product-specialists-modify.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +96,9 @@ import {ProductSpecialistsRelationComponent} from './pages/product-specialists-r
     SearchProviderInvoicesComponent,
     CreditPaymentProviderComponent,
     ProductSpecialistsComponent,
-    ProductSpecialistsRelationComponent
+    ProductSpecialistsRelationComponent,
+    AssignProductSpecialistsComponent,
+    AssignProductSpecialistsModifyComponent
   ],
   imports: [
     BrowserModule,

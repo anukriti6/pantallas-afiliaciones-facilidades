@@ -211,5 +211,218 @@
         "available_short_term": "30,000.00"
       }
     ]
+  },
+  {
+    "id": 68,
+    "name": "Renault",
+    "id_number": 1723444250001,
+    "status": "ACTIVO",
+    "credit_lines": [
+      {
+        "id": 442,
+        "approved_quota": "3859520",
+        "available_quota": "105955.22",
+        "approval_date": "28 / 11 / 2018",
+        "expiration_date": "20 / 11 / 2019"
+      },
+      {
+        "id": 510,
+        "approved_quota": "2869720",
+        "available_quota": "405955.22",
+        "approval_date": "28 / 12 / 2018",
+        "expiration_date": "16 / 11 / 2019"
+      },
+      {
+        "id": 325,
+        "approved_quota": "4859520",
+        "available_quota": "205955.22",
+        "approval_date": "22 / 11 / 2018",
+        "expiration_date": "11 / 11 / 2019"
+      }
+    ],
+    "facilities": [
+      {
+        "id": 442,
+        "name": "CREDITO DIRECTO CORTO PLAZO",
+        "approved_long_term": "150,000.00",
+        "available_long_term": "63,890.00",
+        "blocked_short_term": "00,000.00",
+        "used_short_term": "20,000.00",
+        "approved_short_term": "40,000.00",
+        "available_short_term": "30,000.00"
+      },
+      {
+        "id": 442,
+        "name": "CREDITO DIRECTO CORTO PLAZO",
+        "approved_long_term": "150,000.00",
+        "available_long_term": "63,890.00",
+        "blocked_short_term": "00,000.00",
+        "used_short_term": "20,000.00",
+        "approved_short_term": "40,000.00",
+        "available_short_term": "30,000.00"
+      },
+      {
+        "id": 442,
+        "name": "CREDITO DIRECTO CORTO PLAZO",
+        "approved_long_term": "150,000.00",
+        "available_long_term": "63,890.00",
+        "blocked_short_term": "00,000.00",
+        "used_short_term": "20,000.00",
+        "approved_short_term": "40,000.00",
+        "available_short_term": "30,000.00"
+      },
+      {
+        "id": 442,
+        "name": "CREDITO DIRECTO CORTO PLAZO",
+        "approved_long_term": "150,000.00",
+        "available_long_term": "63,890.00",
+        "blocked_short_term": "00,000.00",
+        "used_short_term": "20,000.00",
+        "approved_short_term": "40,000.00",
+        "available_short_term": "30,000.00"
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "name": "KFC",
+    "id_number": 1798784250001,
+    "status": "ACTIVO",
+    "credit_lines": [
+      {
+        "id": 442,
+        "approved_quota": "3859520",
+        "available_quota": "105955.22",
+        "approval_date": "28 / 11 / 2018",
+        "expiration_date": "20 / 11 / 2019"
+      },
+      {
+        "id": 510,
+        "approved_quota": "2869720",
+        "available_quota": "405955.22",
+        "approval_date": "28 / 12 / 2018",
+        "expiration_date": "16 / 11 / 2019"
+      },
+      {
+        "id": 325,
+        "approved_quota": "4859520",
+        "available_quota": "205955.22",
+        "approval_date": "22 / 11 / 2018",
+        "expiration_date": "11 / 11 / 2019"
+      }
+    ],
+    "facilities": [
+      {
+        "id": 442,
+        "name": "CREDITO DIRECTO CORTO PLAZO",
+        "approved_long_term": "150,000.00",
+        "available_long_term": "63,890.00",
+        "blocked_short_term": "00,000.00",
+        "used_short_term": "20,000.00",
+        "approved_short_term": "40,000.00",
+        "available_short_term": "30,000.00"
+      },
+      {
+        "id": 442,
+        "name": "CREDITO DIRECTO CORTO PLAZO",
+        "approved_long_term": "150,000.00",
+        "available_long_term": "63,890.00",
+        "blocked_short_term": "00,000.00",
+        "used_short_term": "20,000.00",
+        "approved_short_term": "40,000.00",
+        "available_short_term": "30,000.00"
+      },
+      {
+        "id": 442,
+        "name": "CREDITO DIRECTO CORTO PLAZO",
+        "approved_long_term": "150,000.00",
+        "available_long_term": "63,890.00",
+        "blocked_short_term": "00,000.00",
+        "used_short_term": "20,000.00",
+        "approved_short_term": "40,000.00",
+        "available_short_term": "30,000.00"
+      },
+      {
+        "id": 442,
+        "name": "CREDITO DIRECTO CORTO PLAZO",
+        "approved_long_term": "150,000.00",
+        "available_long_term": "63,890.00",
+        "blocked_short_term": "00,000.00",
+        "used_short_term": "20,000.00",
+        "approved_short_term": "40,000.00",
+        "available_short_term": "30,000.00"
+      }
+    ]
+  },
+  {
+    "id": 102,
+    "name": "El Rosado",
+    "id_number": 1768482780001,
+    "status": "INACTIVO",
+    "credit_lines": [
+      {
+        "id": 442,
+        "approved_quota": "3859520",
+        "available_quota": "105955.22",
+        "approval_date": "28 / 11 / 2018",
+        "expiration_date": "20 / 11 / 2019"
+      },
+      {
+        "id": 510,
+        "approved_quota": "2869720",
+        "available_quota": "405955.22",
+        "approval_date": "28 / 12 / 2018",
+        "expiration_date": "16 / 11 / 2019"
+      },
+      {
+        "id": 325,
+        "approved_quota": "4859520",
+        "available_quota": "205955.22",
+        "approval_date": "22 / 11 / 2018",
+        "expiration_date": "11 / 11 / 2019"
+      }
+    ],
+    "facilities": [
+      {
+        "id": 442,
+        "name": "CREDITO DIRECTO CORTO PLAZO",
+        "approved_long_term": "150,000.00",
+        "available_long_term": "63,890.00",
+        "blocked_short_term": "00,000.00",
+        "used_short_term": "20,000.00",
+        "approved_short_term": "40,000.00",
+        "available_short_term": "30,000.00"
+      },
+      {
+        "id": 442,
+        "name": "CREDITO DIRECTO CORTO PLAZO",
+        "approved_long_term": "150,000.00",
+        "available_long_term": "63,890.00",
+        "blocked_short_term": "00,000.00",
+        "used_short_term": "20,000.00",
+        "approved_short_term": "40,000.00",
+        "available_short_term": "30,000.00"
+      },
+      {
+        "id": 442,
+        "name": "CREDITO DIRECTO CORTO PLAZO",
+        "approved_long_term": "150,000.00",
+        "available_long_term": "63,890.00",
+        "blocked_short_term": "00,000.00",
+        "used_short_term": "20,000.00",
+        "approved_short_term": "40,000.00",
+        "available_short_term": "30,000.00"
+      },
+      {
+        "id": 442,
+        "name": "CREDITO DIRECTO CORTO PLAZO",
+        "approved_long_term": "150,000.00",
+        "available_long_term": "63,890.00",
+        "blocked_short_term": "00,000.00",
+        "used_short_term": "20,000.00",
+        "approved_short_term": "40,000.00",
+        "available_short_term": "30,000.00"
+      }
+    ]
   }
 ]

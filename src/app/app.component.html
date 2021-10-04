@@ -97,6 +97,12 @@
             Especialista de Producto
           </a>
         </mat-nav-list>
+        <mat-nav-list class="mat-nav-list">
+          <a mat-list-item class="mat-list-item" routerLink="/assign-product-specialists"
+             (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
+            Consulta y Reasignación de Especialista
+          </a>
+        </mat-nav-list>
       </mat-expansion-panel>
       <mat-nav-list class="mat-nav-list">
         <a mat-list-item class="mat-list-item" routerLink="/"
