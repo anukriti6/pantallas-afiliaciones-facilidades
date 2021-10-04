@@ -69,7 +69,7 @@ const routes: Routes = [
     component: AssignProductSpecialistsComponent
   },
   {
-    path: 'assign-product-specialists/:id',
+    path: 'assign-product-specialists-modify',
     component: AssignProductSpecialistsModifyComponent
   },
 ];

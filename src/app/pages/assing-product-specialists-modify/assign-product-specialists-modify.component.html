@@ -1,21 +1,10 @@
-<div class="container" *ngIf="name">
+<div class="container" >
   <div class="row mt-sm-5 mt-3">
     <div class="col-12 col-sm-6 mx-auto">
-      <h1 class="title text-center">Empresa {{name}}</h1>
+      <h1 class="title text-center">Modificar Asignación Especialistas</h1>
     </div>
   </div>
-  <div class="row justify-content-center mt-3">
-    <div class="col-12 col-md-5 text-center">
-      <mat-label class="mx-auto labels  my-2">Código</mat-label>
-    </div>
-  </div>
-  <!--<div class="row justify-content-center">
-    <mat-form-field appearance="outline" class="col-12 col-md-5">
-      <mat-label>Filtro por Código</mat-label>
-      <input type="text" placeholder="Filtra según las letras ingresadas" matInput name="filter"
-             (keyup)="applyFilter($event)" #input>
-    </mat-form-field>
-  </div>-->
+
   <div class="row justify-content-center">
     <div class="col-12 my-3">
       <p class="table-description">Se muestran {{specialists.length}} de un total de {{specialists.length}}
@@ -46,7 +35,7 @@
               <b>Código</b>
             </th>
             <td mat-cell *matCellDef="let element">
-              <a [routerLink]="['/product-specialists', element.names]"> <b>{{element.code}}</b> </a>
+              <b>{{element.code}}</b>
             </td>
           </ng-container>
 
@@ -99,9 +88,7 @@
   <div class="row justify-content-left justify-content-sm-end  mx-auto">
     <div class="col-0 col-sm-6"></div>
     <div class=" col-12  my-3 col-sm-3 text-center">
-      <button class="btn primaryBtn" id="save" [disabled]="selection.isEmpty()" (click)="relate()">
-        Relacionar
-      </button>
+
     </div>
 
     <div class=" col-12 my-3 col-sm-3 text-center">

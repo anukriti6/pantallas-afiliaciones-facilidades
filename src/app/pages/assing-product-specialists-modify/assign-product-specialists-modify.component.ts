@@ -21,7 +21,7 @@ import {AdcService} from '../../services/adc/adc.service';
 })
 
 
-export class AssignProductSpecialistsModifyComponent implements OnInit, OnDestroy {
+export class AssignProductSpecialistsModifyComponent implements OnInit {
 
   specialist: ISpecialist | undefined;
   name: string | null = null;
@@ -48,17 +48,10 @@ export class AssignProductSpecialistsModifyComponent implements OnInit, OnDestro
   }
 
   ngOnInit(): void {
-    this.sub = this.activatedRoute.paramMap.subscribe(params => {
-      console.log(params);
-      this.name = params.get('id');
-      this.searchSpecialists();
-    });
+    this.searchSpecialists();
   }
 
-  ngOnDestroy(): void {
-    // @ts-ignore
-    this.sub.unsubscribe();
-  }
+
 
   onBack(): void {
     this.router.navigate(['assign-product-specialists']).then(r => console.log(r));
@@ -77,7 +70,7 @@ export class AssignProductSpecialistsModifyComponent implements OnInit, OnDestro
 
     setTimeout(() => {
       this.onBack();
-    }, 1500);
+    }, 1000);
   }
 
   applyFilter(event: Event): void {

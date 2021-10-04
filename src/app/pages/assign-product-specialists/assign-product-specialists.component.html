@@ -49,19 +49,14 @@
     </div>
 
   </div>
-  <div class="row mt-3">
-    <div class="col-6 text-center text-sm-end">
+  <div class="row mt-3 justify-content-center">
+    <div class="col-6 text-center ">
       <button class="btn primaryBtn px-5 my-2 mx-auto " mat-button
               [disabled]="!data.company && !data.specialist "
               (click)="search()">Buscar
       </button>
     </div>
-    <div class="col-6 text-center text-sm-start">
-      <button class="btn secondaryBtn px-5 my-2 mx-auto" mat-button
-              [disabled]="companies.length < 1"
-              (click)="cleanSearch()">Limpiar
-      </button>
-    </div>
+
   </div>
   <div class="row justify-content-center" *ngIf="companies.length > 0">
     <div class="col-12 my-3">
@@ -90,7 +85,7 @@
           <!-- ruc Column -->
           <ng-container matColumnDef="ruc">
             <th mat-header-cell *matHeaderCellDef class="text-center">
-              <b>RUC</b>
+              <b>RUC Empresa</b>
             </th>
             <td mat-cell *matCellDef="let element" class="mx-2">
               {{element.id_number}}
@@ -120,6 +115,15 @@
                      showFirstLastButtons
                      aria-label="Seleccione la pagina">
       </mat-paginator>
+    </div>
+  </div>
+  <div class="row justify-content-left justify-content-sm-end  mx-auto" *ngIf="companies.length > 0">
+    <div class="col-0 col-sm-6"></div>
+    <div class=" col-12  my-3 col-sm-3 text-center">
+      <a [routerLink]="'/assign-product-specialists-modify'" class="btn primaryBtn mx-2" *ngIf="selection.selected.length > 0">Modificar</a>
+    </div>
+    <div class=" col-12 my-3 col-sm-3 text-center">
+      <button class="btn secondaryBtn" id="clean" (click)="cleanSearch()">Cancelar</button>
     </div>
   </div>
 </div>

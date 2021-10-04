@@ -28,13 +28,13 @@ export class AssignProductSpecialistsComponent implements OnInit {
   specialists: ISpecialist[] = [];
   matched = false;
   types: string[] = ['Activo', 'Inactivo'];
-  headers: string[] = ['select', 'ruc', 'name', 'actions'];
+  headers: string[] = ['select', 'ruc', 'name'];
 
   companies: ICompanyAdc[] = [];
 
   filteredCompanyNames: string[] = [];
   filteredSpecialistNames: string[] = [];
-  companyNames: string[] = ['COCA COLA S.A.', 'Flores del valle CIA. LTDA. VALLEFLOR', 'La internacional S.A.', 'Renault', 'KFC', 'El Rosado'];
+  companyNames: string[] = ['Telas S.A.', 'Flores del Valle', 'Coca Cola S.A.', 'Renault', 'KFC', 'El Rosado'];
   specialistNames: string[] = ['Juan Daniel Rocafuerte Díaz', 'Pedro Fernando Silva Fernandez',
     'Diana Solange Perez Llori', 'Leonel Dario Campos Kent', 'Katherine Andrea Sanchez Maldonado',
     'Sofia Daniela Roldos Carrera', 'Ivan Carlos Lopez Green'];
@@ -96,6 +96,9 @@ export class AssignProductSpecialistsComponent implements OnInit {
     this.companyService.getCompaniesAdcData().subscribe(
       (data: ICompanyAdc[]) => {
         this.companies = data;
+        if (this.data.company) {
+          this.companies = data.filter(c => c.name.toLowerCase() === this.data.company.toLowerCase());
+        }
         this.companies.sort((a, b) => {
           if (a.name > b.name) {
             return 1;
