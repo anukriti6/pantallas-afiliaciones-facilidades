@@ -28,7 +28,7 @@ export class AssignProductSpecialistsComponent implements OnInit {
   specialists: ISpecialist[] = [];
   matched = false;
   types: string[] = ['Activo', 'Inactivo'];
-  headers: string[] = ['name', 'ruc', 'actions'];
+  headers: string[] = ['select','ruc', 'name',  'actions'];
 
   companies: ICompanyAdc[] = [];
 
