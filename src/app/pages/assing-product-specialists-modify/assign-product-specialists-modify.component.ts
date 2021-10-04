@@ -30,7 +30,7 @@ export class AssignProductSpecialistsModifyComponent implements OnInit, OnDestro
   specialists: ISpecialist[] = [];
   matched = false;
   types: string[] = ['Activo', 'Inactivo'];
-  headers: string[] = ['select', 'code', 'names', 'user', 'email', 'status'];
+  headers: string[] = [ 'code', 'names', 'user', 'email', 'status', 'actions'];
   companies: ICompanyAdc[] = [];
 
   selection = new SelectionModel<ISpecialist>(true, []);
