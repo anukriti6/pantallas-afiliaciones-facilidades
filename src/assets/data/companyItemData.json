@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "identification": "1768594397001",
+    "name": "Telas S.A.",
+    "provider_advance_rate": "10%",
+    "payment_account": "1569058947568",
+    "provider_email": "contador@telas.com",
+    "status": "Activo",
+    "address": "Av General Enriquez",
+    "phone": "022 560 783",
+    "cellphone": "0995738274"
+  },
+  {
+    "id": 2,
+    "identification": "1768464323001",
+    "name": "Flores del Valle",
+    "provider_advance_rate": "15%",
+    "payment_account": "1569058947568",
+    "provider_email": "contador@floresdelvalle.com",
+    "status": "Inactivo",
+    "address": "Av Juan tanca marengo",
+    "phone": "024 560 783",
+    "cellphone": "0995675234"
+  },
+  {
+    "id": 3,
+    "identification": "1768764237001",
+    "name": "Coca Cola S.A.",
+    "provider_advance_rate": "12%",
+    "payment_account": "1564358947812",
+    "provider_email": "contador@cocacola.com",
+    "status": "Bloqueado",
+    "address": "Av Simon olivar",
+    "phone": "042 678 783",
+    "cellphone": "0994538223"
+  },
+  {
+    "id": 4,
+    "identification": "175644127001",
+    "name": "Renault",
+    "provider_advance_rate": "17%",
+    "payment_account": "1459058967568",
+    "provider_email": "contador@renault.com",
+    "status": "Activo",
+    "address": "Av 6 de diciemre",
+    "phone": "022 785 453",
+    "cellphone": "0995738274"
+  },
+  {
+    "id": 5,
+    "identification": "1643294397001",
+    "name": "KFC",
+    "provider_advance_rate": "25%",
+    "payment_account": "1569058947568",
+    "provider_email": "contador@kfc.com",
+    "status": "Inactivo",
+    "address": "Av Carcelen",
+    "phone": "022 560 783",
+    "cellphone": "0995738274"
+  },
+  {
+    "id": 6,
+    "identification": "1763454323001",
+    "name": "El Rosado",
+    "provider_advance_rate": "5%",
+    "payment_account": "1563428947238",
+    "provider_email": "contador@elrosado.com",
+    "status": "Bloqueado",
+    "address": "Av General Rumi",
+    "phone": "022 560 783",
+    "cellphone": "0995738274"
+  }
+]
