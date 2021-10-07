@@ -32,7 +32,7 @@ export class ProductSpecialistsRelationComponent implements OnInit, OnDestroy {
   specialists: ISpecialist[] = [];
   matched = false;
   types: string[] = ['Activo', 'Inactivo'];
-  headers: string[] = ['select', 'name', 'ruc'];
+  headers: string[] = ['select', 'ruc', 'name' ];
   companies: ICompanyAdc[] = [];
 
   selection = new SelectionModel<ICompanyAdc>(true, []);
