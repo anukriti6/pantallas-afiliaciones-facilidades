@@ -56,10 +56,21 @@
       </button>
     </div>
   </div>
+  <div class="row justify-content-left justify-content-sm-end mx-auto" *ngIf="companies.length > 0">
+    <div class="col-12 col-sm-11">
+
+    </div>
+    <div class=" col-12 col-sm-1 text-center" >
+      <img src="../assets/img/excel.png" class="cursor img-fluid excel-image"
+           alt="Excel" >
+      <p class="underline text-center cursor">Descargar</p>
+    </div>
+  </div>
   <div class="row justify-content-center" *ngIf="companies.length > 0">
     <div class="col-12 my-3">
       <p class="table-description">Se muestran {{companies.length}} de un total de {{companies.length}}
         empresas</p>
+
       <div class="table-responsive">
         <table mat-table [dataSource]="dataSource" class=" table table-striped">
           <!-- Checkbox Column -->
