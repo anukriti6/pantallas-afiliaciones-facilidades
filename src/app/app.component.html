@@ -91,21 +91,22 @@
       </mat-expansion-panel>
       <mat-expansion-panel style="width: 100%;">
         <mat-expansion-panel-header>Parámetros</mat-expansion-panel-header>
-        <mat-nav-list class="mat-nav-list">
+        <!--<mat-nav-list class="mat-nav-list">
           <a mat-list-item class="mat-list-item" routerLink="/product-specialists"
              (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
             Especialista de Producto
           </a>
-        </mat-nav-list>
+        </mat-nav-list>-->
+
+      </mat-expansion-panel>
+      <mat-expansion-panel style="width: 100%;">
+        <mat-expansion-panel-header>Consultas</mat-expansion-panel-header>
         <mat-nav-list class="mat-nav-list">
           <a mat-list-item class="mat-list-item" routerLink="/assign-product-specialists"
              (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
             Consulta y Reasignación de Especialista
           </a>
         </mat-nav-list>
-      </mat-expansion-panel>
-      <mat-expansion-panel style="width: 100%;">
-        <mat-expansion-panel-header>Consultas</mat-expansion-panel-header>
         <mat-nav-list class="mat-nav-list">
           <a mat-list-item class="mat-list-item" routerLink="/company-provider-detail"
              (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
