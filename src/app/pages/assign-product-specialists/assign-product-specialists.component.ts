@@ -36,9 +36,9 @@ export class AssignProductSpecialistsComponent implements OnInit {
   filteredCompanyNames: string[] = [];
   filteredSpecialistNames: string[] = [];
   companyNames: string[] = ['Telas S.A.', 'Flores del Valle', 'Coca Cola S.A.', 'Renault', 'KFC', 'El Rosado'];
-  specialistNames: string[] = ['Juan Daniel Rocafuerte Díaz', 'Pedro Fernando Silva Fernandez',
-    'Diana Solange Perez Llori', 'Leonel Dario Campos Kent', 'Katherine Andrea Sanchez Maldonado',
-    'Sofia Daniela Roldos Carrera', 'Ivan Carlos Lopez Green'];
+  specialistNames: string[] = ['Rocafuerte Díaz Juan Daniel', 'Silva Fernandez Pedro Fernando',
+    'Perez Maldonado Diana Solange', 'Campos Kent Leonel Dario', 'Sanchez Andrade Katherine Andrea',
+    'Roldos Carrera Sofia Daniela', 'Lopez Green Ivan Carlos'];
 
   selection = new SelectionModel<ICompanyAdc>(true, []);
   dataSource: MatTableDataSource<ICompanyAdc>;
