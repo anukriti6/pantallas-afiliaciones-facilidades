@@ -15,6 +15,7 @@ import {ProductSpecialistsRelationComponent} from './pages/product-specialists-r
 import {AssignProductSpecialistsComponent} from './pages/assign-product-specialists/assign-product-specialists.component';
 import {AssignProductSpecialistsModifyComponent} from './pages/assing-product-specialists-modify/assign-product-specialists-modify.component';
 import {CompanyProviderDetailComponent} from './pages/company-provider-detail/company-provider-detail.component';
+import {InvoicesProviderDetailComponent} from './pages/invoices-provider-detail/invoices-provider-detail.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
   {
     path: 'company-provider-detail',
     component: CompanyProviderDetailComponent
+  },
+  {
+    path: 'invoices-provider-detail',
+    component: InvoicesProviderDetailComponent
   },
 ];
 

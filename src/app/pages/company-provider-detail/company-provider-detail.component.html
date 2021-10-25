@@ -196,27 +196,22 @@
 
   <div class="row justify-content-center mx-auto mt-2"
        *ngIf="providers.length>0 && searchType === 'company'">
-    <div class="col-12 col-sm-4">
+    <hr class="my-4">
+    <div class="col-12 col-sm-8 text-center">
       <p><b class="labels">Facilidad: </b>{{companyData.ease}}</p>
     </div>
-    <div class="col-12 col-sm-4">
+    <div class="col-12 col-sm-6">
       <p><b class="labels">Fecha Aprobación Línea de Crédito: </b>{{companyData.credit_line_approval_date}}</p>
-    </div>
-    <div class="col-12 col-sm-4">
-      <p><b class="labels">Fecha Expiración Línea de Crédito: </b>{{companyData.credit_line_expiration_date}}</p>
-    </div>
-    <div class="col-12 col-sm-3">
       <p><b class="labels">Cupo Aprobado: </b>{{companyData.approved_quota}}</p>
-    </div>
-    <div class="col-12 col-sm-3">
       <p><b class="labels">Cupo Disponible: </b>{{companyData.available_quota}}</p>
     </div>
-    <div class="col-12 col-sm-3">
+    <div class="col-12 col-sm-6">
+      <p><b class="labels">Fecha Expiración Línea de Crédito: </b>{{companyData.credit_line_expiration_date}}</p>
       <p><b class="labels">Cupo Bloqueado: </b>{{companyData.blocked_quota}}</p>
-    </div>
-    <div class="col-12 col-sm-3">
       <p><b class="labels">Cupo Utilizado: </b>{{companyData.used_quota}}</p>
     </div>
+
+    <hr class="my-4">
 
   </div>
 
