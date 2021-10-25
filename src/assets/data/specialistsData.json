@@ -2,7 +2,7 @@
   {
     "id": 1,
     "code": "3423482901-02",
-    "names": "Juan Daniel Rocafuerte Díaz",
+    "names": "Rocafuerte Díaz Juan Daniel",
     "user": "jadaradi",
     "email": "jaro@empresa.com",
     "status": "Activo"
@@ -10,42 +10,42 @@
   {
     "id": 2,
     "code": "4456342342-05",
-    "names": "Pedro Fernando Silva Fernandez",
+    "names": "Silva Fernandez Pedro Fernando",
     "user": "pefesife",
     "email": "pesi@empresa.com",
     "status": "Activo"
   },{
     "id": 3,
     "code": "6745488945-07",
-    "names": "Diana Solange Perez Llori",
+    "names": "Perez Maldonado Diana Solange",
     "user": "disopell",
     "email": "dipe@empresa.com",
     "status": "Inactivo"
   },{
     "id": 4,
     "code": "4763482901-07",
-    "names": "Leonel Dario Campos Kent",
+    "names": "Campos Kent Leonel Dario",
     "user": "ledacake",
     "email": "leca@empresa.com",
     "status": "Inactivo"
   },{
     "id": 5,
     "code": "3423496731-04",
-    "names": "Katherine Andrea Sanchez Maldonado",
+    "names": "Sanchez Andrade Katherine Andrea",
     "user": "kaansama",
     "email": "kasa@empresa.com",
     "status": "Activo"
   },{
     "id": 6,
     "code": "5633485671-09",
-    "names": "Sofia Daniela Roldos Carrera",
+    "names": "Roldos Carrera Sofia Daniela",
     "user": "sodaroca",
     "email": "soro@empresa.com",
     "status": "Activo"
   },{
     "id": 7,
     "code": "6734382376-11",
-    "names": "Ivan Carlos Lopez Green",
+    "names": "Lopez Green Ivan Carlos",
     "user": "ivcalogr",
     "email": "ivlo@empresa.com",
     "status": "Inactivo"

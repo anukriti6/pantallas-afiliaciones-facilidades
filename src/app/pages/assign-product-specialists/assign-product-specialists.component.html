@@ -58,11 +58,11 @@
   </div>
   <div class="row justify-content-left justify-content-sm-end mx-auto" *ngIf="companies.length > 0">
     <div class="col-12 col-sm-11">
-
+      <h4 class="title mt-4">{{data.specialist}}</h4>
     </div>
-    <div class=" col-12 col-sm-1 text-center" >
+    <div class=" col-12 col-sm-1 text-center">
       <img src="../assets/img/excel.png" class="cursor img-fluid excel-image"
-           alt="Excel" >
+           alt="Excel">
       <p class="underline text-center cursor">Descargar</p>
     </div>
   </div>
@@ -129,7 +129,8 @@
   <div class="row justify-content-left justify-content-sm-end  mx-auto" *ngIf="companies.length > 0">
     <div class="col-0 col-sm-6"></div>
     <div class=" col-12  my-3 col-sm-3 text-center">
-      <a [routerLink]="'/assign-product-specialists-modify'" class="btn primaryBtn mx-2" *ngIf="selection.selected.length > 0">Modificar</a>
+      <a [routerLink]="'/assign-product-specialists-modify'" class="btn primaryBtn mx-2"
+         *ngIf="selection.selected.length > 0">Modificar</a>
     </div>
     <div class=" col-12 my-3 col-sm-3 text-center">
       <button class="btn secondaryBtn" id="clean" (click)="cleanSearch()">Cancelar</button>
