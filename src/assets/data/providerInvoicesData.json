@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "ruc": "1768435643001",
+    "company": "Sociedad Interamericana de fibras y alimentos",
+    "provider_id": "17457542001",
+    "client_provider": "Interacional",
+    "advance_provider_cuota": 13,
+    "advance_value": 2700.50,
+    "solca": 130,
+    "invoice_number": "45657953413",
+    "invoice_amount": 45987.50,
+    "start_date": "15-08-2020",
+    "advance_date": "15-12-2021",
+    "payment_date": "03-03-2021",
+    "status": "DEBITADO"
+  },
+  {
+    "id": 2,
+    "ruc": "17454542371001",
+    "company": "La internacional",
+    "provider_id": "17457542001",
+    "client_provider": "El Juri",
+    "advance_provider_cuota": 22,
+    "advance_value": 3450.80,
+    "solca": 210,
+    "invoice_number": "45678958543",
+    "invoice_amount": 25000.50,
+    "start_date": "03-08-2020",
+    "advance_date": "14-10-2021",
+    "payment_date": "23-07-2021",
+    "status": "INGRESADO"
+  },
+  {
+    "id": 3,
+    "ruc": "17454542371001",
+    "company": "KFC",
+    "provider_id": "17457542001",
+    "client_provider": "Adidas",
+    "advance_provider_cuota": 8,
+    "advance_value": 2550.80,
+    "solca": 510,
+    "invoice_number": "90877956783",
+    "invoice_amount": 35000.50,
+    "start_date": "14-09-2020",
+    "advance_date": "17-05-2021",
+    "payment_date": "03-01-2021",
+    "status": "ANTICIPADO"
+  }
+]

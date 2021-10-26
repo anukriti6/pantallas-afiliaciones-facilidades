@@ -12,6 +12,9 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {IProvider} from '../../services/provider/ProviderInterface';
 import {ICompany} from '../../services/adc/companyInterface';
+import {InvoicesService} from '../../services/invoice/invoices.service';
+import {IProviderInvoice} from '../../services/invoice/ProviderInvoiceInterface';
+import {ICompanyInvoice} from '../../services/invoice/CompanyInvoiceInterface';
 
 
 @Component({
@@ -32,8 +35,8 @@ export class InvoicesProviderDetailComponent implements OnInit {
   invoiceTypes: string[] = ['TODOS', 'INGRESADO', 'APROBADO', 'CONFIRMADO', 'ANTICIPADO', 'DEBITADO', 'FINALIZADO', 'ELIMINADO'];
   searchError: string | null = null;
   filter: string | null = null;
-  providerInvoices: ICompany[] = [];
-  companyInvoices: IProvider[] = [];
+  providerInvoices: IProviderInvoice[] = [];
+  companyInvoices: ICompanyInvoice[] = [];
   matched = false;
   searchType: string | null = null;
   types: string[] = ['company', 'provider'];
@@ -48,8 +51,8 @@ export class InvoicesProviderDetailComponent implements OnInit {
   providerInvoiceFields: FormGroup;
   errorNumber: string | null = null;
   selection = new SelectionModel<IItem>(true, []);
-  providerInvoicesDataSource: MatTableDataSource<ICompany>;
-  companyInvoicesDataSource: MatTableDataSource<IProvider>;
+  providerInvoicesDataSource: MatTableDataSource<IProviderInvoice>;
+  companyInvoicesDataSource: MatTableDataSource<ICompanyInvoice>;
   @ViewChild(MatPaginator, {static: false}) paginator!: MatPaginator;
 
   @ViewChild(MatSort, {static: false})
@@ -59,7 +62,7 @@ export class InvoicesProviderDetailComponent implements OnInit {
   }
 
   // tslint:disable-next-line:max-line-length
-  constructor(private companyService: AdcService, private providerService: ProviderService, public fb: FormBuilder, private snackBar: MatSnackBar) {
+  constructor(private invoicesService: InvoicesService, public fb: FormBuilder, private snackBar: MatSnackBar) {
     this.providerInvoicesDataSource = new MatTableDataSource(this.providerInvoices);
     this.companyInvoicesDataSource = new MatTableDataSource(this.companyInvoices);
     this.filteredCompaniesNames = this.companiesNames.sort();
@@ -69,7 +72,6 @@ export class InvoicesProviderDetailComponent implements OnInit {
       company: false,
       provider_id: false,
       client_provider: false,
-      start_date: false,
       solca: false,
       credit_cuota: false,
       interest_value: false,
@@ -174,25 +176,49 @@ export class InvoicesProviderDetailComponent implements OnInit {
   updateProviderInvoicesTable(): void {
     console.log('this.extraHeaders.value', this.providerInvoiceFields.value);
     // tslint:disable-next-line:max-line-length
-    this.providerInvoicesHeaders = ['invoice_number', 'invoice_amount', 'start_date', 'advance_date', 'payment_date', 'status'];
+    const initial = ['invoice_number', 'invoice_amount', 'start_date', 'advance_date'];
     const keys = Object.keys(this.providerInvoiceFields.value);
+    const firstGroup: string[] = [];
+    const secondGroup: string[] = [];
     keys.forEach((key) => {
       const val = this.providerInvoiceFields.value[key];
-      if (val) {
-        this.providerInvoicesHeaders.push(key);
+      if ((key === 'ruc' || key === 'company' || key === 'provider_id' || key === 'client_provider') && val) {
+        firstGroup.push(key);
+      }
+      if ((key === 'advance_provider_cuota' || key === 'advance_value' || key === 'solca') && val) {
+        secondGroup.push(key);
       }
     });
+    secondGroup.push('payment_date');
+    secondGroup.push('status');
+    this.providerInvoicesHeaders = firstGroup.concat(initial).concat(secondGroup);
   }
 
   updateCompanyInvoicesTable(): void {
     console.log('this.extraHeaders.value', this.companyInvoiceFields.value);
-    this.companyInvoicesHeaders = ['invoice_number', 'invoice_amount', 'start_date', 'payment_date', 'credit_operation_number', 'credit_expiration_date', 'default_days', 'status'];
+    const initial = ['credit_operation_number', 'credit_expiration_date', 'default_days', 'status'];
     const keys = Object.keys(this.companyInvoiceFields.value);
+    const firstGroup: string[] = [];
+    const secondGroup: string[] = ['invoice_number', 'invoice_amount', 'start_date'];
+    const thirdGroup: string[] = [];
+    const fourthGroup: string[] = ['payment_date'];
+    const fifthGroup: string[] = [];
     keys.forEach((key) => {
       const val = this.companyInvoiceFields.value[key];
-      if (val) {
-        this.companyInvoicesHeaders.push(key);
+      if ((key === 'ruc' || key === 'company' || key === 'provider_id' || key === 'client_provider') && val) {
+        firstGroup.push(key);
       }
+      if (key === 'solca' && val) {
+        thirdGroup.push(key);
+      }
+      if ((key === 'credit_cuota' || key === 'interest_value') && val) {
+        fifthGroup.push(key);
+      }
+      if (key === 'default_interest' && val) {
+        initial.splice(-1, 0, key);
+      }
+      // tslint:disable-next-line:max-line-length
+      this.companyInvoicesHeaders = firstGroup.concat(secondGroup).concat(thirdGroup).concat(fourthGroup).concat(fifthGroup).concat(initial);
     });
   }
 
@@ -224,8 +250,8 @@ export class InvoicesProviderDetailComponent implements OnInit {
   }
 
   searchProviderInvoices(): void {
-    this.companyService.getCompaniesData().subscribe(
-      (data: ICompany[]) => {
+    this.invoicesService.getProviderInvoices().subscribe(
+      (data: IProviderInvoice[]) => {
         this.providerInvoices = data;
         if (this.providerInvoices.length < 1) {
           this.snackBar.openFromComponent(NotifierComponent, {
@@ -239,7 +265,7 @@ export class InvoicesProviderDetailComponent implements OnInit {
           });
           return;
         }
-        this.providerInvoices.sort((a, b) => {
+        /*this.providerInvoices.sort((a, b) => {
           if (a.name > b.name) {
             return 1;
           }
@@ -247,15 +273,15 @@ export class InvoicesProviderDetailComponent implements OnInit {
             return -1;
           }
           return 0;
-        });
+        });*/
         this.providerInvoicesDataSource = new MatTableDataSource(this.providerInvoices);
       }
     );
   }
 
   searchCompanyInvoices(): void {
-    this.providerService.getProviderItemData().subscribe(
-      (data: IProvider[]) => {
+    this.invoicesService.getCompanyInvoices().subscribe(
+      (data: ICompanyInvoice[]) => {
         this.companyInvoices = data;
         if (this.companyInvoices.length < 1) {
           this.snackBar.openFromComponent(NotifierComponent, {
@@ -269,7 +295,7 @@ export class InvoicesProviderDetailComponent implements OnInit {
           });
           return;
         }
-        this.companyInvoices.sort((a, b) => {
+        /*this.companyInvoices.sort((a, b) => {
           if (a.name > b.name) {
             return 1;
           }
@@ -277,7 +303,7 @@ export class InvoicesProviderDetailComponent implements OnInit {
             return -1;
           }
           return 0;
-        });
+        });*/
         this.companyInvoicesDataSource = new MatTableDataSource(this.companyInvoices);
       }
     );
