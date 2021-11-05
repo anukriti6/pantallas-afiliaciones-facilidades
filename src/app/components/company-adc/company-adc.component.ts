@@ -1,7 +1,5 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {MatChipInputEvent} from '@angular/material/chips';
 import {ICompanyAdc} from 'src/app/services/adc/companyAdcInterface';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {ICreditLineAdc} from '../../services/adc/creditLineInterface';
 import {IFacilityAdc} from '../../services/adc/facilityAdcInterface';
 

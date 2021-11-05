@@ -75,7 +75,7 @@
           <mat-select name="request" id="request"
                       [(ngModel)]="invoice.request"
                       [ngModelOptions]="{standalone: true}">
-            <mat-option value="">Elija una opcion</mat-option>
+            <mat-option value="">Elija una opción</mat-option>
             <mat-option value="EMPRESA">EMPRESA</mat-option>
             <mat-option value="PROVEEDOR">PROVEEDOR</mat-option>
           </mat-select>
@@ -88,7 +88,7 @@
     <div class="col-12 col-sm-8 my-0 my-md-3 ">
       <!--number-->
       <div class="row mx-auto">
-        <mat-label class="labels text-left my-2">Subir Archivo</mat-label>
+        <mat-label class="labels text-left my-2">Subir archivo</mat-label>
       </div>
       <div class="row mx-auto">
         <mat-form-field appearance="outline" id="file_input">
@@ -104,7 +104,7 @@
       <button class="btn secondaryBtn my-0 my-md-2" (click)="removableInput.open()">Examinar</button>
     </div>
     <div class="col-12 my-0 my-3 col-sm-2 mt-md-5 text-center">
-      <button class="btn secondaryBtn my-0 my-md-2" (click)="upload()">Cargar Archivo</button>
+      <button class="btn secondaryBtn my-0 my-md-2" (click)="upload()">Cargar archivo</button>
     </div>
   </div>
   <div class="bg py-4 px-5" *ngIf="uploading">
@@ -179,7 +179,7 @@
       <!-- authorization_number Column -->
       <ng-container matColumnDef="authorization">
         <th mat-header-cell *matHeaderCellDef class="text-center">
-          <b>No. Autorizaci&oacute;n</b>
+          <b>No. autorizaci&oacute;n</b>
         </th>
         <td mat-cell *matCellDef="let element">
           {{element.authorization}}
@@ -188,7 +188,7 @@
       <!-- number Column -->
       <ng-container matColumnDef="number">
         <th mat-header-cell *matHeaderCellDef class="text-center">
-          <b>No. Factura</b>
+          <b>No. factura</b>
         </th>
         <td mat-cell *matCellDef="let element"> {{element.number}} </td>
       </ng-container>
@@ -202,7 +202,7 @@
       <!-- value Column -->
       <ng-container matColumnDef="value">
         <th mat-header-cell *matHeaderCellDef class="text-center">
-          <b>Monto Factura</b>
+          <b>Monto factura</b>
         </th>
         <td mat-cell *matCellDef="let element"> $ {{element.value}} </td>
       </ng-container>
@@ -216,14 +216,14 @@
       <!-- identification_type Column -->
       <ng-container matColumnDef="identification_type">
         <th mat-header-cell *matHeaderCellDef class="text-center">
-          <b>Tipo de Identificaci&oacute;n</b>
+          <b>Tipo de identificaci&oacute;n</b>
         </th>
         <td mat-cell *matCellDef="let element"> {{element.identification_type}} </td>
       </ng-container>
       <!-- provider Column -->
       <ng-container matColumnDef="provider">
         <th mat-header-cell *matHeaderCellDef class="text-center">
-          <b>Cliente Proveedor</b>
+          <b>Cliente proveedor</b>
         </th>
         <td mat-cell *matCellDef="let element"> {{element.provider}} </td>
       </ng-container>

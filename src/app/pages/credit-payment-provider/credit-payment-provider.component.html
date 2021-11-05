@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row mt-sm-5 mt-3">
     <div class="col-12 col-sm-6 mx-auto">
-      <h1 class="title text-center">Pago Créditos Proveedor</h1>
+      <h1 class="title text-center">Pago créditos proveedor</h1>
     </div>
   </div>
   <app-payment-search-provider (searchObj)="searchInvoices($event)" [searchError]="searchError"
                                [clean]="doClean"></app-payment-search-provider>
   <div class="row justify-content-center" *ngIf="invoices.length>0">
-    <h4 class="title my-2">Créditos por Pagar</h4>
+    <h4 class="title my-2">Créditos por pagar</h4>
     <div class="col-12 my-3 row justify-content-center">
       <!--<mat-form-field appearance="outline" class="col-12 col-md-5">
         <mat-label>Filtro por Proveedor</mat-label>
@@ -17,7 +17,7 @@
 
 
       <mat-form-field appearance="outline" class="col-12 col-md-5">
-        <mat-label>Filtro por Fecha de Vencimiento Crédito</mat-label>
+        <mat-label>Filtro por fecha de vencimiento crédito</mat-label>
         <mat-date-range-input [rangePicker]="picker"  (change)="applyFilter($event)">
           <input matStartDate placeholder="Fecha inicial">
           <input matEndDate placeholder="Fecha final">
@@ -39,7 +39,7 @@
                                 [checked]="selection.hasValue() && isAllSelected()"
                                 [indeterminate]="selection.hasValue() && !isAllSelected()">
                   </mat-checkbox>
-                  <span>Seleccionar<br>Todos</span>
+                  <span>Seleccionar<br>todos</span>
                 </th>
                 <td mat-cell *matCellDef="let row">
                   <mat-checkbox (click)="$event.stopPropagation()"
@@ -59,27 +59,27 @@
               <!-- client-provider Column -->
               <ng-container matColumnDef="client_provider">
                 <th mat-header-cell *matHeaderCellDef class="text-center">
-                  <b>Cliente Proveedor</b>
+                  <b>Cliente proveedor</b>
                 </th>
                 <td mat-cell *matCellDef="let element"> {{element.client_provider}} </td>
               </ng-container>
 
               <!-- invoice_number Column -->
               <ng-container matColumnDef="invoice_number">
-                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número Factura</b></th>
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número factura</b></th>
                 <td mat-cell *matCellDef="let element"> {{element.invoice_number}} </td>
               </ng-container>
 
               <!-- operation_number Column -->
               <ng-container matColumnDef="operation_number">
-                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número Operación</b></th>
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número operación</b></th>
                 <td mat-cell *matCellDef="let element"> {{element.operation_number}} </td>
               </ng-container>
 
               <!-- concession_date Column -->
               <ng-container matColumnDef="concession_date">
                 <th mat-header-cell *matHeaderCellDef class="text-center">
-                  <b>Fecha Concesión</b>
+                  <b>Fecha concesión</b>
                 </th>
                 <td mat-cell *matCellDef="let element"> {{element.concession_date}} </td>
               </ng-container>
@@ -87,7 +87,7 @@
               <!-- effective_date Column -->
               <ng-container matColumnDef="default_days">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center">
-                  <b class="sort-header">Días de Mora</b>
+                  <b class="sort-header">Días de mora</b>
                   <mat-icon class="sort-icon">{{icon}}</mat-icon>
                 </th>
                 <td mat-cell *matCellDef="let element"> {{element.default_days}} </td>
@@ -95,19 +95,19 @@
 
               <!-- expiration_date Column -->
               <ng-container matColumnDef="expiration_date">
-                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Vencimiento Crédito</b></th>
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha vencimiento crédito</b></th>
                 <td mat-cell *matCellDef="let element"> {{element.expiration_date}} </td>
               </ng-container>
 
               <!-- invoice_value Column -->
               <ng-container matColumnDef="invoice_value">
-                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Monto Factura</b></th>
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Monto factura</b></th>
                 <td mat-cell *matCellDef="let element"> $ {{element.invoice_value}} </td>
               </ng-container>
 
               <!-- balance Column -->
               <ng-container matColumnDef="balance">
-                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Saldo Crédito</b></th>
+                <th mat-header-cell *matHeaderCellDef class="text-center"><b>Saldo crédito</b></th>
                 <td mat-cell *matCellDef="let element"> $ {{element.balance}} </td>
               </ng-container>
 
@@ -122,9 +122,9 @@
             <table mat-table [dataSource]="dataSource" matSort class=" table table-striped">
               <!-- payment Column -->
               <ng-container matColumnDef="payment">
-                <th id="custom-header" mat-header-cell *matHeaderCellDef class="text-center "><b>Valor a Pagar</b></th>
+                <th id="custom-header" mat-header-cell *matHeaderCellDef class="text-center "><b>Valor a pagar</b></th>
                 <td mat-cell *matCellDef="let element">
-                  <input type="text" placeholder="Valor a Pagar" style="display: inline-block;"
+                  <input type="text" placeholder="Valor a pagar" style="display: inline-block;"
                          matInput name="payment" class="inside-form"
                          [(ngModel)]="element.payment">
                 </td>
@@ -169,14 +169,14 @@
       <div class="col-12 row ">
         <div class="col-sm-4 col-12">
           <div class="row mx-auto">
-            <mat-label class=" col-12 mx-auto labels text-left my-2">Número de Cuenta Empresa</mat-label>
+            <mat-label class=" col-12 mx-auto labels text-left my-2">Número de cuenta empresa</mat-label>
           </div>
         </div>
         <div class="col-sm-5 col-12">
           <div class="row mx-auto">
             <mat-form-field appearance="outline" class="col-12 mx-auto">
               <mat-select [(ngModel)]="account" name="account">
-                <mat-option [value]="''">Seleccione una Cuenta</mat-option>
+                <mat-option [value]="''">Seleccione una cuenta</mat-option>
                 <mat-option *ngFor="let account of accounts" [value]="account">
                   {{account}}
                 </mat-option>
@@ -188,14 +188,14 @@
       <div class="col-12 row ">
         <div class="col-sm-4 col-12">
           <div class="row mx-auto">
-            <mat-label class=" col-12 mx-auto labels text-left my-2">Saldo Disponible Cuenta Empresa</mat-label>
+            <mat-label class=" col-12 mx-auto labels text-left my-2">Saldo disponible cuenta empresa</mat-label>
           </div>
 
         </div>
         <div class="col-sm-5 col-12">
           <div class="row mx-auto">
             <mat-form-field appearance="outline" class="col-12 mx-auto">
-              <input matInput type="number" placeholder="Saldo Disponible" name="account_balance" id="account_balance"
+              <input matInput type="number" placeholder="Saldo disponible" name="account_balance" id="account_balance"
                      [(ngModel)]="accountBalance">
             </mat-form-field>
           </div>
@@ -209,13 +209,13 @@
       <div class="col-12 row ">
         <div class="col-sm-4 col-12">
           <div class="row mx-auto">
-            <mat-label class=" col-12 mx-auto labels text-left my-2">Total Valor a Pagar</mat-label>
+            <mat-label class=" col-12 mx-auto labels text-left my-2">Total valor a pagar</mat-label>
           </div>
         </div>
         <div class="col-sm-5 col-12">
           <div class="row mx-auto">
             <mat-form-field appearance="outline" class="col-12 mx-auto">
-              <input matInput type="number" placeholder="Total Valor a Pagar" name="total" id="total"
+              <input matInput type="number" placeholder="Total valor a pagar" name="total" id="total"
                      [(ngModel)]="total">
             </mat-form-field>
           </div>
@@ -224,13 +224,13 @@
       <div class="col-12 row ">
         <div class="col-sm-4 col-12">
           <div class="row mx-auto">
-            <mat-label class=" col-12 mx-auto labels text-left my-2">Notificación por Email</mat-label>
+            <mat-label class=" col-12 mx-auto labels text-left my-2">Notificación por email</mat-label>
           </div>
         </div>
         <div class="col-sm-5 col-12">
           <div class="row mx-auto">
             <mat-form-field appearance="outline" class="col-12 mx-auto">
-              <input matInput type="email" placeholder="Notificación por Email" name="email" id="email"
+              <input matInput type="email" placeholder="Notificación por email" name="email" id="email"
                      [(ngModel)]="email">
             </mat-form-field>
           </div>

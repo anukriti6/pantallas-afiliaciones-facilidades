@@ -84,7 +84,7 @@ export class ProviderDataComponent implements OnInit {
           element.style.borderColor = '#c1c1c1';
         }
       } else {
-        this.errorEmail = 'Formato de correo Electrónico incorrecto';
+        this.errorEmail = 'Formato de correo electrónico incorrecto';
         if (element) {
           element.style.borderColor = '#FF0000';
         }

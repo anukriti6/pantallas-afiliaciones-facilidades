@@ -5,12 +5,12 @@
     </div>
     <div class="container py-4 bg">
       <mat-radio-group class="row mx-auto justify-content-center" name="type" [(ngModel)]="data.selectedType">
-        <div class="col-10 col-sm-4" aria-label="Carga Individual">
+          <div class="col-10 col-sm-4" aria-label="Empresa">
           <mat-radio-button class="mx-auto my-2" [name]="types[0]" [value]="types[0]">
             Empresa
           </mat-radio-button>
         </div>
-        <div class="col-10 col-sm-3" aria-label="Carga Masiva">
+        <div class="col-10 col-sm-3" aria-label="Proveedor">
           <mat-radio-button class="mx-auto my-2" [name]="types[1]" [value]="types[1]">
             Proveedor
           </mat-radio-button>
@@ -21,12 +21,12 @@
     <div class="row justify-content-center">
       <div class="col-12 col-sm-6">
         <div class="row mx-auto">
-          <mat-label class="col-12 mx-auto labels text-left my-2">Nombre Empresa / Proveedor</mat-label>
+          <mat-label class="col-12 mx-auto labels text-left my-2">Nombre empresa / proveedor</mat-label>
         </div>
         <div class="row mx-auto">
           <mat-form-field appearance="outline" class="col-12 mx-auto">
             <input type="text"
-                   placeholder="Nombre Empresa / Proveedor"
+                   placeholder="Nombre empresa / proveedor"
                    matInput
                    name="company"
                    [matAutocomplete]="auto"
@@ -43,7 +43,7 @@
       </div>
       <div class="col-12 col-sm-6">
         <div class="row mx-auto">
-          <mat-label class=" col-12 mx-auto labels text-left my-2">Identificación Empresa / Proveedor
+          <mat-label class=" col-12 mx-auto labels text-left my-2">Identificación empresa / proveedor
           </mat-label>
         </div>
         <div class="row mx-auto">
@@ -96,7 +96,7 @@
     <div class="row justify-content-center">
       <div class="col-12 col-sm-6">
         <div class="row mx-auto">
-          <mat-label class=" col-12 mx-auto labels text-left my-2">Estado Factura</mat-label>
+          <mat-label class=" col-12 mx-auto labels text-left my-2">Estado factura</mat-label>
         </div>
         <div class="row mx-auto">
           <mat-form-field appearance="outline"  class="col-12 mx-auto">
@@ -110,7 +110,7 @@
       </div>
       <div class="col-12 col-sm-6">
         <div class="row mx-auto">
-          <mat-label class=" col-12 mx-auto labels text-left my-2">Número Factura</mat-label>
+          <mat-label class=" col-12 mx-auto labels text-left my-2">Número factura</mat-label>
         </div>
         <div class="row mx-auto">
           <mat-form-field appearance="outline" class="col-12 mx-auto">

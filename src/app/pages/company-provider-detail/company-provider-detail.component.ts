@@ -4,7 +4,6 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {IItem} from '../../services/invoice/ItemInterface';
 import {NotifierComponent} from '../../components/notifier/notifier.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {MatDialog} from '@angular/material/dialog';
 import {ProviderService} from '../../services/provider/provider.service';
 import {AdcService} from '../../services/adc/adc.service';
 import {MatTableDataSource} from '@angular/material/table';
@@ -73,9 +72,7 @@ export class CompanyProviderDetailComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
 
   clean(): void {

@@ -1,17 +1,15 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {SpecialistsService} from '../../services/specialist/specialists.service';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {NotifierComponent} from '../../components/notifier/notifier.component';
-import {DialogComponent} from '../../components/dialogs/dialog.component';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {ISpecialist} from '../../services/specialist/SpecialistInterface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
-import {CompanyService} from '../../services/company/company.service';
 import {ICompanyAdc} from '../../services/adc/companyAdcInterface';
 import {AdcService} from '../../services/adc/adc.service';
 
@@ -82,70 +80,6 @@ export class AssignProductSpecialistsModifyComponent implements OnInit {
     }
   }
 
-  openModal(type: string): void {
-    const selected = this.selection.selected.length;
-    switch (type) {
-      case 'success':
-        const successDialog = this.dialog.open(DialogComponent, {
-          width: '350px',
-          data: {
-            total: selected,
-            title: '¿Está seguro de aprobar?',
-            body: (selected > 1 ? 'Serán aprobadas ' : 'Será aprobada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
-            button: 'Aprobar'
-          }
-        });
-
-        successDialog.afterClosed().subscribe(result => {
-          console.log('The dialog was closed', result);
-          if (result) {
-            this.snackBar.openFromComponent(NotifierComponent, {
-              data: {
-                message: 'Aprobación exitosa',
-                dismiss: 'Cerrar',
-                type: 'Alerta'
-              },
-              duration: 1300,
-              panelClass: 'alert-success'
-            });
-          }
-        });
-
-        break;
-      case 'error':
-
-        const errorDialog = this.dialog.open(DialogComponent, {
-          width: '350px',
-          data: {
-            total: selected,
-            title: '¿Está seguro de rechazar?',
-            body: (selected > 1 ? 'Serán rechazadas ' : 'Será rechazada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
-            button: 'Rechazar'
-          }
-        });
-
-        errorDialog.afterClosed().subscribe(result => {
-          console.log('The dialog was closed', result);
-          if (result) {
-            this.snackBar.openFromComponent(NotifierComponent, {
-              data: {
-                message: 'Rechazo Exitoso',
-                dismiss: 'Cerrar',
-                type: 'Alerta'
-              },
-              duration: 1300,
-              panelClass: 'alert-danger'
-            });
-          }
-        });
-
-        break;
-      default:
-        console.log('default');
-        break;
-
-    }
-  }
 
   searchSpecialist(): void {
     this.specialistsService.getSpecialists().subscribe(

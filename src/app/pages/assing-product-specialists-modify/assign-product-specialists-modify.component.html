@@ -1,7 +1,7 @@
 <div class="container" >
   <div class="row mt-sm-5 mt-3">
     <div class="col-12 col-sm-6 mx-auto">
-      <h1 class="title text-center">Modificar Asignación Especialistas</h1>
+      <h1 class="title text-center">Modificar asignación especialistas</h1>
     </div>
   </div>
 
@@ -19,7 +19,7 @@
                             [checked]="selection.hasValue() && isAllSelected()"
                             [indeterminate]="selection.hasValue() && !isAllSelected()">
               </mat-checkbox>
-              <span>Seleccionar<br>Todos</span>
+              <span>Seleccionar<br>todos</span>
             </th>
             <td mat-cell *matCellDef="let row">
               <mat-checkbox (click)="$event.stopPropagation()"
@@ -41,19 +41,19 @@
 
           <!-- names Column -->
           <ng-container matColumnDef="names">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Nombres y Apellidos</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Nombres y apellidos</b></th>
             <td mat-cell *matCellDef="let element"> {{element.names}} </td>
           </ng-container>
 
           <!-- user Column -->
           <ng-container matColumnDef="user">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Usuario de Red</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Usuario de red</b></th>
             <td mat-cell *matCellDef="let element"> {{element.user}} </td>
           </ng-container>
 
           <!-- email Column -->
           <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Correo Electrónico</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Correo electrónico</b></th>
             <td mat-cell *matCellDef="let element"> {{element.email}} </td>
           </ng-container>
 

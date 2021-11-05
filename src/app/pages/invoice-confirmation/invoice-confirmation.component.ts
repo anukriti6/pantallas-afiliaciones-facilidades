@@ -3,9 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {SelectionModel} from '@angular/cdk/collections';
 import {InvoicesService} from '../../services/invoice/invoices.service';
 import {IItem} from '../../services/invoice/ItemInterface';
-import {SuccessDialogComponent} from '../../components/dialogs/success-dialog.component';
 import {NotifierComponent} from '../../components/notifier/notifier.component';
-import {DeclineDialogComponent} from '../../components/dialogs/decline-dialog.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../../components/dialogs/dialog.component';
@@ -51,19 +49,6 @@ export class InvoiceConfirmationComponent implements OnInit {
         this.invoices = data;
         console.log('data', data);
         console.log('invoices', this.invoices);
-        /*if (this.invoices.length) {
-          for (let i = 0; i < this.invoices.length; i++) {
-            if (this.invoices[i].idNumber === id) {
-              this.matched = true;
-              this.currEasinessData = this.fullEasinessData[i];
-              this.searchError = null;
-            }
-          }
-          if (!this.matched) {
-            this.searchError = 'Usuario no encontrado. Intente nuevamente';
-            this.currEasinessData = null;
-          }
-        }*/
       }
     );
   }
@@ -126,7 +111,7 @@ export class InvoiceConfirmationComponent implements OnInit {
           if (result) {
             this.snackBar.openFromComponent(NotifierComponent, {
               data: {
-                message: 'Rechazo Exitoso',
+                message: 'Rechazo exitoso',
                 dismiss: 'Cerrar',
                 type: 'Alerta'
               },

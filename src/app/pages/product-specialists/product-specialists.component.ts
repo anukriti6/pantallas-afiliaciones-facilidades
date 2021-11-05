@@ -86,7 +86,7 @@ export class ProductSpecialistsComponent implements OnInit {
           if (result) {
             this.snackBar.openFromComponent(NotifierComponent, {
               data: {
-                message: 'Rechazo Exitoso',
+                message: 'Rechazo exitoso',
                 dismiss: 'Cerrar',
                 type: 'Alerta'
               },

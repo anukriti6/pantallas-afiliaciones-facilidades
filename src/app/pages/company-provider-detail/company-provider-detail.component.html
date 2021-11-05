@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-sm-5 mt-3">
     <div class="col-12 col-sm-6 mx-auto">
-      <h1 class="title text-center"> Detalle Empresas Proveedor</h1>
+      <h1 class="title text-center"> Detalle empresas proveedor</h1>
     </div>
   </div>
   <div class="row mx-auto">
@@ -41,11 +41,11 @@
     </div>
     <div class="col-12 col-sm-6">
       <div class="row mx-auto">
-        <mat-label class="col-12 mx-auto labels text-left my-2">Cliente Proveedor</mat-label>
+        <mat-label class="col-12 mx-auto labels text-left my-2">Cliente proveedor</mat-label>
       </div>
       <div class="row mx-auto">
         <mat-form-field appearance="outline" class="col-12 mx-auto">
-          <input type="text" placeholder="Cliente Proveedor" matInput [disabled]="searchType === 'company'"
+          <input type="text" placeholder="Cliente proveedor" matInput [disabled]="searchType === 'company'"
                  name="provider" [matAutocomplete]="provider" [(ngModel)]="data.provider"
                  (ngModelChange)="changeProvidersSearch()">
           <mat-autocomplete #provider="matAutocomplete">
@@ -70,7 +70,7 @@
   <div class="row justify-content-left justify-content-sm-end mx-auto"
        *ngIf="companies.length>0 && searchType === 'provider'">
     <div class="col-12 col-sm-11">
-      <h4 class="title mt-4">Empresas del Proveedor</h4>
+      <h4 class="title mt-4">Empresas del proveedor</h4>
     </div>
     <div class=" col-12 col-sm-1 text-center">
       <img src="../assets/img/excel.png" class="cursor img-fluid excel-image"
@@ -80,7 +80,7 @@
   </div>
   <div class="row justify-content-center" *ngIf="companies.length>0 && searchType === 'provider'">
     <mat-form-field appearance="outline" class="col-12 col-sm-5 mx-auto">
-      <mat-label>Filtro por Estado</mat-label>
+      <mat-label>Filtro por estado</mat-label>
       <mat-select [(ngModel)]="filter" name="idType" (ngModelChange)="applyCompanyFilter($event)">
         <mat-option [value]="null">
           TODOS
@@ -113,19 +113,19 @@
 
           <!-- provider_advance_rate Column -->
           <ng-container matColumnDef="provider_advance_rate">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Tasa Anticipo Proveedor</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Tasa anticipo proveedor</b></th>
             <td mat-cell *matCellDef="let element"> {{element.provider_advance_rate}} </td>
           </ng-container>
 
           <!-- payment_account Column -->
           <ng-container matColumnDef="payment_account">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Cuenta de Pago Proveedor</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Cuenta de pago proveedor</b></th>
             <td mat-cell *matCellDef="let element"> {{element.payment_account}} </td>
           </ng-container>
 
           <!-- provider_email Column -->
           <ng-container matColumnDef="provider_email">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Email Proveedor</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Email proveedor</b></th>
             <td mat-cell *matCellDef="let element"> {{element.provider_email}} </td>
           </ng-container>
 
@@ -151,7 +151,7 @@
 
           <!-- phone Column -->
           <ng-container matColumnDef="cellphone">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número Celular</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número celular</b></th>
             <td mat-cell *matCellDef="let element"> {{element.cellphone}} </td>
           </ng-container>
 
@@ -201,14 +201,14 @@
       <p><b class="labels">Facilidad: </b>{{companyData.ease}}</p>
     </div>
     <div class="col-12 col-sm-6">
-      <p><b class="labels">Fecha Aprobación Línea de Crédito: </b>{{companyData.credit_line_approval_date}}</p>
-      <p><b class="labels">Cupo Aprobado: </b>{{companyData.approved_quota}}</p>
-      <p><b class="labels">Cupo Disponible: </b>{{companyData.available_quota}}</p>
+      <p><b class="labels">Fecha aprobación línea de crédito: </b>{{companyData.credit_line_approval_date}}</p>
+      <p><b class="labels">Cupo aprobado: </b>{{companyData.approved_quota}}</p>
+      <p><b class="labels">Cupo disponible: </b>{{companyData.available_quota}}</p>
     </div>
     <div class="col-12 col-sm-6">
-      <p><b class="labels">Fecha Expiración Línea de Crédito: </b>{{companyData.credit_line_expiration_date}}</p>
-      <p><b class="labels">Cupo Bloqueado: </b>{{companyData.blocked_quota}}</p>
-      <p><b class="labels">Cupo Utilizado: </b>{{companyData.used_quota}}</p>
+      <p><b class="labels">Fecha expiración línea de crédito: </b>{{companyData.credit_line_expiration_date}}</p>
+      <p><b class="labels">Cupo bloqueado: </b>{{companyData.blocked_quota}}</p>
+      <p><b class="labels">Cupo utilizado: </b>{{companyData.used_quota}}</p>
     </div>
 
     <hr class="my-4">
@@ -228,7 +228,7 @@
   </div>
   <div class="row justify-content-center" *ngIf="providers.length>0 && searchType === 'company'">
     <mat-form-field appearance="outline" class="col-12 col-sm-5 mx-auto">
-      <mat-label>Filtro por Estado</mat-label>
+      <mat-label>Filtro por estado</mat-label>
       <mat-select [(ngModel)]="filter" name="idType" (ngModelChange)="applyProviderFilter($event)">
         <mat-option [value]="null">
           TODOS
@@ -240,8 +240,6 @@
     </mat-form-field>
   </div>
   <div class="row justify-content-center" *ngIf="providers.length>0 && searchType === 'company'">
-
-
     <div class="col-12 my-3">
       <p class="table-description">Se muestran {{providers.length}} de un total de {{providers.length}} proveedores</p>
       <div class="table-responsive">
@@ -249,33 +247,33 @@
 
           <!-- company_identification Column -->
           <ng-container matColumnDef="identification">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>ID Proveedor</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>ID proveedor</b></th>
             <td mat-cell *matCellDef="let element"> {{element.identification}} </td>
           </ng-container>
 
           <!-- company Column -->
           <ng-container matColumnDef="provider">
             <th mat-header-cell *matHeaderCellDef class="text-center">
-              Cliente Proveedor
+              Cliente proveedor
             </th>
             <td mat-cell *matCellDef="let element"> {{element.name}} </td>
           </ng-container>
 
           <!-- provider_advance_rate Column -->
           <ng-container matColumnDef="provider_advance_rate">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Tasa Anticipo Proveedor</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Tasa anticipo proveedor</b></th>
             <td mat-cell *matCellDef="let element"> {{element.provider_advance_rate}} </td>
           </ng-container>
 
           <!-- payment_account Column -->
           <ng-container matColumnDef="payment_account">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Cuenta de Pago Proveedor</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Cuenta de pago proveedor</b></th>
             <td mat-cell *matCellDef="let element"> {{element.payment_account}} </td>
           </ng-container>
 
           <!-- provider_email Column -->
           <ng-container matColumnDef="provider_email">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Email Proveedor</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Email proveedor</b></th>
             <td mat-cell *matCellDef="let element"> {{element.provider_email}} </td>
           </ng-container>
 
@@ -301,7 +299,7 @@
 
           <!-- phone Column -->
           <ng-container matColumnDef="cellphone">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número Celular</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número celular</b></th>
             <td mat-cell *matCellDef="let element"> {{element.cellphone}} </td>
           </ng-container>
 

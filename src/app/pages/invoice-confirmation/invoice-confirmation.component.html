@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row mt-sm-5 mt-3">
     <div class="col-12 col-sm-6 mx-auto">
-      <h1 class="title text-center"> Confirmar Facturas Proveedor</h1>
+      <h1 class="title text-center"> Confirmar facturas proveedor</h1>
     </div>
   </div>
   <app-search-invoices (searchObj)="searchInvoices($event)" [searchError]="searchError"
                        [clean]="doClean"></app-search-invoices>
   <div class="row justify-content-left justify-content-sm-end mx-auto" *ngIf="invoices.length>0">
     <div class="col-12 col-sm-11">
-      <h4 class="title mt-4">Facturas por Confirmar</h4>
+      <h4 class="title mt-4">Facturas por confirmar</h4>
     </div>
     <div class=" col-12 col-sm-1 text-center" >
       <img src="../assets/img/excel.png" class="cursor img-fluid excel-image"
@@ -30,7 +30,7 @@
                             [checked]="selection.hasValue() && isAllSelected()"
                             [indeterminate]="selection.hasValue() && !isAllSelected()">
               </mat-checkbox>
-              <span>Seleccionar<br>Todos</span>
+              <span>Seleccionar<br>todos</span>
             </th>
             <td mat-cell *matCellDef="let row">
               <mat-checkbox (click)="$event.stopPropagation()"
@@ -55,19 +55,19 @@
 
           <!-- client-provider Column -->
           <ng-container matColumnDef="client_provider">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Cliente Proveedor</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Cliente proveedor</b></th>
             <td mat-cell *matCellDef="let element"> {{element.client_provider}} </td>
           </ng-container>
 
           <!-- invoice_number Column -->
           <ng-container matColumnDef="invoice_number">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número Factura</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número factura</b></th>
             <td mat-cell *matCellDef="let element"> {{element.invoice_number}} </td>
           </ng-container>
 
           <!-- invoice_value Column -->
           <ng-container matColumnDef="invoice_value">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Monto Factura</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Monto factura</b></th>
             <td mat-cell *matCellDef="let element"> $ {{element.invoice_value}} </td>
           </ng-container>
 
@@ -82,26 +82,26 @@
 
           <!-- start_date Column -->
           <ng-container matColumnDef="start_date">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Ingreso Factura</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha ingreso factura</b></th>
             <td mat-cell *matCellDef="let element"> {{element.start_date}} </td>
           </ng-container>
 
           <!-- effective_date Column -->
           <ng-container matColumnDef="effective_date">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Efectivización</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha efectivización</b></th>
             <td mat-cell *matCellDef="let element"> {{element.effective_date}} </td>
 
           </ng-container>
 
           <!-- expiration_date Column -->
           <ng-container matColumnDef="expiration_date">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Vencimiento</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha vencimiento</b></th>
             <td mat-cell *matCellDef="let element"> {{element.expiration_date}} </td>
           </ng-container>
 
           <!-- expiration_date Column -->
           <ng-container matColumnDef="interest">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Tasa Interés Crédito</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Tasa interés crédito</b></th>
             <td mat-cell *matCellDef="let element"> {{element.interest}} </td>
           </ng-container>
 

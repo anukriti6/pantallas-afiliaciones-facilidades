@@ -226,7 +226,7 @@ export class CompanyDataComponent implements OnInit {
           element.style.borderColor = '#c1c1c1';
         }
       } else {
-        this.errorEmail = 'Formato de correo Electrónico incorrecto';
+        this.errorEmail = 'Formato de correo electrónico incorrecto';
         if (element) {
           element.style.borderColor = '#FF0000';
         }
@@ -255,7 +255,7 @@ export class CompanyDataComponent implements OnInit {
           element.style.borderColor = '#c1c1c1';
         }
       } else {
-        this.errorEmail1 = 'Formato de correo Electrónico incorrecto';
+        this.errorEmail1 = 'Formato de correo electrónico incorrecto';
         if (element) {
           element.style.borderColor = '#FF0000';
         }

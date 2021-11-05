@@ -122,7 +122,7 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
       this.canPay = true;
       this.snackBar.openFromComponent(NotifierComponent, {
         data: {
-          message: 'Saldo Disponible',
+          message: 'Saldo disponible',
           dismiss: 'Cerrar',
           type: 'Mensaje'
         },
@@ -133,7 +133,7 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
       this.canPay = false;
       this.snackBar.openFromComponent(NotifierComponent, {
         data: {
-          message: 'Saldo No Disponible',
+          message: 'Saldo no disponible',
           dismiss: 'Cerrar',
           type: 'Mensaje'
         },
@@ -182,7 +182,7 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
           width: '350px',
           data: {
             total: selected,
-            title: 'Pago Exitoso',
+            title: 'Pago exitoso',
             body: (selected > 1 ? 'Fueron pagadas ' : 'fue pagada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
             question: '¿Desea descargar comprobantes?',
             button: 'Si',
@@ -204,7 +204,7 @@ export class InvoicePaymentProviderComponent implements OnInit, AfterViewInit {
           width: '350px',
           data: {
             total: selected,
-            title: 'Error en Pago',
+            title: 'Error en pago',
             body: (selected > 1 ? 'No fueron pagadas ' : 'No fue pagada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
             button: 'Aceptar'
           }

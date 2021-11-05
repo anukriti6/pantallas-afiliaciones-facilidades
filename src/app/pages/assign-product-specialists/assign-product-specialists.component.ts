@@ -3,8 +3,6 @@ import {SpecialistsService} from '../../services/specialist/specialists.service'
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {NotifierComponent} from '../../components/notifier/notifier.component';
-import {DialogComponent} from '../../components/dialogs/dialog.component';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
@@ -118,70 +116,6 @@ export class AssignProductSpecialistsComponent implements OnInit {
     );
   }
 
-  openModal(type: string): void {
-    const selected = this.selection.selected.length;
-    switch (type) {
-      case 'success':
-        const successDialog = this.dialog.open(DialogComponent, {
-          width: '350px',
-          data: {
-            total: selected,
-            title: '¿Está seguro de aprobar?',
-            body: (selected > 1 ? 'Serán aprobadas ' : 'Será aprobada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
-            button: 'Aprobar'
-          }
-        });
-
-        successDialog.afterClosed().subscribe(result => {
-          console.log('The dialog was closed', result);
-          if (result) {
-            this.snackBar.openFromComponent(NotifierComponent, {
-              data: {
-                message: 'Aprobación exitosa',
-                dismiss: 'Cerrar',
-                type: 'Alerta'
-              },
-              duration: 1300,
-              panelClass: 'alert-success'
-            });
-          }
-        });
-
-        break;
-      case 'error':
-
-        const errorDialog = this.dialog.open(DialogComponent, {
-          width: '350px',
-          data: {
-            total: selected,
-            title: '¿Está seguro de rechazar?',
-            body: (selected > 1 ? 'Serán rechazadas ' : 'Será rechazada ') + selected + (selected > 1 ? ' facturas' : ' factura'),
-            button: 'Rechazar'
-          }
-        });
-
-        errorDialog.afterClosed().subscribe(result => {
-          console.log('The dialog was closed', result);
-          if (result) {
-            this.snackBar.openFromComponent(NotifierComponent, {
-              data: {
-                message: 'Rechazo Exitoso',
-                dismiss: 'Cerrar',
-                type: 'Alerta'
-              },
-              duration: 1300,
-              panelClass: 'alert-danger'
-            });
-          }
-        });
-
-        break;
-      default:
-        console.log('default');
-        break;
-
-    }
-  }
 
   clean(clean: boolean): void {
     this.doClean = clean;

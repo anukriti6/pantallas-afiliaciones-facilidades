@@ -6,8 +6,6 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {NotifierComponent} from '../../components/notifier/notifier.component';
-import {SuccessDialogComponent} from '../../components/dialogs/success-dialog.component';
-import {DeclineDialogComponent} from '../../components/dialogs/decline-dialog.component';
 import {DialogComponent} from '../../components/dialogs/dialog.component';
 
 @Component({

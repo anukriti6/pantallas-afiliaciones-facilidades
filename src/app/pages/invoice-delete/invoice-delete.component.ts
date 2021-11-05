@@ -3,9 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {SelectionModel} from '@angular/cdk/collections';
 import {InvoicesService} from '../../services/invoice/invoices.service';
 import {IItem} from '../../services/invoice/ItemInterface';
-import {SuccessDialogComponent} from '../../components/dialogs/success-dialog.component';
 import {NotifierComponent} from '../../components/notifier/notifier.component';
-import {DeclineDialogComponent} from '../../components/dialogs/decline-dialog.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../../components/dialogs/dialog.component';
@@ -112,7 +110,7 @@ export class InvoiceDeleteComponent implements OnInit {
           if (result) {
             this.snackBar.openFromComponent(NotifierComponent, {
               data: {
-                message: 'Rechazo Exitoso',
+                message: 'Rechazo exitoso',
                 dismiss: 'Cerrar',
                 type: 'Alerta'
               },

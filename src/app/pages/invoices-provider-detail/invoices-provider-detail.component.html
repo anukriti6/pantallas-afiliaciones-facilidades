@@ -2,7 +2,7 @@
   <!--search section-->
   <div class="row mt-sm-5 mt-3">
     <div class="col-12 col-sm-6 mx-auto">
-      <h1 class="title text-center"> Detalle Facturas Proveedor</h1>
+      <h1 class="title text-center"> Detalle facturas proveedor</h1>
     </div>
   </div>
   <div class="row mx-auto">
@@ -10,12 +10,12 @@
   </div>
   <div class="container py-4 bg">
     <mat-radio-group class="row mx-auto justify-content-center" name="type" [(ngModel)]="searchType">
-      <div class="col-10 col-sm-4" aria-label="Carga Individual">
+      <div class="col-10 col-sm-4" aria-label="Carga individual">
         <mat-radio-button class="mx-auto my-2" [name]="types[0]" [value]="types[0]">
           Empresa
         </mat-radio-button>
       </div>
-      <div class="col-10 col-sm-3" aria-label="Carga Masiva">
+      <div class="col-10 col-sm-3" aria-label="Carga masiva">
         <mat-radio-button class="mx-auto my-2" [name]="types[1]" [value]="types[1]">
           Proveedor
         </mat-radio-button>
@@ -42,11 +42,11 @@
     </div>
     <div class="col-12 col-sm-6">
       <div class="row mx-auto">
-        <mat-label class="col-12 mx-auto labels text-left my-2">Cliente Proveedor</mat-label>
+        <mat-label class="col-12 mx-auto labels text-left my-2">Cliente proveedor</mat-label>
       </div>
       <div class="row mx-auto">
         <mat-form-field appearance="outline" class="col-12 mx-auto">
-          <input type="text" placeholder="Cliente Proveedor" matInput
+          <input type="text" placeholder="Cliente proveedor" matInput
                  name="provider" [matAutocomplete]="provider" [(ngModel)]="data.provider"
                  (ngModelChange)="changeProvidersSearch()">
           <mat-autocomplete #provider="matAutocomplete">
@@ -99,7 +99,7 @@
   <div class="row justify-content-center">
     <div class="col-12 col-sm-6">
       <div class="row mx-auto">
-        <mat-label class=" col-12 mx-auto labels text-left my-2">Estado Factura</mat-label>
+        <mat-label class=" col-12 mx-auto labels text-left my-2">Estado factura</mat-label>
       </div>
       <div class="row mx-auto">
         <mat-form-field appearance="outline" class="col-12 mx-auto">
@@ -114,7 +114,7 @@
 
     <div class="col-12 col-sm-6">
       <div class="row mx-auto">
-        <mat-label class=" col-12 mx-auto labels text-left my-2">Número Factura</mat-label>
+        <mat-label class=" col-12 mx-auto labels text-left my-2">Número factura</mat-label>
       </div>
       <div class="row mx-auto">
         <mat-form-field appearance="outline" class="col-12 mx-auto">
@@ -144,7 +144,7 @@
   <div class="row justify-content-left justify-content-sm-end mx-auto"
        *ngIf="providerInvoices.length>0 && searchType === 'provider'">
     <div class="col-12 col-sm-11">
-      <h4 class="title mt-4">Listado Facturas Proveedor</h4>
+      <h4 class="title mt-4">Listado facturas proveedor</h4>
     </div>
     <div class=" col-12 col-sm-1 text-center">
       <img src="../assets/img/excel.png" class="cursor img-fluid excel-image"
@@ -179,7 +179,7 @@
           <!-- Provider Id Column -->
           <ng-container matColumnDef="provider_id">
             <th mat-header-cell *matHeaderCellDef class="text-center">
-              ID Proveedor
+              ID proveedor
             </th>
             <td mat-cell *matCellDef="let element"> {{element.provider_id}} </td>
           </ng-container>
@@ -187,44 +187,44 @@
           <!-- Client Provider Column -->
           <ng-container matColumnDef="client_provider">
             <th mat-header-cell *matHeaderCellDef class="text-center">
-              Cliente Proveedor
+              Cliente proveedor
             </th>
             <td mat-cell *matCellDef="let element"> {{element.client_provider}} </td>
           </ng-container>
 
           <!-- invoice_number Column -->
           <ng-container matColumnDef="invoice_number">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número Factura</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número factura</b></th>
             <td mat-cell *matCellDef="let element"> {{element.invoice_number}} </td>
           </ng-container>
 
           <!-- invoice_amount Column -->
           <ng-container matColumnDef="invoice_amount">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Monto Factura</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Monto factura</b></th>
             <td mat-cell *matCellDef="let element"> {{element.invoice_amount | currency}} </td>
           </ng-container>
 
           <!-- start_date Column -->
           <ng-container matColumnDef="start_date">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Ingreso</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha ingreso</b></th>
             <td mat-cell *matCellDef="let element"> {{element.start_date}} </td>
           </ng-container>
 
           <!-- advance_date Column -->
           <ng-container matColumnDef="advance_date">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Anticipo Factura</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha anticipo factura</b></th>
             <td mat-cell *matCellDef="let element"> {{element.advance_date}} </td>
           </ng-container>
 
           <!-- advance_provider_cuota Column -->
           <ng-container matColumnDef="advance_provider_cuota">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Tasa Anticipo Proveedor</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Tasa anticipo proveedor</b></th>
             <td mat-cell *matCellDef="let element"> {{element.advance_provider_cuota}} % </td>
           </ng-container>
 
           <!-- advance_value Column -->
           <ng-container matColumnDef="advance_value">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Valor Anticipo</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Valor anticipo</b></th>
             <td mat-cell *matCellDef="let element"> {{element.advance_value  | currency}} </td>
           </ng-container>
 
@@ -236,7 +236,7 @@
 
           <!-- payment_date Column -->
           <ng-container matColumnDef="payment_date">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Pago Factura</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha pago factura</b></th>
             <td mat-cell *matCellDef="let element"> {{element.payment_date}} </td>
           </ng-container>
 
@@ -304,7 +304,7 @@
   <div class="row justify-content-left justify-content-sm-end mx-auto"
        *ngIf="companyInvoices.length>0 && searchType === 'company'">
     <div class="col-12 col-sm-11">
-      <h4 class="title mt-4">Listado Facturas Empresa</h4>
+      <h4 class="title mt-4">Listado facturas empresa</h4>
     </div>
     <div class=" col-12 col-sm-1 text-center">
       <img src="../assets/img/excel.png" class="cursor img-fluid excel-image"
@@ -338,7 +338,7 @@
           <!-- Provider Id Column -->
           <ng-container matColumnDef="provider_id">
             <th mat-header-cell *matHeaderCellDef class="text-center">
-              ID Proveedor
+              ID proveedor
             </th>
             <td mat-cell *matCellDef="let element"> {{element.provider_id}} </td>
           </ng-container>
@@ -346,26 +346,26 @@
           <!-- Client Provider Column -->
           <ng-container matColumnDef="client_provider">
             <th mat-header-cell *matHeaderCellDef class="text-center">
-              Cliente Proveedor
+              Cliente proveedor
             </th>
             <td mat-cell *matCellDef="let element"> {{element.client_provider}} </td>
           </ng-container>
 
           <!-- invoice_number Column -->
           <ng-container matColumnDef="invoice_number">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número Factura</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número factura</b></th>
             <td mat-cell *matCellDef="let element"> {{element.invoice_number}} </td>
           </ng-container>
 
           <!-- invoice_amount Column -->
           <ng-container matColumnDef="invoice_amount">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Monto Factura</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Monto factura</b></th>
             <td mat-cell *matCellDef="let element"> {{element.invoice_amount | currency}} </td>
           </ng-container>
 
           <!-- start_date Column -->
           <ng-container matColumnDef="start_date">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Ingreso</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha ingreso</b></th>
             <td mat-cell *matCellDef="let element"> {{element.start_date}} </td>
           </ng-container>
 
@@ -377,43 +377,43 @@
 
           <!-- payment_date Column -->
           <ng-container matColumnDef="payment_date">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Pago Factura</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha pago factura</b></th>
             <td mat-cell *matCellDef="let element"> {{element.payment_date}} </td>
           </ng-container>
 
           <!-- credit_cuota Column -->
           <ng-container matColumnDef="credit_cuota">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Tasa Crédito</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Tasa crédito</b></th>
             <td mat-cell *matCellDef="let element"> {{element.credit_cuota}} %</td>
           </ng-container>
 
           <!-- interest_value Column -->
           <ng-container matColumnDef="interest_value">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Valor Interés</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Valor interés</b></th>
             <td mat-cell *matCellDef="let element"> {{element.interest_value | currency}} </td>
           </ng-container>
 
           <!-- credit_operation_number Column -->
           <ng-container matColumnDef="credit_operation_number">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número Operación Crédito</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Número operación crédito</b></th>
             <td mat-cell *matCellDef="let element"> {{element.credit_operation_number}} </td>
           </ng-container>
 
           <!-- credit_expiration_date Column -->
           <ng-container matColumnDef="credit_expiration_date">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha Vencimiento Crédito</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Fecha vencimiento crédito</b></th>
             <td mat-cell *matCellDef="let element"> {{element.credit_expiration_date}} </td>
           </ng-container>
 
           <!-- default_days Column -->
           <ng-container matColumnDef="default_days">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Días Mora</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Días mora</b></th>
             <td mat-cell *matCellDef="let element"> {{element.default_days}} </td>
           </ng-container>
 
           <!-- default_interest Column -->
           <ng-container matColumnDef="default_interest">
-            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Interés Mora</b></th>
+            <th mat-header-cell *matHeaderCellDef class="text-center"><b>Interés mora</b></th>
             <td mat-cell *matCellDef="let element"> {{element.default_interest | currency}} </td>
           </ng-container>
 
