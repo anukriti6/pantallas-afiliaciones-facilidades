@@ -16,6 +16,7 @@ import {AssignProductSpecialistsComponent} from './pages/assign-product-speciali
 import {AssignProductSpecialistsModifyComponent} from './pages/assing-product-specialists-modify/assign-product-specialists-modify.component';
 import {CompanyProviderDetailComponent} from './pages/company-provider-detail/company-provider-detail.component';
 import {InvoicesProviderDetailComponent} from './pages/invoices-provider-detail/invoices-provider-detail.component';
+import {PrintPaymentsComponent} from "./pages/print-payments/print-payments.component";
 
 const routes: Routes = [
   {
@@ -81,6 +82,10 @@ const routes: Routes = [
   {
     path: 'invoices-provider-detail',
     component: InvoicesProviderDetailComponent
+  },
+    {
+    path: 'print-payments',
+    component: PrintPaymentsComponent
   },
 ];
 

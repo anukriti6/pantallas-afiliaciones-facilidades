@@ -119,6 +119,12 @@
             Detalle facturas proveedor
           </a>
         </mat-nav-list>
+        <mat-nav-list class="mat-nav-list">
+          <a mat-list-item class="mat-list-item" routerLink="/print-payments"
+             (click)="mobileQuery.matches ? snav.toggle(): clickedLink()">
+            Reimpresión comprobantes de pago
+          </a>
+        </mat-nav-list>
       </mat-expansion-panel>
       <mat-nav-list class="mat-nav-list">
         <a mat-list-item class="mat-list-item" routerLink="/"

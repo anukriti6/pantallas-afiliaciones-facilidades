@@ -8,6 +8,7 @@ export interface IProviderInvoice {
   advance_value: number;
   solca: number;
   invoice_number: string;
+  operation_number: string;
   invoice_amount: string;
   start_date: number;
   advance_date: number;
